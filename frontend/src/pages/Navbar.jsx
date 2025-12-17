@@ -20,8 +20,8 @@ const Navbar = () => {
           className={({ isActive }) =>
             `px-3 py-2 rounded-md font-medium transition-colors ${
               isActive
-                ? 'bg-amber-500 text-white shadow-md shadow-amber-500/30'
-                : 'text-white hover:text-white hover:bg-amber-500/10'
+                ? 'bg-amber-500 !text-white shadow-md shadow-amber-500/30'
+                : '!text-white hover:!text-white hover:bg-amber-500/10'
             }`
           }
         >

@@ -30,3 +30,29 @@ a {
   background: rgba(245, 180, 0, 0.25);
   color: var(--text);
 }
+
+/* Technologies Carousel Animations */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 50s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.animate-scroll-left:hover {
+  animation-play-state: paused;
+}
+
+/* Ensure seamless loop by duplicating content */
+.animate-scroll-left > * {
+  flex-shrink: 0;
+}

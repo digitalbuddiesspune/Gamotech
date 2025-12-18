@@ -97,6 +97,8 @@ const Careers = () => {
       <div className="relative h-[500px] sm:h-[600px] overflow-hidden">
         {/* Black Background - Matching Navbar */}
         <div className="absolute inset-0 bg-black" />
+        {/* Blackish Cover Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-[1]"></div>
         
         {/* Code Lines Background - Animated */}
         <div className="absolute inset-0 opacity-20">

@@ -30,7 +30,19 @@ const TECHNOLOGIES = [
     name: 'AWS',
     description: 'Cloud platform for scalable and reliable infrastructure.',
     category: 'Cloud',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766042477/Amazon-Web-Services-Emblem_suhhoc.png',
+  },
+  {
+    name: 'Azure',
+    description: 'Provide scalable computing, storage, networking, and AI services.',
+    category: 'Cloud',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766043550/2560px-Microsoft_Azure_Logo.svg_tdjblr.png',
+  },
+  {
+    name: 'Google Cloud',
+    description: 'Cloud platform offering scalable infrastructure, data analytics, and AI services.',
+    category: 'Cloud',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766043761/google-cloud_koqtfo.png',
   },
   {
     name: 'Python',
@@ -56,6 +68,73 @@ const TECHNOLOGIES = [
     category: 'Database',
     logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766041382/PostgreSQL-Logo.wine_fwbibj.png',
   },
+  {
+    name: 'Java',
+    description: 'Object-oriented programming language and development platform.',
+    category: 'Backend',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766043007/226777_pllt1s.png',
+  },
+  {
+    name: 'Spring Boot',
+    description: 'Production-grade applications with minimal configuration.',
+    category: 'Framework',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766043052/spring-boot-logo-icon-hd_sherkd.png',
+  },
+  {
+    name: 'Docker',
+    description: 'Containerization platform for packaging applications with all dependencies consistently.',
+    category: 'DevOps',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766052226/docker_ifywfm.jpg',
+  },
+  {
+    name: 'Jenkins',
+    description: 'Automation server for building, testing, and deploying applications through CI/CD pipelines.',
+    category: 'DevOps',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766051002/1483px-Jenkins_logo.svg_mfkell.png',
+  },
+  {
+    name: 'Kubernetes',
+    description: 'Container orchestration platform for automating deployment, scaling, and management of applications.',
+    category: 'DevOps',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766052006/1055px-Kubernetes_logo_without_workmark.svg_xjpytu.png',
+  },
+  {
+    name: 'React Native',
+    description: 'Framework for building cross-platform mobile apps using JavaScript and React.',
+    category: 'Mobile Development',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766051525/react-native_thumb_wng54e.png',
+  },
+  {
+    name: 'Next.js',
+    description: 'React framework for server-side rendering, routing, and building high-performance web applications.',
+    category: 'Frontend',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766051684/nextjs_h03xfi.jpg',
+  },
+  {
+    name: 'Cloudinary',
+    description: 'Cloud service for managing, optimizing, and delivering images and videos at scale.',
+    category: 'Cloud Storage',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766051854/Cloudinary_logo_blue_0720_2x_qwnqap.png',
+  },
+  {
+    name: 'PHP',
+    description: 'Server-side scripting language for building dynamic and database-driven web applications.',
+    category: 'Backend',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766051946/1280px-PHP-logo.svg_uhx9nk.png',
+  },
+  {
+    name: 'Wordpress',
+    description: 'Content management system for creating, managing, and publishing websites easily.',
+    category: 'CMS / Web Development',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766052120/Wordpress_Blue_logo_iqqmyx.png',
+  },
+  {
+    name: 'Shopify',
+    description: 'E-commerce platform for creating, managing, and scaling online stores efficiently.',
+    category: 'E-commerce Development',
+    logo: 'https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766053353/images_hcewiv.png',
+  },
+
 ]
 
 const Home = () => {
@@ -151,10 +230,10 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative text-center space-y-8 max-w-4xl mx-auto px-4 z-10">
           <p className="text-base sm:text-lg font-semibold text-amber-400 uppercase tracking-wide">Cloud-scale delivery</p>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-amber-50">
+          <h1 className="text-5xl sm:text-6xl lg:text-5xl font-bold leading-tight text-amber-50">
             Bring Your Ideas. We&apos;ll Bring the Execution.
           </h1>
-          <p className="text-xl sm:text-2xl lg:text-3xl text-amber-200/85">
+          <p className="text-xl sm:text-2xl lg:text-2xl text-amber-200/85">
             Whether it&apos;s building platforms, automating workflows, or scaling teams, we make execution feel
             simple, smart, and fast.
           </p>
@@ -176,11 +255,11 @@ const Home = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 space-y-16">
-        <div className="p-12 sm:p-16 bg-[#0d0d0f] rounded-xl space-y-6 text-center">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-amber-50">
+        <div className="p-12 sm:p-16 rounded-xl space-y-6 text-center">
+        <h2 className="text-2xl sm:text-4xl lg:text-4xl font-bold text-amber-50">
           Welcome to Gamotech IT &amp; Web Solutions!
         </h2>
-        <p className="text-xl sm:text-2xl lg:text-3xl text-amber-200/85 leading-relaxed">
+        <p className="text-xl sm:text-2xl lg:text-2xl text-amber-200/85 leading-relaxed">
           We&apos;re your one-stop destination for comprehensive digital solutions, offering innovative IT services,
           captivating web design, and strategic digital marketing expertise. Our mission is to empower businesses with
           transformative technology and drive growth through targeted digital strategies. Follow us on LinkedIn to stay
@@ -191,7 +270,7 @@ const Home = () => {
 
       <div className="bg-[#0d0d0f] rounded-xl">
         <div className="px-8 pt-10 pb-4 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Our Services</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-white">Our Services</h2>
         </div>
         {services.map((service, idx) => {
           const isOpen = openService === idx
@@ -207,7 +286,7 @@ const Home = () => {
                 onClick={() => setOpenService(isOpen ? null : idx)}
               >
                 <div className="flex-1">
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-amber-50">{service.title}</h3>
+                  <h3 className="text-2xl sm:text-3xl lg:text-2xl font-semibold text-amber-50">{service.title}</h3>
                   {isOpen && (
                     <p className="mt-3 text-amber-200/80 text-lg sm:text-xl lg:text-2xl leading-relaxed">{service.description}</p>
                   )}
@@ -241,10 +320,10 @@ const Home = () => {
             const current = Math.min(item.target, Math.floor(counts[idx] ?? 0))
             return (
               <div key={item.label} className="space-y-4">
-                <p className="text-7xl sm:text-8xl lg:text-9xl font-extrabold text-white leading-none">
+                <p className="text-6xl sm:text-8xl lg:text-6xl font-extrabold text-white leading-none">
                   {current}+{/* keep plus visible */}
                 </p>
-                <p className="text-xl sm:text-2xl lg:text-3xl text-amber-200/85">{item.label}</p>
+                <p className="text-xl sm:text-2xl lg:text-4xl text-amber-200/85">{item.label}</p>
               </div>
             )
           })}
@@ -252,8 +331,8 @@ const Home = () => {
       </div>
 
       {/* Technologies We Use Section */}
-      <div className="space-y-12 py-12">
-        <div className="text-center">
+      <div className="relative overflow-hidden w-full h-screen bg-black flex flex-col justify-center items-center space-y-12">
+        <div className="relative text-center z-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Technologies We Use
           </h2>
@@ -263,20 +342,21 @@ const Home = () => {
         </div>
 
         {/* Logo Carousel */}
-        <div className="relative overflow-hidden py-8">
+        <div className="relative overflow-hidden w-full py-8">
           <div className="flex animate-scroll-left">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
               <div
                 key={`logo-${idx}`}
-                className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center"
-                style={{ width: '100px', height: '100px' }}
+                className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-colors"
+                style={{ width: '120px', height: '120px' }}
               >
                 <img
                   src={tech.logo}
                   alt={tech.name}
-                  className="w-full h-full object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                   onError={(e) => {
+                    console.error(`Failed to load logo for ${tech.name}:`, tech.logo)
                     e.target.style.display = 'none'
                   }}
                 />
@@ -286,7 +366,7 @@ const Home = () => {
         </div>
 
         {/* Card Carousel */}
-        <div className="relative overflow-hidden py-6">
+        <div className="relative overflow-hidden w-full py-6">
           <div className="flex animate-scroll-left">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (

@@ -87,16 +87,18 @@ const Home = () => {
   }, [])
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12 space-y-12">
-      <div className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-6 py-14 sm:px-10 shadow-2xl shadow-amber-500/10">
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 20% 20%, rgba(245,180,0,0.25) 0, rgba(245,180,0,0) 35%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.12) 0, rgba(255,255,255,0) 32%), radial-gradient(circle at 50% 75%, rgba(245,180,0,0.2) 0, rgba(245,180,0,0) 34%)',
-          }}
-        />
-        <div className="relative text-center space-y-6 max-w-3xl mx-auto">
+    <section className="space-y-12">
+      <div className="relative overflow-hidden w-full bg-black pt-24 pb-20 sm:pt-32 sm:pb-28">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <img
+            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766038533/original-ac3fe9a266eaf9054cfc02e52d1ee3d3_rijhur.gif"
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative text-center space-y-6 max-w-3xl mx-auto px-4">
           <p className="text-sm font-semibold text-amber-400 uppercase tracking-wide">Cloud-scale delivery</p>
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-amber-50">
             Bring Your Ideas. We&apos;ll Bring the Execution.
@@ -108,13 +110,13 @@ const Home = () => {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               to="/contact-us"
-              className="px-6 py-3 rounded-md bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
+              className="px-6 py-3 rounded-md bg-amber-500 text-white font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
             >
               Let&apos;s grow together
             </Link>
             <Link
               to="/services"
-              className="px-6 py-3 rounded-md border border-amber-500/60 text-amber-100 font-semibold hover:border-amber-400 hover:text-amber-200 transition-colors"
+              className="px-6 py-3 rounded-md border border-amber-500/60 text-white font-semibold hover:border-amber-400 hover:text-amber-200 transition-colors"
             >
               Explore services
             </Link>
@@ -122,7 +124,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="p-8 bg-[#0d0d0f] rounded-xl space-y-4 text-center">
+      <div className="max-w-6xl mx-auto px-4 space-y-12">
+        <div className="p-8 bg-[#0d0d0f] rounded-xl space-y-4 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-amber-50">
           Welcome to Gamotech IT &amp; Web Solutions!
         </h2>
@@ -265,6 +268,7 @@ const Home = () => {
           <h3 className="text-lg font-semibold mt-1 text-amber-50">Live service playbook</h3>
           <p className="text-sm text-amber-200/70 mt-2">Content drops, event cadences, and monetization experiments.</p>
         </div>
+      </div>
       </div>
     </section>
   )

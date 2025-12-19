@@ -92,9 +92,9 @@ const Careers = () => {
   }, [])
 
   return (
-    <section className="space-y-10">
+    <section className="space-y-8 sm:space-y-10 pt-20 md:pt-0">
       {/* Hero Section */}
-      <div className="relative h-[500px] sm:h-[600px] overflow-hidden">
+      <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden">
         {/* Black Background - Matching Navbar */}
         <div className="absolute inset-0 bg-black" />
         {/* Blackish Cover Overlay */}
@@ -262,28 +262,28 @@ const Careers = () => {
         </svg>
         
         {/* Content - Left Side - Animated */}
-        <div className="relative h-full flex items-center px-4 sm:px-8 lg:px-12 z-10">
+        <div className="relative h-full flex items-center px-4 sm:px-6 lg:px-8 xl:px-12 z-10">
           <div 
-            className={`max-w-2xl space-y-6 transition-all duration-1000 ${
+            className={`max-w-2xl space-y-4 sm:space-y-6 transition-all duration-1000 ${
               heroVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}
           >
             <p 
-              className="text-sm font-semibold text-white/80"
+              className="text-xs sm:text-sm font-semibold text-white/80"
               style={{ transitionDelay: '0.1s' }}
             >
               Careers at Gamotech
             </p>
             <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white leading-tight"
               style={{ transitionDelay: '0.2s' }}
             >
               Join Our Team!
             </h1>
             <p 
-              className="text-lg sm:text-xl text-white/90 max-w-xl"
+              className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/90 max-w-xl"
               style={{ transitionDelay: '0.3s' }}
             >
               Help us empower businesses with innovative IT solutions and digital transformation. Are you ready to join?
@@ -297,13 +297,12 @@ const Careers = () => {
                   element.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }
               }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-amber-500 !text-white font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-md bg-amber-500 !text-white font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
               style={{ transitionDelay: '0.4s' }}
             >
               See Positions
               <svg
-                width="16"
-                height="16"
+                className="w-4 h-4 sm:w-4 sm:h-4"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -319,10 +318,10 @@ const Careers = () => {
       </div>
 
       {/* We Are Section - Animated */}
-      <div ref={weAreRef} className="relative bg-black py-16 sm:py-20">
+      <div ref={weAreRef} className="relative bg-black py-12 sm:py-16 lg:py-20">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <p 
-            className={`text-sm font-semibold text-amber-400 mb-8 transition-all duration-700 ${
+            className={`text-xs sm:text-sm font-semibold text-amber-400 mb-6 sm:mb-8 transition-all duration-700 ${
               weAreVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             }`}
           >
@@ -337,7 +336,7 @@ const Careers = () => {
               }`}
               style={{ transitionDelay: '0.2s' }}
             >
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white leading-tight">
                 We Are
                 <br />
                 <span className="text-white">Gamotech</span>
@@ -346,7 +345,7 @@ const Careers = () => {
             
             {/* Right Column - Description */}
             <div 
-              className={`space-y-4 text-white/90 text-base sm:text-lg leading-relaxed transition-all duration-700 ${
+              className={`space-y-3 sm:space-y-4 text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed transition-all duration-700 ${
                 weAreVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
               }`}
               style={{ transitionDelay: '0.4s' }}
@@ -376,24 +375,24 @@ const Careers = () => {
       </div>
 
       {/* Job Listings Section - Animated */}
-      <div id="job-listings" className="max-w-6xl mx-auto px-4 py-12 space-y-10">
+      <div id="job-listings" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-6 sm:space-y-8 lg:space-y-10">
         <div 
           ref={jobCardsRef}
-          className="space-y-3 text-center"
+          className="space-y-2 sm:space-y-3 text-center"
         >
           <h2 
-            className={`text-3xl sm:text-4xl font-bold text-amber-100 transition-all duration-700 ${
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-100 transition-all duration-700 ${
               jobCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
             Job Openings
           </h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {roles.map((role, index) => (
           <div
             key={role.title}
-              className={`group relative p-6 bg-[#0d0d0f] border border-amber-500/30 rounded-2xl shadow-lg shadow-amber-500/10 hover:border-amber-500/50 hover:shadow-amber-500/20 transition-all duration-300 flex flex-col ${
+              className={`group relative p-4 sm:p-6 bg-[#0d0d0f] border border-amber-500/30 rounded-2xl shadow-lg shadow-amber-500/10 hover:border-amber-500/50 hover:shadow-amber-500/20 transition-all duration-300 flex flex-col ${
                 jobCardsVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
@@ -408,24 +407,23 @@ const Careers = () => {
               </div>
               
               {/* Job Title */}
-              <h3 className="text-xl font-bold text-amber-50 mb-3 group-hover:text-amber-100 transition-colors">
+              <h3 className="text-lg sm:text-xl font-bold text-amber-50 mb-2 sm:mb-3 group-hover:text-amber-100 transition-colors">
                 {role.title}
               </h3>
               
               {/* Job Summary */}
-              <p className="text-sm text-amber-200/75 mb-6 flex-grow leading-relaxed">
+              <p className="text-xs sm:text-sm text-amber-200/75 mb-4 sm:mb-6 flex-grow leading-relaxed">
                 {role.summary}
               </p>
               
               {/* Apply Button */}
             <Link
               to="/contact-us"
-                className="inline-flex items-center gap-2 mt-auto text-sm font-semibold text-amber-300 hover:text-amber-200 transition-colors group/link"
+                className="inline-flex items-center gap-2 mt-auto text-xs sm:text-sm font-semibold text-amber-300 hover:text-amber-200 transition-colors group/link"
               >
                 Apply via contact form
                 <svg
-                  width="16"
-                  height="16"
+                  className="w-3 h-3 sm:w-4 sm:h-4"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -444,19 +442,19 @@ const Careers = () => {
         {/* Perks & Culture Section - Animated */}
         <div 
           ref={perksRef}
-          className={`mt-12 p-8 bg-gradient-to-br from-[#0d0d0f] to-black border border-amber-500/30 rounded-2xl shadow-lg shadow-amber-500/10 transition-all duration-700 ${
+          className={`mt-8 sm:mt-10 lg:mt-12 p-6 sm:p-8 bg-gradient-to-br from-[#0d0d0f] to-black border border-amber-500/30 rounded-2xl shadow-lg shadow-amber-500/10 transition-all duration-700 ${
             perksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-1 w-12 bg-amber-500 rounded-full"></div>
-            <h2 className="text-2xl font-bold text-amber-50">Perks & Culture</h2>
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="h-1 w-8 sm:w-12 bg-amber-500 rounded-full"></div>
+            <h2 className="text-xl sm:text-2xl font-bold text-amber-50">Perks & Culture</h2>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {perks.map((perk, index) => (
             <span
               key={perk}
-                className={`px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-sm font-medium text-amber-200 hover:bg-amber-500/20 hover:border-amber-500/50 transition-all duration-200 ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs sm:text-sm font-medium text-amber-200 hover:bg-amber-500/20 hover:border-amber-500/50 transition-all duration-200 ${
                   perksVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                 }`}
                 style={{ transitionDelay: `${index * 0.1}s` }}

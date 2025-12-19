@@ -68,7 +68,7 @@ const ContactUs = () => {
   }, [])
 
   return (
-    <section className="space-y-0">
+    <section className="space-y-0 pt-20 md:pt-0">
       {/* Merged Hero Banner and Contact Form Section */}
       <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-black via-[#0a0a0a] to-[#1a1a1a]">
         {/* Blackish Cover Overlay */}
@@ -160,28 +160,28 @@ const ContactUs = () => {
         </div>
         
         {/* Hero Content - Centered */}
-        <div ref={heroRef} className="relative z-10 pt-24 pb-24 sm:pt-32 sm:pb-32">
-          <div className="max-w-4xl mx-auto text-center space-y-6 px-4 sm:px-8">
+        <div ref={heroRef} className="relative z-10 pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 lg:pb-32">
+          <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-8">
             {/* Main Heading */}
-            <div className={`space-y-3 transition-all duration-1000 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <p className="text-amber-500 text-xl sm:text-2xl font-semibold">
+            <div className={`space-y-2 sm:space-y-3 transition-all duration-1000 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <p className="text-amber-500 text-lg sm:text-xl lg:text-2xl font-semibold">
                 We deliver
               </p>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight px-2 sm:px-0">
                 solutions for you
               </h1>
-              <p className="text-white/90 text-xl sm:text-2xl font-medium">
+              <p className="text-white/90 text-lg sm:text-xl lg:text-2xl font-medium">
                 Best IT service
               </p>
             </div>
             
             {/* Description */}
-            <p className={`text-white/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className={`text-white/80 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-200 px-2 sm:px-0 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Transform your business with cutting-edge IT solutions, innovative web development, and strategic digital marketing. We bring your vision to life with expertise, dedication, and results that matter.
             </p>
             
             {/* CTA Buttons */}
-            <div className={`flex flex-wrap items-center justify-center gap-4 pt-4 transition-all duration-1000 delay-300 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-4 transition-all duration-1000 delay-300 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Link
                 to="#contact-form"
                 onClick={(e) => {
@@ -191,14 +191,14 @@ const ContactUs = () => {
                     element.scrollIntoView({ behavior: 'smooth', block: 'start' })
                   }
                 }}
-                className="px-8 py-4 rounded-lg bg-amber-500 text-white font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
+                className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-lg bg-amber-500 text-white font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
                 style={{ color: 'white' }}
               >
                 Get Started
               </Link>
               <Link
                 to="/services"
-                className="px-8 py-4 rounded-lg bg-transparent border-2 border-amber-500 text-white font-semibold hover:bg-amber-500/10 hover:border-amber-400 transition-colors"
+                className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-lg bg-transparent border-2 border-amber-500 text-white font-semibold hover:bg-amber-500/10 hover:border-amber-400 transition-colors"
               >
                 Learn more
               </Link>
@@ -207,17 +207,17 @@ const ContactUs = () => {
         </div>
         
         {/* Contact Form Section - Merged */}
-        <div id="contact-form" className="relative z-10 max-w-5xl mx-auto px-4 pt-16 sm:pt-20 pb-16 sm:pb-20 space-y-8">
-          <div className={`space-y-2 text-center transition-all duration-1000 ${isVisible.form ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-2xl sm:text-3xl font-semibold text-amber-400">Contact US</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-amber-100">Let&apos;s talk about your next build.</h2>
-          <p className="text-lg text-amber-200/80">
+        <div id="contact-form" className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8">
+          <div className={`space-y-2 sm:space-y-3 text-center transition-all duration-1000 ${isVisible.form ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-amber-400">Contact US</p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-100 px-2 sm:px-0">Let&apos;s talk about your next build.</h2>
+          <p className="text-sm sm:text-base lg:text-lg text-amber-200/80 px-2 sm:px-0">
               Share what you are building and where you need help. We can scope prototypes, review
               gameplay loops, or plan live operations together.
           </p>
         </div>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
           {/* Contact Information */}
           <div ref={contactInfoRef} className={`space-y-6 transition-all duration-1000 delay-200 ${isVisible.contactInfo ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
         <div className="space-y-4 text-amber-100/85">
@@ -257,36 +257,36 @@ const ContactUs = () => {
           {/* Contact Form */}
         <form
           ref={formRef}
-          className={`bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-6 space-y-4 transition-all duration-1000 delay-300 ${isVisible.form ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+          className={`bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-4 sm:p-6 space-y-3 sm:space-y-4 transition-all duration-1000 delay-300 ${isVisible.form ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
           onSubmit={(e) => e.preventDefault()}
         >
           <div className="space-y-1">
-            <label className="text-sm font-medium text-amber-100">Name</label>
+            <label className="text-xs sm:text-sm font-medium text-amber-100">Name</label>
             <input
               type="text"
               placeholder="Alex Player"
-              className="w-full rounded-md border border-amber-500/40 bg-black/40 px-3 py-2 text-amber-50 placeholder:text-amber-200/50 focus:border-amber-400 focus:outline-none"
+              className="w-full rounded-md border border-amber-500/40 bg-black/40 px-3 py-2 text-sm sm:text-base text-amber-50 placeholder:text-amber-200/50 focus:border-amber-400 focus:outline-none"
             />
           </div>
           <div className="space-y-1">
-            <label className="text-sm font-medium text-amber-100">Email</label>
+            <label className="text-xs sm:text-sm font-medium text-amber-100">Email</label>
             <input
               type="email"
               placeholder="you@example.com"
-              className="w-full rounded-md border border-amber-500/40 bg-black/40 px-3 py-2 text-amber-50 placeholder:text-amber-200/50 focus:border-amber-400 focus:outline-none"
+              className="w-full rounded-md border border-amber-500/40 bg-black/40 px-3 py-2 text-sm sm:text-base text-amber-50 placeholder:text-amber-200/50 focus:border-amber-400 focus:outline-none"
             />
           </div>
           <div className="space-y-1">
-            <label className="text-sm font-medium text-amber-100">How can we help?</label>
+            <label className="text-xs sm:text-sm font-medium text-amber-100">How can we help?</label>
             <textarea
               rows="4"
               placeholder="I need help with multiplayer architecture..."
-              className="w-full rounded-md border border-amber-500/40 bg-black/40 px-3 py-2 text-amber-50 placeholder:text-amber-200/50 focus:border-amber-400 focus:outline-none resize-none"
+              className="w-full rounded-md border border-amber-500/40 bg-black/40 px-3 py-2 text-sm sm:text-base text-amber-50 placeholder:text-amber-200/50 focus:border-amber-400 focus:outline-none resize-none"
             />
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-3 rounded-md bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors shadow-md shadow-amber-500/25"
+            className="w-full px-4 py-2.5 sm:py-3 rounded-md bg-amber-500 text-sm sm:text-base text-black font-semibold hover:bg-amber-400 transition-colors shadow-md shadow-amber-500/25"
           >
             Send (demo)
           </button>

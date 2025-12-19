@@ -217,7 +217,7 @@ const Home = () => {
   }, [])
 
   return (
-    <section className="space-y-16 sm:space-y-20">
+    <section className="space-y-16 sm:space-y-20 pt-20 md:pt-0">
       <div className="relative overflow-hidden w-full h-screen bg-black flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
           <img
@@ -228,25 +228,25 @@ const Home = () => {
           />
         </div>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative text-center space-y-8 max-w-7xl mx-auto px-4 z-10">
-          <p className="text-base sm:text-lg font-semibold text-amber-400 uppercase tracking-wide">Cloud-scale delivery</p>
-          <h1 className="text-5xl sm:text-6xl lg:text-5xl font-bold leading-tight text-amber-50">
+        <div className="relative text-center space-y-6 sm:space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400 uppercase tracking-wide">Cloud-scale delivery</p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-amber-50 px-2 sm:px-0">
             Bring Your Ideas. We&apos;ll Bring the Execution.
           </h1>
-          <p className="text-xl sm:text-2xl lg:text-2xl text-amber-200/85">
+          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85 px-2 sm:px-0">
             Whether it&apos;s building platforms, automating workflows, or scaling teams, we make execution feel
             simple, smart, and fast.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 pt-2">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 pt-2">
             <Link
               to="/contact-us"
-              className="px-8 py-4 text-lg rounded-md bg-amber-500 !text-white font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
+              className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-md bg-amber-500 !text-white font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
             >
               Let&apos;s grow together
             </Link>
             <Link
               to="/services"
-              className="px-8 py-4 text-lg rounded-md border border-amber-500/60 !text-white font-semibold hover:border-amber-400 hover:text-amber-200 transition-colors"
+              className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-md border border-amber-500/60 !text-white font-semibold hover:border-amber-400 hover:text-amber-200 transition-colors"
             >
               Explore services
             </Link>
@@ -254,12 +254,12 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 space-y-16">
-        <div className="p-12 sm:p-16 rounded-xl space-y-6 text-center">
-        <h2 className="text-2xl sm:text-4xl lg:text-4xl font-bold text-amber-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        <div className="p-6 sm:p-12 lg:p-16 rounded-xl space-y-4 sm:space-y-6 text-center">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-50">
           Welcome to Gamotech IT &amp; Web Solutions!
         </h2>
-        <p className="text-xl sm:text-2xl lg:text-2xl text-amber-200/85 leading-relaxed">
+        <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85 leading-relaxed px-2 sm:px-0">
           We&apos;re your one-stop destination for comprehensive digital solutions, offering innovative IT services,
           captivating web design, and strategic digital marketing expertise. Our mission is to empower businesses with
           transformative technology and drive growth through targeted digital strategies. Follow us on LinkedIn to stay
@@ -268,10 +268,10 @@ const Home = () => {
         </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#0d0d0f] rounded-xl">
-          <div className="px-8 pt-10 pb-4 text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-white">Our Services</h2>
+          <div className="px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 pb-4 text-center">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">Our Services</h2>
           </div>
         {services.map((service, idx) => {
           const isOpen = openService === idx
@@ -283,17 +283,17 @@ const Home = () => {
               }`}
             >
               <button
-                className="w-full text-left px-8 py-8 flex items-center gap-4"
+                className="w-full text-left px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 flex items-center gap-3 sm:gap-4"
                 onClick={() => setOpenService(isOpen ? null : idx)}
               >
                 <div className="flex-1">
-                  <h3 className="text-2xl sm:text-3xl lg:text-2xl font-semibold text-amber-50">{service.title}</h3>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-amber-50">{service.title}</h3>
                   {isOpen && (
-                    <p className="mt-3 text-amber-200/80 text-lg sm:text-xl lg:text-2xl leading-relaxed">{service.description}</p>
+                    <p className="mt-2 sm:mt-3 text-amber-200/80 text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed">{service.description}</p>
                   )}
                 </div>
                 <div
-                  className={`text-3xl sm:text-4xl font-semibold text-amber-200 transition-transform duration-200 ${
+                  className={`text-2xl sm:text-3xl lg:text-4xl font-semibold text-amber-200 transition-transform duration-200 flex-shrink-0 ${
                     isOpen ? 'rotate-45' : ''
                   }`}
                 >
@@ -307,10 +307,10 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={countersRef}
-          className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-12 py-24 sm:py-28 lg:py-32 shadow-2xl shadow-amber-500/10"
+          className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-4 sm:px-8 lg:px-12 py-12 sm:py-20 lg:py-24 xl:py-32 shadow-2xl shadow-amber-500/10"
         >
         <div
           className="absolute inset-0 opacity-50 pointer-events-none"
@@ -319,15 +319,15 @@ const Home = () => {
               'radial-gradient(circle at 20% 20%, rgba(245,180,0,0.2) 0, rgba(245,180,0,0) 35%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 32%), radial-gradient(circle at 50% 75%, rgba(245,180,0,0.15) 0, rgba(245,180,0,0) 34%)',
           }}
         />
-        <div className="relative grid gap-12 sm:grid-cols-2 lg:grid-cols-3 text-center">
+        <div className="relative grid gap-8 sm:gap-12 sm:grid-cols-2 lg:grid-cols-3 text-center">
           {COUNTERS.map((item, idx) => {
             const current = Math.min(item.target, Math.floor(counts[idx] ?? 0))
             return (
-              <div key={item.label} className="space-y-4">
-                <p className="text-6xl sm:text-8xl lg:text-6xl font-extrabold text-white leading-none">
+              <div key={item.label} className="space-y-2 sm:space-y-4">
+                <p className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-none">
                   {current}+{/* keep plus visible */}
                 </p>
-                <p className="text-xl sm:text-2xl lg:text-4xl text-amber-200/85">{item.label}</p>
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85">{item.label}</p>
               </div>
             )
           })}
@@ -336,25 +336,25 @@ const Home = () => {
       </div>
 
       {/* Technologies We Use Section */}
-      <div className="relative overflow-hidden w-full h-screen bg-black flex flex-col justify-center items-center space-y-12">
-        <div className="relative text-center z-10 max-w-7xl mx-auto px-4 w-full">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+      <div className="relative overflow-hidden w-full min-h-screen bg-black flex flex-col justify-center items-center space-y-8 sm:space-y-12 py-12 sm:py-16 lg:py-20">
+        <div className="relative text-center z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
             Technologies We Use
           </h2>
-          <p className="text-lg sm:text-xl text-amber-200/80">
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-amber-200/80 px-2 sm:px-0">
             Cutting-edge tools and frameworks powering our solutions
           </p>
         </div>
 
         {/* Logo Carousel */}
-        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-8">
+        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-4 sm:py-6 lg:py-8">
           <div className="flex animate-scroll-left">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
               <div
                 key={`logo-${idx}`}
-                className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-colors"
-                style={{ width: '120px', height: '120px' }}
+                className="flex-shrink-0 mx-2 sm:mx-4 lg:mx-6 xl:mx-8 flex items-center justify-center bg-white/5 rounded-lg p-2 sm:p-3 hover:bg-white/10 transition-colors"
+                style={{ width: '80px', height: '80px', minWidth: '80px' }}
               >
                 <img
                   src={tech.logo}
@@ -371,16 +371,16 @@ const Home = () => {
         </div>
 
         {/* Card Carousel */}
-        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-6">
+        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-4 sm:py-6">
           <div className="flex animate-scroll-left">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
               <div
                 key={`card-${idx}`}
-                className="flex-shrink-0 mx-3 sm:mx-4 lg:mx-6"
-                style={{ width: '300px', minWidth: '300px' }}
+                className="flex-shrink-0 mx-2 sm:mx-3 lg:mx-4 xl:mx-6"
+                style={{ width: '280px', minWidth: '280px' }}
               >
-                <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl p-6 sm:p-8 shadow-lg shadow-amber-500/10 h-full hover:border-amber-500/50 transition-colors">
+                <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg shadow-amber-500/10 h-full hover:border-amber-500/50 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -409,53 +409,53 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="space-y-6">
-          <p className="text-base sm:text-lg font-semibold text-amber-400">Demo launchpad</p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-amber-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="space-y-4 sm:space-y-6">
+          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Demo launchpad</p>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight text-amber-100">
             Build, test, and ship memorable gaming experiences with Gamotech.
           </h1>
-          <p className="text-xl sm:text-2xl text-amber-200/80">
+          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/80">
             This is placeholder content to showcase layout and copy. Swap it with your own story when you are ready to go live.
           </p>
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-wrap gap-3 sm:gap-4 pt-2">
             <Link
               to="/services"
-              className="px-8 py-4 text-lg rounded-md bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
+              className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-md bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
             >
               View services
             </Link>
             <Link
               to="/contact-us"
-              className="px-8 py-4 text-lg rounded-md border border-amber-500/60 text-amber-100 font-semibold hover:border-amber-400 hover:text-amber-300 transition-colors"
+              className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-md border border-amber-500/60 text-amber-100 font-semibold hover:border-amber-400 hover:text-amber-300 transition-colors"
             >
               Talk to us
             </Link>
           </div>
         </div>
-        <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-8 sm:p-10 space-y-6">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-amber-200">Latest prototype snapshot</h3>
-          <ul className="space-y-4 text-amber-100/90">
-            <li className="flex items-start gap-4">
-              <span className="mt-2 h-3 w-3 rounded-full bg-emerald-500" />
+        <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-6 sm:p-8 lg:p-10 space-y-4 sm:space-y-6">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-amber-200">Latest prototype snapshot</h3>
+          <ul className="space-y-3 sm:space-y-4 text-amber-100/90">
+            <li className="flex items-start gap-3 sm:gap-4">
+              <span className="mt-2 h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-emerald-500 flex-shrink-0" />
               <div>
-                <p className="text-lg sm:text-xl font-medium text-amber-50">Stable 60fps build</p>
-                <p className="text-base sm:text-lg text-amber-200/70">Optimized assets running across desktop and mobile.</p>
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-amber-50">Stable 60fps build</p>
+                <p className="text-sm sm:text-base lg:text-lg text-amber-200/70">Optimized assets running across desktop and mobile.</p>
               </div>
             </li>
-            <li className="flex items-start gap-4">
-              <span className="mt-2 h-3 w-3 rounded-full bg-amber-400" />
+            <li className="flex items-start gap-3 sm:gap-4">
+              <span className="mt-2 h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-amber-400 flex-shrink-0" />
               <div>
-                <p className="text-lg sm:text-xl font-medium text-amber-50">Multiplayer lobby</p>
-                <p className="text-base sm:text-lg text-amber-200/70">Matchmaking, chat, and party invites wired for demos.</p>
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-amber-50">Multiplayer lobby</p>
+                <p className="text-sm sm:text-base lg:text-lg text-amber-200/70">Matchmaking, chat, and party invites wired for demos.</p>
               </div>
             </li>
-            <li className="flex items-start gap-4">
-              <span className="mt-2 h-3 w-3 rounded-full bg-amber-600" />
+            <li className="flex items-start gap-3 sm:gap-4">
+              <span className="mt-2 h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-amber-600 flex-shrink-0" />
               <div>
-                <p className="text-lg sm:text-xl font-medium text-amber-50">Live operations ready</p>
-                <p className="text-base sm:text-lg text-amber-200/70">Analytics, A/B toggles, and remote configs connected.</p>
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-amber-50">Live operations ready</p>
+                <p className="text-sm sm:text-base lg:text-lg text-amber-200/70">Analytics, A/B toggles, and remote configs connected.</p>
               </div>
             </li>
           </ul>
@@ -463,22 +463,22 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="p-8 sm:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
-          <p className="text-base sm:text-lg font-semibold text-amber-400">Engines</p>
-          <h3 className="text-2xl sm:text-3xl font-semibold mt-2 text-amber-50">Unity & Unreal friendly</h3>
-          <p className="text-lg sm:text-xl text-amber-200/70 mt-3">We plug into your stack to prototype mechanics rapidly.</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="p-6 sm:p-8 lg:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
+          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Engines</p>
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-2 text-amber-50">Unity & Unreal friendly</h3>
+          <p className="text-base sm:text-lg lg:text-xl text-amber-200/70 mt-3">We plug into your stack to prototype mechanics rapidly.</p>
         </div>
-        <div className="p-8 sm:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
-          <p className="text-base sm:text-lg font-semibold text-amber-400">Platforms</p>
-          <h3 className="text-2xl sm:text-3xl font-semibold mt-2 text-amber-50">Cross-platform ready</h3>
-          <p className="text-lg sm:text-xl text-amber-200/70 mt-3">Ship to PC, console, and mobile with unified workflows.</p>
+        <div className="p-6 sm:p-8 lg:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
+          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Platforms</p>
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-2 text-amber-50">Cross-platform ready</h3>
+          <p className="text-base sm:text-lg lg:text-xl text-amber-200/70 mt-3">Ship to PC, console, and mobile with unified workflows.</p>
         </div>
-        <div className="p-8 sm:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
-          <p className="text-base sm:text-lg font-semibold text-amber-400">Support</p>
-          <h3 className="text-2xl sm:text-3xl font-semibold mt-2 text-amber-50">Live service playbook</h3>
-          <p className="text-lg sm:text-xl text-amber-200/70 mt-3">Content drops, event cadences, and monetization experiments.</p>
+        <div className="p-6 sm:p-8 lg:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
+          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Support</p>
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-2 text-amber-50">Live service playbook</h3>
+          <p className="text-base sm:text-lg lg:text-xl text-amber-200/70 mt-3">Content drops, event cadences, and monetization experiments.</p>
         </div>
         </div>
       </div>

@@ -228,7 +228,7 @@ const Home = () => {
           />
         </div>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative text-center space-y-8 max-w-4xl mx-auto px-4 z-10">
+        <div className="relative text-center space-y-8 max-w-7xl mx-auto px-4 z-10">
           <p className="text-base sm:text-lg font-semibold text-amber-400 uppercase tracking-wide">Cloud-scale delivery</p>
           <h1 className="text-5xl sm:text-6xl lg:text-5xl font-bold leading-tight text-amber-50">
             Bring Your Ideas. We&apos;ll Bring the Execution.
@@ -254,7 +254,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 space-y-16">
         <div className="p-12 sm:p-16 rounded-xl space-y-6 text-center">
         <h2 className="text-2xl sm:text-4xl lg:text-4xl font-bold text-amber-50">
           Welcome to Gamotech IT &amp; Web Solutions!
@@ -266,12 +266,13 @@ const Home = () => {
           updated on the latest industry trends, insightful articles, and expert tips on IT, web development, and
           digital marketing. Let&apos;s collaborate and unlock your full potential in the digital world!
         </p>
-      </div>
-
-      <div className="bg-[#0d0d0f] rounded-xl">
-        <div className="px-8 pt-10 pb-4 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-white">Our Services</h2>
         </div>
+
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-[#0d0d0f] rounded-xl">
+          <div className="px-8 pt-10 pb-4 text-center">
+            <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-white">Our Services</h2>
+          </div>
         {services.map((service, idx) => {
           const isOpen = openService === idx
           return (
@@ -302,12 +303,15 @@ const Home = () => {
             </div>
           )
         })}
+        </div>
+        </div>
       </div>
 
-      <div
-        ref={countersRef}
-        className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-12 py-24 sm:py-28 lg:py-32 shadow-2xl shadow-amber-500/10"
-      >
+      <div className="max-w-7xl mx-auto px-4">
+        <div
+          ref={countersRef}
+          className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-12 py-24 sm:py-28 lg:py-32 shadow-2xl shadow-amber-500/10"
+        >
         <div
           className="absolute inset-0 opacity-50 pointer-events-none"
           style={{
@@ -328,11 +332,12 @@ const Home = () => {
             )
           })}
         </div>
+        </div>
       </div>
 
       {/* Technologies We Use Section */}
       <div className="relative overflow-hidden w-full h-screen bg-black flex flex-col justify-center items-center space-y-12">
-        <div className="relative text-center z-10">
+        <div className="relative text-center z-10 max-w-7xl mx-auto px-4 w-full">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Technologies We Use
           </h2>
@@ -342,7 +347,7 @@ const Home = () => {
         </div>
 
         {/* Logo Carousel */}
-        <div className="relative overflow-hidden w-full py-8">
+        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-8">
           <div className="flex animate-scroll-left">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
@@ -366,7 +371,7 @@ const Home = () => {
         </div>
 
         {/* Card Carousel */}
-        <div className="relative overflow-hidden w-full py-6">
+        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-6">
           <div className="flex animate-scroll-left">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
@@ -404,7 +409,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div className="space-y-6">
           <p className="text-base sm:text-lg font-semibold text-amber-400">Demo launchpad</p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-amber-100">
@@ -454,9 +460,11 @@ const Home = () => {
             </li>
           </ul>
         </div>
+        </div>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <div className="p-8 sm:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
           <p className="text-base sm:text-lg font-semibold text-amber-400">Engines</p>
           <h3 className="text-2xl sm:text-3xl font-semibold mt-2 text-amber-50">Unity & Unreal friendly</h3>
@@ -472,7 +480,7 @@ const Home = () => {
           <h3 className="text-2xl sm:text-3xl font-semibold mt-2 text-amber-50">Live service playbook</h3>
           <p className="text-lg sm:text-xl text-amber-200/70 mt-3">Content drops, event cadences, and monetization experiments.</p>
         </div>
-      </div>
+        </div>
       </div>
     </section>
   )

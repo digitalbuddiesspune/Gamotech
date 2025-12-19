@@ -35,7 +35,7 @@ const Navbar = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="ml-2 p-2 rounded-md bg-green-500 hover:bg-green-600 transition-colors flex items-center justify-center shadow-md shadow-green-500/30"
+        className="ml-2 p-2 flex items-center justify-center hover:bg-amber-500/10 transition-colors rounded-md"
         aria-label="Contact us on WhatsApp"
       >
         <svg

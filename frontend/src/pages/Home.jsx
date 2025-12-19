@@ -217,7 +217,7 @@ const Home = () => {
   }, [])
 
   return (
-    <section className="space-y-16 sm:space-y-20 pt-20 md:pt-0">
+    <section className="space-y-16 sm:space-y-20 pt-0 md:pt-0">
       <div className="relative overflow-hidden w-full h-screen bg-black flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
           <img

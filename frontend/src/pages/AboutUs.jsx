@@ -1,222 +1,149 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, ShieldCheck, Zap, Target } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const FeatureCard = ({ title, description, icon: Icon, delay }) => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.6 }}
+      className="p-6 sm:p-8 bg-neutral-900/40 border border-white/5 rounded-xl sm:rounded-2xl hover:bg-neutral-900/60 hover:border-amber-500/30 transition-all group"
+    >
+      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-500/10 flex items-center justify-center mb-4 sm:mb-6 text-amber-500 group-hover:scale-110 transition-transform">
+        <Icon size={20} className="sm:w-6 sm:h-6" />
+      </div>
+      <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{title}</h3>
+      <p className="text-neutral-400 leading-relaxed text-xs sm:text-sm">{description}</p>
+    </motion.div>
+  );
+};
 
 const AboutUs = () => {
-  const [isVisible, setIsVisible] = useState({
-    hero: false,
-    content: false,
-    values: false,
-    location: false
-  })
-  const heroRef = useRef(null)
-  const contentRef = useRef(null)
-  const valuesRef = useRef(null)
-  const locationRef = useRef(null)
-
-  useEffect(() => {
-    const observers = []
-
-    // Hero section observer
-    if (heroRef.current) {
-      const heroObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setIsVisible((prev) => ({ ...prev, hero: true }))
-            }
-          })
-        },
-        { threshold: 0.2 }
-      )
-      heroObserver.observe(heroRef.current)
-      observers.push(heroObserver)
-    }
-
-    // Content section observer
-    if (contentRef.current) {
-      const contentObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setIsVisible((prev) => ({ ...prev, content: true }))
-            }
-          })
-        },
-        { threshold: 0.2 }
-      )
-      contentObserver.observe(contentRef.current)
-      observers.push(contentObserver)
-    }
-
-    // Values section observer
-    if (valuesRef.current) {
-      const valuesObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setIsVisible((prev) => ({ ...prev, values: true }))
-            }
-          })
-        },
-        { threshold: 0.2 }
-      )
-      valuesObserver.observe(valuesRef.current)
-      observers.push(valuesObserver)
-    }
-
-    // Location section observer
-    if (locationRef.current) {
-      const locationObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setIsVisible((prev) => ({ ...prev, location: true }))
-            }
-          })
-        },
-        { threshold: 0.2 }
-      )
-      locationObserver.observe(locationRef.current)
-      observers.push(locationObserver)
-    }
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect())
-    }
-  }, [])
-
   return (
-    <section className="space-y-0 pt-20 md:pt-0">
-      {/* Hero Banner Section */}
-      <div className="relative w-full min-h-[60vh] overflow-hidden bg-gradient-to-br from-black via-[#0a0a0a] to-[#1a1a1a]">
-        {/* Blackish Cover Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-[1]"></div>
-        
-        {/* Geometric Shapes - 3D Cubes/Pyramids with Amber Edges */}
-        <div className="absolute inset-0 z-[2] pointer-events-none">
-          {/* Top Right Cube */}
-          <div className="absolute top-20 right-20 w-24 h-24 transform rotate-12 animate-float-slow">
-            <svg className="w-full h-full" viewBox="0 0 100 100">
-              <polygon points="20,20 80,20 80,80 20,80" fill="none" stroke="#f5b400" strokeWidth="2" opacity="0.4" />
-              <polygon points="20,20 50,5 80,20" fill="none" stroke="#f5b400" strokeWidth="2" opacity="0.4" />
-              <polygon points="80,20 80,80 50,95 50,5" fill="none" stroke="#f5b400" strokeWidth="2" opacity="0.3" />
-              <line x1="20" y1="20" x2="50" y2="5" stroke="#f5b400" strokeWidth="2" opacity="0.4" />
-              <line x1="80" y1="20" x2="50" y2="5" stroke="#f5b400" strokeWidth="2" opacity="0.4" />
-            </svg>
-          </div>
-          
-          {/* Mid Left Cube */}
-          <div className="absolute top-1/3 left-16 w-20 h-20 transform -rotate-12 animate-float-medium">
-            <svg className="w-full h-full" viewBox="0 0 100 100">
-              <polygon points="30,30 70,30 70,70 30,70" fill="none" stroke="#f5b400" strokeWidth="2" opacity="0.35" />
-              <polygon points="30,30 50,15 70,30" fill="none" stroke="#f5b400" strokeWidth="2" opacity="0.35" />
-              <line x1="30" y1="30" x2="50" y2="15" stroke="#f5b400" strokeWidth="2" opacity="0.35" />
-              <line x1="70" y1="30" x2="50" y2="15" stroke="#f5b400" strokeWidth="2" opacity="0.35" />
-            </svg>
-          </div>
-          
-          {/* Bottom Right Cube */}
-          <div className="absolute bottom-32 right-1/4 w-28 h-28 transform rotate-45 animate-float-slow">
-            <svg className="w-full h-full" viewBox="0 0 100 100">
-              <polygon points="15,15 85,15 85,85 15,85" fill="none" stroke="#f5b400" strokeWidth="2" opacity="0.3" />
-              <polygon points="15,15 50,0 85,15" fill="none" stroke="#f5b400" strokeWidth="2" opacity="0.3" />
-              <line x1="15" y1="15" x2="50" y2="0" stroke="#f5b400" strokeWidth="2" opacity="0.3" />
-              <line x1="85" y1="15" x2="50" y2="0" stroke="#f5b400" strokeWidth="2" opacity="0.3" />
-            </svg>
-          </div>
+    <div className="bg-black text-white selection:bg-amber-500 selection:text-black pt-20 md:pt-0">
+      {/* 1. HERO SECTION: ABOUT GAMOTECH */}
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex flex-col justify-center px-4 sm:px-6 lg:px-12 xl:px-20 overflow-hidden py-12 sm:py-16 lg:py-20">
+        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+            <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] bg-amber-600/20 blur-[80px] sm:blur-[100px] lg:blur-[120px] rounded-full" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[400px] lg:h-[400px] bg-neutral-800/40 blur-[70px] sm:blur-[90px] lg:blur-[100px] rounded-full" />
         </div>
-        
-        {/* Amber Diagonal Lines */}
-        <svg className="absolute inset-0 z-[2] pointer-events-none opacity-30">
-          <line x1="10%" y1="20%" x2="30%" y2="40%" stroke="#f5b400" strokeWidth="1" opacity="0.4" />
-          <line x1="70%" y1="15%" x2="90%" y2="35%" stroke="#f5b400" strokeWidth="1" opacity="0.4" />
-          <line x1="20%" y1="60%" x2="50%" y2="80%" stroke="#f5b400" strokeWidth="1" opacity="0.4" />
-        </svg>
-        
-        {/* Amber Dots */}
-        <div className="absolute inset-0 z-[2] pointer-events-none">
-          <div className="absolute top-32 left-1/4 w-2 h-2 bg-amber-500 rounded-full opacity-60 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }}></div>
-          <div className="absolute top-48 right-1/3 w-2 h-2 bg-amber-500 rounded-full opacity-60 animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}></div>
-          <div className="absolute bottom-40 left-1/3 w-2 h-2 bg-amber-500 rounded-full opacity-60 animate-pulse" style={{ animationDuration: '2.2s', animationDelay: '1s' }}></div>
-        </div>
-        
-        {/* Hero Content - Centered */}
-        <div ref={heroRef} className="relative z-10 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-24">
-          <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-8">
-            <div className={`space-y-3 sm:space-y-4 transition-all duration-1000 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <p className="text-amber-500 text-lg sm:text-xl lg:text-2xl font-semibold uppercase tracking-wide">
-                ABOUT US
-              </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight px-2 sm:px-0">
-                About Gamotech
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Main Content Section */}
-      <div className="relative bg-black py-12 sm:py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-          {/* Opening Statement */}
-          <div ref={contentRef} className={`space-y-4 sm:space-y-6 transition-all duration-1000 ${isVisible.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl text-amber-200/90 leading-relaxed font-medium px-2 sm:px-0">
-              Gamotech was started with one clear belief:
+        <div className="max-w-4xl mx-auto relative z-10 space-y-6 sm:space-y-8 lg:space-y-10">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+          >
+            About Gamotech
+          </motion.h1>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="space-y-4 sm:space-y-6 text-neutral-300 text-base sm:text-lg lg:text-xl leading-relaxed"
+          >
+            <p>
+              Gamotech was started with one clear belief: <span className="text-amber-400 font-semibold">technology should simplify business — not complicate it.</span>
             </p>
-            <p className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-amber-400 font-bold leading-tight px-2 sm:px-0">
-              technology should simplify business — not complicate it.
-            </p>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/80 leading-relaxed px-2 sm:px-0">
+            
+            <p>
               We&apos;re a Pune-based IT solutions company working with startups, growing brands, and 
               businesses across India to build websites, e-commerce platforms, CRM systems, and custom 
               software that actually serve a purpose.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Our Approach Section */}
-          <div ref={valuesRef} className={`space-y-6 sm:space-y-8 transition-all duration-1000 delay-200 ${isVisible.values ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-6 sm:p-8 lg:p-10 space-y-4 sm:space-y-6">
-              <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-amber-100">We don&apos;t follow templates.</h2>
-              <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-amber-100">We don&apos;t push unnecessary features.</h2>
-              <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-amber-100">And we don&apos;t treat clients like &quot;projects.&quot;</h2>
-            </div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="space-y-4 sm:space-y-6 pt-4 sm:pt-6 border-t border-white/10"
+          >
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">We don&apos;t follow templates.</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">We don&apos;t push unnecessary features.</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">And we don&apos;t treat clients like &quot;projects.&quot;</h2>
+          </motion.div>
+        </div>
+      </section>
 
-            <div className="space-y-4 sm:space-y-6">
-              <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/80 leading-relaxed px-2 sm:px-0">
-                Every solution we build starts with understanding how your business works, where time is being 
-                wasted, and how technology can improve speed, clarity, and growth.
-              </p>
-              <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/80 leading-relaxed px-2 sm:px-0">
-                Whether it&apos;s a simple business website or a complex internal system, our focus stays the same: 
-                clean execution, scalable architecture, and long-term reliability.
-              </p>
-            </div>
+      {/* 3. CORE PILLARS SECTION */}
+      <section className="py-16 sm:py-20 lg:py-24 xl:py-32 px-4 sm:px-6 lg:px-12 xl:px-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">Our Focus</h2>
+            <p className="text-neutral-500 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg px-4 sm:px-0">
+              Whether it&apos;s a simple website or a complex internal system, our architectural focus remains unwavering.
+        </p>
+      </div>
 
-            <div className="bg-gradient-to-r from-amber-500/10 to-amber-500/5 border-l-4 border-amber-500 rounded-lg p-6 sm:p-8 lg:p-10">
-              <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-amber-100 mb-2 sm:mb-3">
-                Gamotech is not a one-time vendor.
-              </p>
-              <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-amber-100">
-                We aim to be your long-term technology partner.
-              </p>
-            </div>
-          </div>
-
-          {/* Location Section */}
-          <div ref={locationRef} className={`pt-6 sm:pt-8 border-t border-amber-500/30 transition-all duration-1000 delay-300 ${isVisible.location ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="flex items-center justify-center gap-2 sm:gap-3 text-amber-200/80 text-sm sm:text-base lg:text-lg xl:text-xl px-2 sm:px-0">
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <p className="font-medium text-center">
-                Based in Pune | Working with clients across India
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <FeatureCard 
+              icon={Zap}
+              title="Clean Execution"
+              description="Minimalist codebases that are easy to manage and lightning fast to run."
+              delay={0.1}
+            />
+            <FeatureCard 
+              icon={ShieldCheck}
+              title="Scalable Architecture"
+              description="Systems designed to grow as your business scales from 10 to 10,000 users."
+              delay={0.2}
+            />
+            <FeatureCard 
+              icon={Target}
+              title="Long-term Reliability"
+              description="Software that doesn't break under pressure. We build for the long haul."
+              delay={0.3}
+            />
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
 
-export default AboutUs
+      {/* 4. CALL TO ACTION / PARTNERSHIP */}
+      <section className="py-20 sm:py-28 lg:py-32 xl:py-40 px-4 sm:px-6 lg:px-12 xl:px-20 border-t border-white/5 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mb-8 sm:mb-10 lg:mb-12"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight">
+              More than a vendor. <br />
+              <span className="text-amber-500">A Partner.</span>
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-neutral-400 leading-relaxed px-2 sm:px-0">
+              Gamotech is not a one-time service. We aim to be the long-term technology engine 
+              that powers your business growth across India.
+            </p>
+          </motion.div>
+          
+          <Link
+            to="/contact-us"
+            className="inline-flex items-center gap-2 sm:gap-3 bg-white text-black px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-bold text-sm sm:text-base lg:text-lg hover:bg-amber-500 hover:scale-105 transition-all group"
+          >
+            Work with Gamotech
+            <ArrowRight size={18} className="sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+        
+        {/* Background Text Decor */}
+        <div className="absolute -bottom-5 sm:-bottom-10 left-1/2 -translate-x-1/2 text-[12vw] sm:text-[10vw] lg:text-[15vw] font-black text-white/[0.02] whitespace-nowrap pointer-events-none">
+          PUNE INDIA PUNE INDIA
+        </div>
+      </section>
+
+      {/* FOOTER MINI */}
+      <footer className="py-6 sm:py-8 lg:py-10 border-t border-white/5 text-center text-neutral-600 text-xs sm:text-sm tracking-widest uppercase px-4">
+        © Gamotech IT Solutions — Building with Purpose
+      </footer>
+      </div>
+  );
+};
+
+export default AboutUs;

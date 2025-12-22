@@ -14,6 +14,13 @@ const Navbar = ({ onLinkClick, isMobile = false }) => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}`
 
   const handleLinkClick = () => {
+    // Scroll to top when clicking a nav link
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
+    
     if (onLinkClick) {
       onLinkClick()
     }

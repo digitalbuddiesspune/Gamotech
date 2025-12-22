@@ -2,10 +2,12 @@ import React from 'react'
 import Header from './pages/Header'
 import Footer from './pages/Footer'
 import { Outlet } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <div className="min-h-screen bg-black text-slate-100 flex flex-col">
+      <ScrollToTop />
       <Header />
       <main className="flex-1">
         <Outlet />

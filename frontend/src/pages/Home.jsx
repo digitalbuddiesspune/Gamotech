@@ -264,9 +264,12 @@ const Home = () => {
     <section className="space-y-16 sm:space-y-20 pt-0 md:pt-0">
       <div className="relative overflow-hidden w-full h-screen bg-black flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
-          <img
-            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766392374/original-ac3fe9a266eaf9054cfc02e52d1ee3d3_vt3jsl.gif"
-            alt=""
+          <video
+            src="https://res.cloudinary.com/dvkxgrcbv/video/upload/v1766398147/gamotech_mw8qre.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
             aria-hidden="true"
           />

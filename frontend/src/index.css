@@ -57,6 +57,56 @@ a {
   flex-shrink: 0;
 }
 
+/* Right to Left Carousel Animation */
+@keyframes scroll-right-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-right-to-left {
+  animation: scroll-right-to-left 40s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.animate-scroll-right-to-left:hover {
+  animation-play-state: paused;
+}
+
+.animate-scroll-right-to-left > * {
+  flex-shrink: 0;
+}
+
+/* Left to Right Carousel Animation */
+@keyframes scroll-left-to-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left-to-right {
+  animation: scroll-left-to-right 40s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.animate-scroll-left-to-right:hover {
+  animation-play-state: paused;
+}
+
+.animate-scroll-left-to-right > * {
+  flex-shrink: 0;
+}
+
 /* Floating animations for geometric shapes */
 @keyframes float-slow {
   0%, 100% {

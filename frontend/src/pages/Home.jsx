@@ -7,6 +7,18 @@ const COUNTERS = [
   { label: 'Happy Customers', target: 80 },
 ]
 
+// Placeholder for client logos - replace with actual image URLs
+const CLIENTS = [
+  { name: 'Client 1', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+1' },
+  { name: 'Client 2', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+2' },
+  { name: 'Client 3', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+3' },
+  { name: 'Client 4', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+4' },
+  { name: 'Client 5', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+5' },
+  { name: 'Client 6', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+6' },
+  { name: 'Client 7', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+7' },
+  { name: 'Client 8', logo: 'https://via.placeholder.com/200x100/333333/FFFFFF?text=Client+8' },
+]
+
 const TECHNOLOGIES = [
   {
     name: 'React',
@@ -144,32 +156,64 @@ const Home = () => {
   const hasAnimated = useRef(false)
   const services = [
     {
-      title: 'Web Design & Development',
-      description: 'Fast, responsive sites built for conversion and maintainability.',
+      title: 'Website Design & Development',
+      description: 'We design modern, responsive websites that load fast, look premium, and convert visitors into customers.',
+      features: [
+        'Business websites',
+        'Corporate & portfolio websites',
+        'Landing pages',
+        'Website redesign & performance optimization',
+      ],
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
     },
     {
-      title: 'SEO',
-      description: 'Technical audits, on-page tuning, and content plans to rank and convert.',
+      title: 'E-Commerce Website Development',
+      description: 'Sell online with secure, scalable, and easy-to-manage e-commerce platforms.',
+      features: [
+        'Product-based e-commerce websites',
+        'Payment gateway integration',
+        'Order & inventory management',
+        'Mobile-friendly shopping experience',
+      ],
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+      ),
     },
     {
-      title: 'Social Media Marketing',
-      description: 'Channel-first storytelling, ad sets, and reporting that tie to outcomes.',
+      title: 'CRM & Custom Software Development',
+      description: 'We build custom CRM and internal systems tailored to your workflow — not generic software.',
+      features: [
+        'Lead & customer management systems',
+        'Sales & operations dashboards',
+        'Custom admin panels',
+        'Automation & reporting tools',
+      ],
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
     },
     {
-      title: 'Content Writing',
-      description: 'Clear, on-brand copy for blogs, landing pages, and product narratives.',
-    },
-    {
-      title: 'Logo Design',
-      description: 'Distinct visual identities that stay sharp across digital and print.',
-    },
-    {
-      title: 'App Development',
-      description: 'Reliable mobile experiences with performant frontends and APIs.',
-    },
-    {
-      title: 'Performance Marketing',
-      description: 'Full-funnel campaigns with tracking, experimentation, and optimization.',
+      title: 'Application Software Development',
+      description: 'Custom applications designed around your business logic.',
+      features: [
+        'Web applications',
+        'Business process automation tools',
+        'Scalable backend systems',
+        'API integrations',
+      ],
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
     },
   ]
 
@@ -268,42 +312,72 @@ const Home = () => {
         </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#0d0d0f] rounded-xl">
-          <div className="px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 pb-4 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">Our Services</h2>
-          </div>
-        {services.map((service, idx) => {
-          const isOpen = openService === idx
-          return (
-            <div
-              key={service.title}
-              className={`border-b border-amber-500/20 last:border-b-0 transition-colors ${
-                isOpen ? 'bg-amber-500/5' : ''
-              }`}
-            >
-              <button
-                className="w-full text-left px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 flex items-center gap-3 sm:gap-4"
-                onClick={() => setOpenService(isOpen ? null : idx)}
+        {/* Our Services Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+            {/* Left Side - Text and Button */}
+            <div className="space-y-6 sm:space-y-8">
+              <div className="flex items-center gap-3">
+                <div className="h-0.5 w-12 sm:w-16 bg-amber-500"></div>
+                <p className="text-xs sm:text-sm uppercase tracking-wider text-white font-semibold">OUR SERVICES</p>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white uppercase leading-tight">
+                WE WILL PROVIDE YOU THE BEST SERVICE
+              </h2>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 bg-amber-500 !text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-colors duration-200"
               >
-                <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-amber-50">{service.title}</h3>
-                  {isOpen && (
-                    <p className="mt-2 sm:mt-3 text-amber-200/80 text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed">{service.description}</p>
-                  )}
-                </div>
-                <div
-                  className={`text-2xl sm:text-3xl lg:text-4xl font-semibold text-amber-200 transition-transform duration-200 flex-shrink-0 ${
-                    isOpen ? 'rotate-45' : ''
-                  }`}
-                >
-                  +
-                </div>
-              </button>
+                <span>OUR SERVICES</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
             </div>
-          )
-        })}
-        </div>
+
+            {/* Right Side - Service Cards Grid */}
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 items-start">
+              {services.map((service, idx) => {
+                const isOpen = openService === idx
+                return (
+                  <div
+                    key={service.title}
+                    className={`bg-white rounded-lg flex flex-col hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300 cursor-pointer w-full self-start ${
+                      isOpen ? 'p-6 sm:p-8 items-start text-left' : 'p-4 sm:p-6 items-center text-center'
+                    }`}
+                    onClick={() => setOpenService(isOpen ? null : idx)}
+                  >
+                    <div className="text-amber-500 mb-3 sm:mb-4">
+                      {service.icon}
+                    </div>
+                    <div className="w-full h-0.5 bg-amber-500 mb-3 sm:mb-4"></div>
+                    <h3 className="text-xs sm:text-sm lg:text-base font-bold text-black uppercase leading-tight w-full">
+                      {service.title}
+                    </h3>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 text-left w-full ${
+                        isOpen ? 'max-h-[600px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-3">
+                        {service.description}
+                      </p>
+                      {service.features && service.features.length > 0 && (
+                        <ul className="space-y-2 text-xs sm:text-sm text-gray-700">
+                          {service.features.map((feature, featureIdx) => (
+                            <li key={featureIdx} className="flex items-start gap-2">
+                              <span className="text-amber-500 mt-1 flex-shrink-0">●</span>
+                              <span className="leading-relaxed">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -409,77 +483,134 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="space-y-4 sm:space-y-6">
-          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Demo launchpad</p>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight text-amber-100">
-            Build, test, and ship memorable gaming experiences with Gamotech.
-          </h1>
-          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/80">
-            This is placeholder content to showcase layout and copy. Swap it with your own story when you are ready to go live.
-          </p>
-          <div className="flex flex-wrap gap-3 sm:gap-4 pt-2">
-            <Link
-              to="/services"
-              className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-md bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/25"
-            >
-              View services
-            </Link>
-            <Link
-              to="/contact-us"
-              className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-md border border-amber-500/60 text-amber-100 font-semibold hover:border-amber-400 hover:text-amber-300 transition-colors"
-            >
-              Talk to us
-            </Link>
+      {/* Our Clients Section */}
+      <div className="relative overflow-hidden w-full bg-black py-5 sm:py-8 lg:py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
+              Our Clients
+            </h2>
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-amber-200/80 px-2 sm:px-0">
+              Trusted by leading businesses worldwide
+            </p>
           </div>
-        </div>
-        <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-6 sm:p-8 lg:p-10 space-y-4 sm:space-y-6">
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-amber-200">Latest prototype snapshot</h3>
-          <ul className="space-y-3 sm:space-y-4 text-amber-100/90">
-            <li className="flex items-start gap-3 sm:gap-4">
-              <span className="mt-2 h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-emerald-500 flex-shrink-0" />
-              <div>
-                <p className="text-base sm:text-lg lg:text-xl font-medium text-amber-50">Stable 60fps build</p>
-                <p className="text-sm sm:text-base lg:text-lg text-amber-200/70">Optimized assets running across desktop and mobile.</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3 sm:gap-4">
-              <span className="mt-2 h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-amber-400 flex-shrink-0" />
-              <div>
-                <p className="text-base sm:text-lg lg:text-xl font-medium text-amber-50">Multiplayer lobby</p>
-                <p className="text-sm sm:text-base lg:text-lg text-amber-200/70">Matchmaking, chat, and party invites wired for demos.</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3 sm:gap-4">
-              <span className="mt-2 h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-amber-600 flex-shrink-0" />
-              <div>
-                <p className="text-base sm:text-lg lg:text-xl font-medium text-amber-50">Live operations ready</p>
-                <p className="text-sm sm:text-base lg:text-lg text-amber-200/70">Analytics, A/B toggles, and remote configs connected.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
+
+          {/* First Row - Scroll Right to Left */}
+          <div className="relative overflow-hidden w-full mb-6 sm:mb-8">
+            <div className="flex animate-scroll-right-to-left">
+              {/* Duplicate items for seamless loop */}
+              {[...CLIENTS, ...CLIENTS].map((client, idx) => (
+                <div
+                  key={`client-row1-${idx}`}
+                  className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center bg-white/5 rounded-lg p-4 sm:p-6 hover:bg-white/10 transition-colors"
+                  style={{ width: '200px', height: '120px', minWidth: '200px' }}
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                    onError={(e) => {
+                      console.error(`Failed to load logo for ${client.name}:`, client.logo)
+                      e.target.style.display = 'none'
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Second Row - Scroll Left to Right */}
+          <div className="relative overflow-hidden w-full">
+            <div className="flex animate-scroll-left-to-right">
+              {/* Duplicate items for seamless loop */}
+              {[...CLIENTS, ...CLIENTS].map((client, idx) => (
+                <div
+                  key={`client-row2-${idx}`}
+                  className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center bg-white/5 rounded-lg p-4 sm:p-6 hover:bg-white/10 transition-colors"
+                  style={{ width: '200px', height: '120px', minWidth: '200px' }}
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                    onError={(e) => {
+                      console.error(`Failed to load logo for ${client.name}:`, client.logo)
+                      e.target.style.display = 'none'
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="p-6 sm:p-8 lg:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
-          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Engines</p>
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-2 text-amber-50">Unity & Unreal friendly</h3>
-          <p className="text-base sm:text-lg lg:text-xl text-amber-200/70 mt-3">We plug into your stack to prototype mechanics rapidly.</p>
-        </div>
-        <div className="p-6 sm:p-8 lg:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
-          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Platforms</p>
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-2 text-amber-50">Cross-platform ready</h3>
-          <p className="text-base sm:text-lg lg:text-xl text-amber-200/70 mt-3">Ship to PC, console, and mobile with unified workflows.</p>
-        </div>
-        <div className="p-6 sm:p-8 lg:p-10 bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10">
-          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400">Support</p>
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-2 text-amber-50">Live service playbook</h3>
-          <p className="text-base sm:text-lg lg:text-xl text-amber-200/70 mt-3">Content drops, event cadences, and monetization experiments.</p>
-        </div>
+      {/* Why Choose Us Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-12 sm:mb-16">
+          Why choose Gamotech?
+        </h2>
+        
+        <div className="grid sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+          {/* Safe */}
+          <div className="flex items-start gap-6 sm:gap-8">
+            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-teal-500 flex items-center justify-center">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Safe</h3>
+              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
+                The concept of marketing support product range, regardless of the cost market trends.
+              </p>
+            </div>
+          </div>
+
+          {/* Fast */}
+          <div className="flex items-start gap-6 sm:gap-8">
+            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-green-500 flex items-center justify-center">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">Fast</h3>
+              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
+                Business plan elegantly transforms sublimated pool of loyal editions, optimizing budgets.
+              </p>
+            </div>
+          </div>
+
+          {/* Low fee */}
+          <div className="flex items-start gap-6 sm:gap-8">
+            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-yellow-500 flex items-center justify-center">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">Low fee</h3>
+              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
+                Sponsorship, summing these examples, it is doable. SWOT-analysis, according to Kotler, competitive.
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Support */}
+          <div className="flex items-start gap-6 sm:gap-8">
+            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-orange-500 flex items-center justify-center">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">Quick Support</h3>
+              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
+                The fact that the advertising platform changes the method of studying the market.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

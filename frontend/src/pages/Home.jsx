@@ -265,7 +265,7 @@ const Home = () => {
       <div className="relative overflow-hidden w-full h-screen bg-black flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
           <img
-            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766038533/original-ac3fe9a266eaf9054cfc02e52d1ee3d3_rijhur.gif"
+            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766392374/original-ac3fe9a266eaf9054cfc02e52d1ee3d3_vt3jsl.gif"
             alt=""
             className="w-full h-full object-cover"
             aria-hidden="true"
@@ -312,106 +312,7 @@ const Home = () => {
         </p>
         </div>
 
-        {/* Our Process Section */}
-        <div className="bg-black py-5 sm:py-10 lg:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative">
-              {/* Background decorative elements - Sun and Clouds (white/light gray) with floating animation */}
-              <div className="absolute -top-4 left-[8%] opacity-30 animate-float-slow">
-                <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="5" />
-                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-              </div>
-              <div className="absolute -top-2 right-[25%] opacity-25 animate-float-medium">
-                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                </svg>
-              </div>
-              <div className="absolute -top-2 right-[10%] opacity-25 animate-float-slow">
-                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                </svg>
-              </div>
-
-              {/* Process Flow */}
-              <div className="relative flex items-center justify-between flex-wrap gap-4 sm:gap-2 lg:gap-4 py-8 sm:py-12" style={{ minHeight: '200px' }}>
-                {/* Start Pin - White */}
-                <div className="flex-shrink-0 z-10">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                  </svg>
-                </div>
-
-                {/* Curved SVG Path Container - Dashed curved line passing through all stages */}
-                <div className="hidden sm:block absolute inset-0 w-full pointer-events-none z-0" style={{ top: '50%', transform: 'translateY(-50%)', height: '80px' }}>
-                  <svg className="w-full h-full" viewBox="0 0 1000 80" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
-                    {/* Smooth flowing curved dashed path from start pin through all 4 stages to end pin */}
-                    {/* Creates a natural, gentle wave that flows through the center of each stage */}
-                    <path
-                      d="M 20 40 
-                         C 120 35, 220 40, 320 45
-                         C 420 40, 520 35, 620 40
-                         C 720 45, 820 40, 920 40
-                         C 960 40, 980 40, 980 40"
-                      fill="none"
-                      stroke="rgba(255,255,255,0.6)"
-                      strokeWidth="2"
-                      strokeDasharray="8,4"
-                      strokeLinecap="round"
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  </svg>
-                </div>
-
-                {/* Process Stages */}
-                {[
-                  {
-                    title: 'Strategy',
-                    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=200&fit=crop',
-                  },
-                  {
-                    title: 'Planning',
-                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop',
-                  },
-                  {
-                    title: 'Build',
-                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop',
-                  },
-                  {
-                    title: 'Our Work',
-                    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&h=200&fit=crop',
-                  },
-                ].map((item, idx) => (
-                  <div key={item.title} className="flex flex-col items-center flex-1 min-w-[100px] sm:min-w-[140px] lg:min-w-[180px] z-10">
-                    {/* Circular Image - Black border instead of white */}
-                    <div className="relative w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 rounded-full overflow-hidden border-4 border-black shadow-lg mb-3 sm:mb-4">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.src = `https://via.placeholder.com/200/FFFFFF/000000?text=${item.title.charAt(0)}`
-                        }}
-                      />
-                    </div>
-                    {/* Orange Handwritten-style Text */}
-                    <p className="text-amber-500 font-bold text-base sm:text-lg lg:text-xl" style={{ fontFamily: "'Brush Script MT', 'Lucida Handwriting', cursive, serif" }}>
-                      {item.title}
-                    </p>
-                  </div>
-                ))}
-
-                {/* End Pin - White */}
-                <div className="flex-shrink-0 z-10">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+         
 
         {/* Our Services Section */}
         <div className="relative overflow-hidden bg-black py-12 sm:py-16 lg:py-20">
@@ -650,6 +551,112 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Our Process Section */}
+      <div className="bg-black py-5 sm:py-10 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Heading */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-8 sm:mb-12 lg:mb-16">
+              How we works?
+            </h2>
+            
+            <div className="relative">
+              {/* Background decorative elements - Sun and Clouds (white/light gray) with floating animation */}
+              <div className="absolute -top-4 left-[8%] opacity-30 animate-float-slow">
+                <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="5" />
+                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
+              </div>
+              <div className="absolute -top-2 right-[25%] opacity-25 animate-float-medium">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+              </div>
+              <div className="absolute -top-2 right-[10%] opacity-25 animate-float-slow">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+              </div>
+
+              {/* Process Flow */}
+              <div className="relative flex items-center justify-between flex-wrap gap-4 sm:gap-2 lg:gap-4 py-8 sm:py-12" style={{ minHeight: '200px' }}>
+                {/* Start Pin - White */}
+                <div className="flex-shrink-0 z-10">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                </div>
+
+                {/* Curved SVG Path Container - Dashed curved line passing through all stages */}
+                <div className="hidden sm:block absolute inset-0 w-full pointer-events-none z-0" style={{ top: '50%', transform: 'translateY(-50%)', height: '80px' }}>
+                  <svg className="w-full h-full" viewBox="0 0 1000 80" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
+                    {/* Smooth flowing curved dashed path from start pin through all 4 stages to end pin */}
+                    {/* Creates a natural, gentle wave that flows through the center of each stage */}
+                    <path
+                      d="M 20 40 
+                         C 120 35, 220 40, 320 45
+                         C 420 40, 520 35, 620 40
+                         C 720 45, 820 40, 920 40
+                         C 960 40, 980 40, 980 40"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.6)"
+                      strokeWidth="2"
+                      strokeDasharray="8,4"
+                      strokeLinecap="round"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  </svg>
+                </div>
+
+                {/* Process Stages */}
+                {[
+                  {
+                    title: 'Strategy',
+                    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=200&fit=crop',
+                  },
+                  {
+                    title: 'Planning',
+                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop',
+                  },
+                  {
+                    title: 'Build',
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop',
+                  },
+                  {
+                    title: 'Our Work',
+                    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&h=200&fit=crop',
+                  },
+                ].map((item, idx) => (
+                  <div key={item.title} className="flex flex-col items-center flex-1 min-w-[100px] sm:min-w-[140px] lg:min-w-[180px] z-10">
+                    {/* Circular Image - Black border instead of white */}
+                    <div className="relative w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 rounded-full overflow-hidden border-4 border-black shadow-lg mb-3 sm:mb-4">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.src = `https://via.placeholder.com/200/FFFFFF/000000?text=${item.title.charAt(0)}`
+                        }}
+                      />
+                    </div>
+                    {/* Orange Handwritten-style Text */}
+                    <p className="text-amber-500 font-bold text-base sm:text-lg lg:text-xl" style={{ fontFamily: "'Brush Script MT', 'Lucida Handwriting', cursive, serif" }}>
+                      {item.title}
+                    </p>
+                  </div>
+                ))}
+
+                {/* End Pin - White */}
+                <div className="flex-shrink-0 z-10">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       {/* Our Clients Section */}
       <div className="relative overflow-hidden w-full bg-black py-5 sm:py-8 lg:py-10">

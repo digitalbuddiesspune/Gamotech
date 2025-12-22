@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Target, CheckCircle2, Globe, ShoppingCart, Code, Database, Layers, Wrench, Briefcase, Zap, MessageSquare, Shield, Headphones } from 'lucide-react';
+import { MapPin, Target, CheckCircle2, Globe, ShoppingCart, Code, Database, Layers, Wrench, Briefcase, Zap, MessageSquare, Shield, Headphones, Eye, Flag } from 'lucide-react';
 
 const AboutUs = () => {
   return (
@@ -50,8 +50,8 @@ const AboutUs = () => {
                     
                     <p>
                       We are a Pune-based IT solutions company working with startups, growing brands, and established businesses across India to design and develop websites, e-commerce platforms, CRM systems, and custom software solutions that solve real business problems.
-                    </p>
-                  </div>
+        </p>
+      </div>
                 </div>
               </motion.div>
 
@@ -181,108 +181,136 @@ const AboutUs = () => {
                 </div>
               </motion.div>
             </div>
-          </div>
+        </div>
         </div>
       </section>
 
-      {/* Our Mission Section */}
+      {/* Vision & Mission Section - Diagonal Split Design */}
       <section className="relative py-20 sm:py-24 lg:py-32 xl:py-40 px-4 sm:px-6 lg:px-12 xl:px-20 bg-[#0a0a0a] overflow-hidden">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/5 via-transparent to-transparent pointer-events-none"></div>
-        
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12 sm:space-y-16 lg:space-y-20"
-          >
-            {/* Header */}
-            <div className="text-center space-y-6 sm:space-y-8">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="flex items-center justify-center gap-4 mb-4"
-              >
-                <div className="h-px w-12 sm:w-16 lg:w-20 bg-gradient-to-r from-transparent to-amber-500"></div>
-                <div className="relative">
-                  <div className="absolute inset-0 bg-amber-500/20 blur-xl"></div>
-                  <Target className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-amber-500 relative z-10" />
-                </div>
-                <div className="h-px w-12 sm:w-16 lg:w-20 bg-gradient-to-l from-transparent to-amber-500"></div>
-              </motion.div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-amber-100 to-white bg-clip-text text-transparent"
-              >
-                Our Mission
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="text-lg sm:text-xl lg:text-2xl text-neutral-300 leading-relaxed max-w-4xl mx-auto font-light"
-              >
-                Our mission is to empower businesses through smart, reliable, and purpose-driven technology.
-              </motion.p>
-            </div>
-
-            {/* Mission Points Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-              {[
-                'Build solutions that are simple to use and easy to scale',
-                'Help businesses save time, reduce manual effort, and improve productivity',
-                'Deliver technology that adds real value, not unnecessary complexity',
-                'Create long-term partnerships based on trust, transparency, and results'
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="group relative p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-[#0d0d0f] to-[#0a0a0a] border border-white/5 rounded-2xl hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300 overflow-hidden"
-                >
-                  {/* Animated Background Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 via-amber-500/0 to-amber-500/0 group-hover:from-amber-500/5 group-hover:via-amber-500/5 group-hover:to-amber-500/5 transition-all duration-500"></div>
-                  
-                  {/* Left Accent Bar */}
-                  <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-amber-500 via-amber-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  <div className="relative z-10 flex items-start gap-4 sm:gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center group-hover:bg-amber-500/20 group-hover:scale-110 group-hover:border-amber-500/50 transition-all duration-300">
-                        <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7 text-amber-500" />
-                      </div>
-                    </div>
-                    <p className="text-base sm:text-lg lg:text-xl text-neutral-300 leading-relaxed flex-1 group-hover:text-white transition-colors">
-                      {item}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Closing Statement */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl min-h-[600px] sm:min-h-[700px] lg:min-h-[800px]">
+            {/* Left Section - Photo Background */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="text-center pt-8 sm:pt-12 border-t border-white/10"
+              className="absolute inset-0 lg:w-1/3"
             >
-              <div className="max-w-4xl mx-auto p-6 sm:p-8 lg:p-10 bg-gradient-to-r from-amber-500/5 via-amber-500/10 to-amber-500/5 rounded-2xl border border-amber-500/20">
-                <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-neutral-300 leading-relaxed italic">
-                  We believe that when technology works quietly and efficiently in the background, businesses can focus on what truly matters — <span className="text-amber-400 font-semibold not-italic">growth and innovation</span>.
-                </p>
+              <div className="relative w-full h-full">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                  alt="Team working"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
               </div>
             </motion.div>
-          </motion.div>
+
+            {/* Right Section - Content Area */}
+            <div className="relative lg:ml-[33.333%] bg-[#0d0d0d] min-h-[600px] sm:min-h-[700px] lg:min-h-[800px]">
+              {/* Yellow Diagonal Header */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative bg-amber-500 p-6 sm:p-8 lg:p-10"
+                style={{
+                  clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
+                }}
+              >
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-3">
+                  Our mission and vision statement
+                </h2>
+                <p className="text-sm sm:text-base text-black/80 max-w-2xl">
+                  This section shows the mission and vision statement of Gamotech which describes the desired future position of the company by defining purpose, goals, expertise, expectations, etc.
+                </p>
+                {/* Decorative Pattern */}
+                <div className="absolute top-4 right-4 w-16 h-16 opacity-20">
+                  <div className="grid grid-cols-4 gap-1">
+                    {[...Array(16)].map((_, i) => (
+                      <div key={i} className="w-2 h-2 bg-black rounded-sm"></div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Cream Diagonal Separator */}
+              <div 
+                className="h-2 bg-amber-100/20"
+                style={{
+                  clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
+                }}
+              ></div>
+
+              {/* Main Content Block - Dark Background */}
+              <div className="bg-[#0a0a0a] p-6 sm:p-8 lg:p-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+                  {/* Vision Column */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="text-center lg:text-left"
+                  >
+                    {/* Circular Icon */}
+                    <div className="flex justify-center lg:justify-start mb-4">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-500 flex items-center justify-center">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0a0a0a] flex items-center justify-center">
+                          <Eye className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500" />
+                        </div>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 pb-2 border-b-2 border-white">
+                      Vision
+                    </h3>
+                    <p className="text-sm sm:text-base text-neutral-300 leading-relaxed mt-4">
+                      Our vision is to become a trusted technology partner for businesses across India by building solutions that are simple, scalable, and reliable. We aim to help businesses grow by delivering technology that adapts with change, supports long-term goals, and removes operational complexity. At Gamotech, we envision a future where businesses use technology confidently — not as a burden, but as a powerful enabler of growth, clarity, and efficiency.
+                    </p>
+                  </motion.div>
+
+                  {/* Mission Column */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="text-center lg:text-left border-l-0 lg:border-l border-white/20 pl-0 lg:pl-8"
+                  >
+                    {/* Circular Icon */}
+                    <div className="flex justify-center lg:justify-start mb-4">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-500 flex items-center justify-center">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0a0a0a] flex items-center justify-center">
+                          <Target className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500" />
+                        </div>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 pb-2 border-b-2 border-white">
+                      Mission
+                    </h3>
+                    <p className="text-sm sm:text-base text-neutral-300 leading-relaxed mt-4 mb-4">
+                      Our mission is to empower businesses through smart, reliable, and purpose-driven technology.
+                    </p>
+                    <div className="space-y-2 mt-4">
+                      {[
+                        'Build solutions that are simple to use and easy to scale',
+                        'Help businesses save time, reduce manual effort, and improve productivity',
+                        'Deliver technology that adds real value, not unnecessary complexity',
+                        'Create long-term partnerships based on trust, transparency, and results'
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-start gap-2 text-left">
+                          <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
+                          <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                            {item}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -317,7 +345,7 @@ const AboutUs = () => {
               >
                 At Gamotech, we design and develop technology solutions that solve real business problems. Our services are focused on clarity, performance, and long-term usability.
               </motion.p>
-            </div>
+      </div>
 
             {/* Our Core Services */}
             <div className="space-y-8 sm:space-y-12">
@@ -384,8 +412,8 @@ const AboutUs = () => {
                           </h4>
                           <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
                             {service.description}
-                          </p>
-                        </div>
+        </p>
+      </div>
                       </div>
                     </motion.div>
                   )

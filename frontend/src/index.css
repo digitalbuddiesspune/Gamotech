@@ -48,6 +48,22 @@ a {
   will-change: transform;
 }
 
+/* Slower animation for description carousel */
+.animate-scroll-left-slow {
+  animation: scroll-left 80s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.animate-scroll-left-slow:hover {
+  animation-play-state: paused;
+}
+
+.animate-scroll-left-slow > * {
+  flex-shrink: 0;
+}
+
 .animate-scroll-left:hover {
   animation-play-state: paused;
 }

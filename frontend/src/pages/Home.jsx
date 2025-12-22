@@ -313,8 +313,51 @@ const Home = () => {
         </div>
 
         {/* Our Services Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+        <div className="relative overflow-hidden bg-black py-12 sm:py-16 lg:py-20">
+          {/* Disk-like background pattern */}
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 20% 30%, rgba(245, 180, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(245, 180, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(245, 180, 0, 0.08) 0%, transparent 60%),
+                repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(245, 180, 0, 0.03) 1deg, transparent 2deg, rgba(245, 180, 0, 0.03) 3deg)
+              `,
+              backgroundSize: '100% 100%, 100% 100%, 100% 100%, 200% 200%',
+            }}
+          />
+          {/* Curved overlapping lines pattern */}
+          <svg
+            className="absolute inset-0 w-full h-full opacity-20"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 600"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <pattern id="disk-pattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(245, 180, 0, 0.1)" strokeWidth="1" />
+                <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(245, 180, 0, 0.08)" strokeWidth="1" />
+                <circle cx="100" cy="100" r="40" fill="none" stroke="rgba(245, 180, 0, 0.06)" strokeWidth="1" />
+                <path
+                  d="M 20 100 Q 100 20, 180 100 T 20 100"
+                  fill="none"
+                  stroke="rgba(245, 180, 0, 0.05)"
+                  strokeWidth="0.5"
+                />
+                <path
+                  d="M 100 20 Q 180 100, 100 180 T 100 20"
+                  fill="none"
+                  stroke="rgba(245, 180, 0, 0.05)"
+                  strokeWidth="0.5"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#disk-pattern)" />
+          </svg>
+          
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Left Side - Text and Button */}
             <div className="space-y-6 sm:space-y-8">
               <div className="flex items-center gap-3">
@@ -342,10 +385,9 @@ const Home = () => {
                 return (
                   <div
                     key={service.title}
-                    className={`bg-white rounded-lg flex flex-col hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300 cursor-pointer w-full self-start ${
+                    className={`bg-white rounded-lg flex flex-col hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300 w-full self-start ${
                       isOpen ? 'p-6 sm:p-8 items-start text-left' : 'p-4 sm:p-6 items-center text-center'
                     }`}
-                    onClick={() => setOpenService(isOpen ? null : idx)}
                   >
                     <div className="text-amber-500 mb-3 sm:mb-4">
                       {service.icon}
@@ -373,10 +415,35 @@ const Home = () => {
                         </ul>
                       )}
                     </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setOpenService(isOpen ? null : idx)
+                      }}
+                      className={`mt-4 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-amber-500 hover:bg-amber-600 text-white transition-all duration-300 ${
+                        isOpen ? 'rotate-45' : ''
+                      }`}
+                      aria-label={isOpen ? 'Close service details' : 'Open service details'}
+                    >
+                      <svg
+                        className="w-5 h-5 sm:w-6 sm:h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 4v16m8-8H4"
+                        />
+                      </svg>
+                    </button>
                   </div>
                 )
               })}
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -398,7 +465,7 @@ const Home = () => {
             const current = Math.min(item.target, Math.floor(counts[idx] ?? 0))
             return (
               <div key={item.label} className="space-y-2 sm:space-y-4">
-                <p className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-none">
+                <p className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-none">
                   {current}+{/* keep plus visible */}
                 </p>
                 <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85">{item.label}</p>
@@ -446,7 +513,7 @@ const Home = () => {
 
         {/* Card Carousel */}
         <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-4 sm:py-6">
-          <div className="flex animate-scroll-left">
+          <div className="flex animate-scroll-left-slow">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
               <div
@@ -575,7 +642,7 @@ const Home = () => {
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">Fast</h3>
+              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Fast</h3>
               <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
                 Business plan elegantly transforms sublimated pool of loyal editions, optimizing budgets.
               </p>
@@ -590,7 +657,7 @@ const Home = () => {
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">Low fee</h3>
+              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Low fee</h3>
               <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
                 Sponsorship, summing these examples, it is doable. SWOT-analysis, according to Kotler, competitive.
               </p>
@@ -605,7 +672,7 @@ const Home = () => {
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">Quick Support</h3>
+              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Quick Support</h3>
               <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
                 The fact that the advertising platform changes the method of studying the market.
               </p>

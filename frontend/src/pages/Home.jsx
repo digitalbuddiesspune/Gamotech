@@ -371,17 +371,28 @@ const Home = () => {
       </div>
 
       <div ref={welcomeRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="p-6 sm:p-12 lg:p-16 rounded-xl space-y-4 sm:space-y-6 text-center">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-50">
-          Welcome to Gamotech IT &amp; Web Solutions!
-        </h2>
-        <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85 leading-relaxed px-2 sm:px-0">
-          We&apos;re your one-stop destination for comprehensive digital solutions, offering innovative IT services,
-          captivating web design, and strategic digital marketing expertise. Our mission is to empower businesses with
-          transformative technology and drive growth through targeted digital strategies. Follow us on LinkedIn to stay
-          updated on the latest industry trends, insightful articles, and expert tips on IT, web development, and
-          digital marketing. Let&apos;s collaborate and unlock your full potential in the digital world!
-        </p>
+        <div className="p-6 sm:p-12 lg:p-16 rounded-xl">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-4 sm:space-y-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-50">
+                Welcome to Gamotech IT &amp; Web Solutions!
+              </h2>
+              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85 leading-relaxed">
+                We&apos;re your one-stop destination for comprehensive digital solutions, offering innovative IT services,
+                captivating web design, and strategic digital marketing expertise. Our mission is to empower businesses with
+                transformative technology and drive growth through targeted digital strategies. Follow us on LinkedIn to stay
+                updated on the latest industry trends, insightful articles, and expert tips on IT, web development, and
+                digital marketing. Let&apos;s collaborate and unlock your full potential in the digital world!
+              </p>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <img
+                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766495040/output-onlinegiftools_2_amemnv.gif"
+                alt="Gamotech IT & Web Solutions"
+                className="w-full max-w-md rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Our Services Section */}

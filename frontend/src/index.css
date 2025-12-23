@@ -207,3 +207,24 @@ a {
   animation: fadeInUp 0.8s ease-out 0.3s forwards;
   opacity: 0;
 }
+.animate-slide-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+}
+
+.animate-slide-left.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+}
+
+.animate-slide-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}

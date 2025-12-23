@@ -100,19 +100,6 @@ const Navbar = ({ onLinkClick, isMobile = false }) => {
         {/* Dropdown Menu */}
         {isServicesOpen && (
           <div className={`absolute ${isMobile ? 'relative mt-2 w-full' : 'top-full left-0 mt-2 w-64'} bg-black border border-amber-500/30 rounded-lg shadow-xl z-50 overflow-hidden`}>
-            <NavLink
-              to="/services"
-              onClick={handleLinkClick}
-              className={({ isActive }) =>
-                `block px-4 py-3 text-sm font-medium transition-colors border-b border-amber-500/10 ${
-                  isActive
-                    ? 'bg-amber-500/20 !text-amber-400'
-                    : '!text-white hover:!text-white hover:bg-amber-500/10'
-                }`
-              }
-            >
-              All Services
-            </NavLink>
             {serviceLinks.map((service) => (
               <NavLink
                 key={service.to}

@@ -67,12 +67,23 @@ const CRMSoftware = () => {
 
           {/* Description Section */}
           <div className="mb-16">
-            <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed max-w-4xl">
-              Most businesses don't need off-the-shelf software packed with features they'll never use. They need systems designed around how they actually work.
-            </p>
-            <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed max-w-4xl mt-4">
-              At Gamotech, we design and develop custom CRM and internal software solutions that streamline operations, improve visibility, and help teams work more efficiently. Every solution is tailored to your workflow, team structure, and business goals.
-            </p>
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div className="space-y-4">
+                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                  Most businesses don't need off-the-shelf software packed with features they'll never use. They need systems designed around how they actually work.
+                </p>
+                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                  At Gamotech, we design and develop custom CRM and internal software solutions that streamline operations, improve visibility, and help teams work more efficiently. Every solution is tailored to your workflow, team structure, and business goals.
+                </p>
+              </div>
+              <div className="flex justify-center md:justify-end">
+                <img
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766493213/software-development1_ofsv4r.gif"
+                  alt="CRM & Custom Software Development"
+                  className="w-full max-w-md rounded-lg shadow-lg"
+                />
+              </div>
+            </div>
           </div>
 
         {/* Why Custom Software Makes a Difference */}

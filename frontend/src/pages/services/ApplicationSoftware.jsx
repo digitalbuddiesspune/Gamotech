@@ -2,281 +2,293 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const ApplicationSoftware = () => {
-  const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(false)
 
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
+    useEffect(() => {
+        setIsVisible(true)
+    }, [])
 
-  return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Hero Section - Full Width */}
-      <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1920&h=1080&fit=crop"
-            alt=""
-            className="w-full h-full object-cover"
-            aria-hidden="true"
-          />
-        </div>
-        {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"></div>
-        
-        {/* Content */}
-        <div className={`relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Application Software Development
-          </h1>
-          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white leading-relaxed max-w-4xl mx-auto">
-            Reliable Application Development for Businesses
-          </p>
-        </div>
-
-        {/* White Wavy Shape at Bottom */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg
-            viewBox="0 0 1440 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-16 sm:h-20 lg:h-24"
-            preserveAspectRatio="none"
-          >
-            <path class="elementor-shape-fill" d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7
-	c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4
-	c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"></path>
-          </svg>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10 bg-black pt-8 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="mb-8">
-            <div className="flex items-center space-x-2 text-sm text-amber-200/70">
-              <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
-              <span>/</span>
-              <Link to="/services" className="hover:text-amber-400 transition-colors">Services</Link>
-              <span>/</span>
-              <span className="text-white">Application Software Development</span>
-            </div>
-          </nav>
-
-          {/* Description Section */}
-          <div className="mb-16">
-            <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed max-w-4xl">
-              Modern businesses rely on applications that are stable, secure, and built to scale. At Gamotech, we develop application software with a strong focus on performance, security, and long-term reliability.
-            </p>
-            <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed max-w-4xl mt-4">
-              Whether you need a web-based application, a backend system, or a custom internal tool supporting daily operations, our structured development process ensures your application is future-ready and easy to manage.
-            </p>
-          </div>
-
-        {/* Why Application Software Matters */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Why Application Software Matters</h2>
-          <p className="text-lg sm:text-xl text-amber-200/85 mb-6">Well-built application software helps businesses:</p>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Automate operations and reduce manual work</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Improve data accuracy and security</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Support growing users and workloads</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Integrate smoothly with existing systems</p>
-            </div>
-          </div>
-          <p className="text-lg text-amber-200/75 leading-relaxed mt-6 max-w-4xl">
-            We design applications that work efficiently today and continue to perform as your business evolves.
-          </p>
-        </div>
-
-        {/* Our Application Development Services */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Our Application Development Services</h2>
-          <div className="space-y-6">
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">🌐</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Web Application Development</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Custom web applications built for speed, usability, and scalability — tailored to your business requirements and user roles.
-                  </p>
+    return (
+        <div className="min-h-screen bg-black text-white relative overflow-hidden">
+            {/* Hero Section - Full Width */}
+            <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                    <img
+                        src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1920&h=1080&fit=crop"
+                        alt=""
+                        className="w-full h-full object-cover"
+                        aria-hidden="true"
+                    />
                 </div>
-              </div>
-            </div>
+                {/* Dark Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"></div>
 
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">⚙️</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Backend Systems & APIs</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Robust backend architectures and secure APIs that power applications, integrations, and third-party services.
-                  </p>
+                {/* Content */}
+                <div className={`relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                        Application Software Development
+                    </h1>
+                    <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white leading-relaxed max-w-4xl mx-auto">
+                        Reliable Application Development for Businesses
+                    </p>
                 </div>
-              </div>
-            </div>
 
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">🔄</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Business Automation Tools</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Applications that automate repetitive processes, approvals, and workflows to increase efficiency and consistency.
-                  </p>
+                {/* White Wavy Shape at Bottom */}
+                <div className="absolute bottom-0 left-0 right-0 z-10">
+                    <svg
+                        viewBox="0 0 1440 120"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-full h-16 sm:h-20 lg:h-24"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M0,80 Q360,20 720,60 T1440,60 L1440,120 L0,120 Z"
+                            fill="black"
+                        />
+                    </svg>
                 </div>
-              </div>
             </div>
 
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">🗄️</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Secure Database Architecture</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Well-structured and secure database designs that ensure data integrity, performance, and easy scalability.
-                  </p>
+            {/* Main Content */}
+            <div className="relative z-10 bg-black pt-8 pb-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Breadcrumb */}
+                    <nav className="mb-8">
+                        <div className="flex items-center space-x-2 text-sm text-amber-200/70">
+                            <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
+                            <span>/</span>
+                            <Link to="/services" className="hover:text-amber-400 transition-colors">Services</Link>
+                            <span>/</span>
+                            <span className="text-white">Application Software Development</span>
+                        </div>
+                    </nav>
+
+                    {/* Description Section */}
+                    <div className="mb-16">
+                        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                            <div className="flex justify-center md:justify-start order-2 md:order-1">
+                                <img
+                                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766494491/output-onlinegiftools_t0h28r.gif"
+                                    alt="Application Software Development"
+                                    className="w-full max-w-md rounded-lg shadow-lg"
+                                />
+                            </div>
+                            <div className="space-y-4 order-1 md:order-2">
+                                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                                    Modern businesses rely on applications that are stable, secure, and built to scale. At Gamotech, we develop application software with a strong focus on performance, security, and long-term reliability.
+                                </p>
+                                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                                    Whether you need a web-based application, a backend system, or a custom internal tool supporting daily operations, our structured development process ensures your application is future-ready and easy to manage.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Why Application Software Matters */}
+                    <div className="mb-16">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Why Application Software Matters</h2>
+                        <p className="text-lg sm:text-xl text-amber-200/85 mb-6">Well-built application software helps businesses:</p>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <p className="text-amber-200/90 text-lg mb-2">Automate operations and reduce manual work</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <p className="text-amber-200/90 text-lg mb-2">Improve data accuracy and security</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <p className="text-amber-200/90 text-lg mb-2">Support growing users and workloads</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <p className="text-amber-200/90 text-lg mb-2">Integrate smoothly with existing systems</p>
+                            </div>
+                        </div>
+                        <p className="text-lg text-amber-200/75 leading-relaxed mt-6 max-w-4xl">
+                            We design applications that work efficiently today and continue to perform as your business evolves.
+                        </p>
+                    </div>
+
+                    {/* Our Application Development Services */}
+                    <div className="mb-16">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Our Application Development Services</h2>
+                        <div className="space-y-6">
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
+                                <div className="flex items-start gap-4">
+                                    <span className="text-3xl">🌐</span>
+                                    <div>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Web Application Development</h3>
+                                        <p className="text-amber-200/85 leading-relaxed">
+                                            Custom web applications built for speed, usability, and scalability — tailored to your business requirements and user roles.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
+                                <div className="flex items-start gap-4">
+                                    <span className="text-3xl">⚙️</span>
+                                    <div>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Backend Systems & APIs</h3>
+                                        <p className="text-amber-200/85 leading-relaxed">
+                                            Robust backend architectures and secure APIs that power applications, integrations, and third-party services.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
+                                <div className="flex items-start gap-4">
+                                    <span className="text-3xl">🔄</span>
+                                    <div>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Business Automation Tools</h3>
+                                        <p className="text-amber-200/85 leading-relaxed">
+                                            Applications that automate repetitive processes, approvals, and workflows to increase efficiency and consistency.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
+                                <div className="flex items-start gap-4">
+                                    <span className="text-3xl">🗄️</span>
+                                    <div>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Secure Database Architecture</h3>
+                                        <p className="text-amber-200/85 leading-relaxed">
+                                            Well-structured and secure database designs that ensure data integrity, performance, and easy scalability.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
+                                <div className="flex items-start gap-4">
+                                    <span className="text-3xl">🛠️</span>
+                                    <div>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Long-Term Maintenance & Support</h3>
+                                        <p className="text-amber-200/85 leading-relaxed">
+                                            Ongoing support, updates, performance tuning, and security enhancements to keep your application running smoothly.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Our Application Development Process */}
+                    <div className="mb-16">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Our Application Development Process</h2>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <h3 className="text-lg font-semibold text-amber-400 mb-2">Requirement Analysis</h3>
+                                <p className="text-amber-200/85">– understanding business goals and technical needs</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <h3 className="text-lg font-semibold text-amber-400 mb-2">System Architecture</h3>
+                                <p className="text-amber-200/85">– planning scalable and secure foundations</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <h3 className="text-lg font-semibold text-amber-400 mb-2">Development & Integration</h3>
+                                <p className="text-amber-200/85">– clean, maintainable, and tested code</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <h3 className="text-lg font-semibold text-amber-400 mb-2">Quality Assurance</h3>
+                                <p className="text-amber-200/85">– performance, security, and usability testing</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <h3 className="text-lg font-semibold text-amber-400 mb-2">Deployment</h3>
+                                <p className="text-amber-200/85">– stable and smooth production rollout</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
+                                <h3 className="text-lg font-semibold text-amber-400 mb-2">Maintenance & Scaling</h3>
+                                <p className="text-amber-200/85">– continuous improvement and support</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Why Choose Gamotech */}
+                    <div className="mb-16">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Why Choose Gamotech for Application Development?</h2>
+                        <div className="bg-black/50 border border-amber-500/30 rounded-xl p-8 sm:p-12">
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <div className="flex items-start gap-3">
+                                    <span className="text-amber-500 text-xl">✔</span>
+                                    <p className="text-amber-200/90 text-lg">Performance-focused development</p>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <span className="text-amber-500 text-xl">✔</span>
+                                    <p className="text-amber-200/90 text-lg">Secure and scalable architecture</p>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <span className="text-amber-500 text-xl">✔</span>
+                                    <p className="text-amber-200/90 text-lg">Clean, maintainable codebase</p>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <span className="text-amber-500 text-xl">✔</span>
+                                    <p className="text-amber-200/90 text-lg">Business-driven feature planning</p>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <span className="text-amber-500 text-xl">✔</span>
+                                    <p className="text-amber-200/90 text-lg">Transparent communication and local support</p>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <span className="text-amber-500 text-xl">✔</span>
+                                    <p className="text-amber-200/90 text-lg">Suitable for startups and growing businesses</p>
+                                </div>
+                            </div>
+                            <p className="text-xl text-white font-semibold mt-8 text-center">
+                                We don't just build applications — we build reliable systems that support your business growth.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Who Is This Service Ideal For */}
+                    <div className="mb-16">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Who Is This Service Ideal For?</h2>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
+                                <p className="text-amber-200/90 text-lg">Businesses needing custom web applications</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
+                                <p className="text-amber-200/90 text-lg">Companies modernizing legacy systems</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
+                                <p className="text-amber-200/90 text-lg">Teams requiring internal tools and dashboards</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
+                                <p className="text-amber-200/90 text-lg">Startups building scalable platforms</p>
+                            </div>
+                            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center md:col-span-2 lg:col-span-1">
+                                <p className="text-amber-200/90 text-lg">Organizations focused on long-term stability</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CTA Section */}
+                    <div className="mt-16 bg-gradient-to-r from-amber-500/20 to-amber-600/20 border border-amber-500/30 rounded-xl p-8 sm:p-12 text-center">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                            Build Applications That Last
+                        </h2>
+                        <p className="text-lg sm:text-xl text-amber-200/85 mb-8">
+                            We build applications that are easy to manage today and ready for tomorrow.
+                        </p>
+                        <p className="text-lg sm:text-xl text-amber-200/85 mb-8">
+                            📩 Planning an application software project?
+                        </p>
+                        <Link
+                            to="/contact-us"
+                            className="inline-flex items-center gap-2 bg-amber-500 text-white font-semibold px-8 py-4 rounded-lg hover:bg-amber-400 transition-colors text-lg"
+                        >
+                            <span>👉 Contact Gamotech to discuss your requirements and get started</span>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </Link>
+                    </div>
                 </div>
-              </div>
             </div>
-
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">🛠️</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Long-Term Maintenance & Support</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Ongoing support, updates, performance tuning, and security enhancements to keep your application running smoothly.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-
-        {/* Our Application Development Process */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Our Application Development Process</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Requirement Analysis</h3>
-              <p className="text-amber-200/85">– understanding business goals and technical needs</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">System Architecture</h3>
-              <p className="text-amber-200/85">– planning scalable and secure foundations</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Development & Integration</h3>
-              <p className="text-amber-200/85">– clean, maintainable, and tested code</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Quality Assurance</h3>
-              <p className="text-amber-200/85">– performance, security, and usability testing</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Deployment</h3>
-              <p className="text-amber-200/85">– stable and smooth production rollout</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Maintenance & Scaling</h3>
-              <p className="text-amber-200/85">– continuous improvement and support</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Why Choose Gamotech */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Why Choose Gamotech for Application Development?</h2>
-          <div className="bg-black/50 border border-amber-500/30 rounded-xl p-8 sm:p-12">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3">
-                <span className="text-amber-500 text-xl">✔</span>
-                <p className="text-amber-200/90 text-lg">Performance-focused development</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-amber-500 text-xl">✔</span>
-                <p className="text-amber-200/90 text-lg">Secure and scalable architecture</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-amber-500 text-xl">✔</span>
-                <p className="text-amber-200/90 text-lg">Clean, maintainable codebase</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-amber-500 text-xl">✔</span>
-                <p className="text-amber-200/90 text-lg">Business-driven feature planning</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-amber-500 text-xl">✔</span>
-                <p className="text-amber-200/90 text-lg">Transparent communication and local support</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-amber-500 text-xl">✔</span>
-                <p className="text-amber-200/90 text-lg">Suitable for startups and growing businesses</p>
-              </div>
-            </div>
-            <p className="text-xl text-white font-semibold mt-8 text-center">
-              We don't just build applications — we build reliable systems that support your business growth.
-            </p>
-          </div>
-        </div>
-
-        {/* Who Is This Service Ideal For */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Who Is This Service Ideal For?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Businesses needing custom web applications</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Companies modernizing legacy systems</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Teams requiring internal tools and dashboards</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Startups building scalable platforms</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center md:col-span-2 lg:col-span-1">
-              <p className="text-amber-200/90 text-lg">Organizations focused on long-term stability</p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 bg-gradient-to-r from-amber-500/20 to-amber-600/20 border border-amber-500/30 rounded-xl p-8 sm:p-12 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Build Applications That Last
-          </h2>
-          <p className="text-lg sm:text-xl text-amber-200/85 mb-8">
-            We build applications that are easy to manage today and ready for tomorrow.
-          </p>
-          <p className="text-lg sm:text-xl text-amber-200/85 mb-8">
-            📩 Planning an application software project?
-          </p>
-          <Link
-            to="/contact-us"
-            className="inline-flex items-center gap-2 bg-amber-500 text-white font-semibold px-8 py-4 rounded-lg hover:bg-amber-400 transition-colors text-lg"
-          >
-            <span>👉 Contact Gamotech to discuss your requirements and get started</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-        </div>
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default ApplicationSoftware

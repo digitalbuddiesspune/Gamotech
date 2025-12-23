@@ -67,12 +67,23 @@ const ECommerce = () => {
 
           {/* Description Section */}
           <div className="mb-16">
-            <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed max-w-4xl">
-              Launching an online store is more than uploading products — it's about creating a smooth, secure, and conversion-focused shopping experience. At Gamotech, we design and develop e-commerce websites that are easy to manage, reliable under traffic, and ready to scale as your business grows.
-            </p>
-            <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed max-w-4xl mt-4">
-              From product discovery to checkout, every element is carefully planned to reduce friction, build trust, and increase sales.
-            </p>
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div className="flex justify-center md:justify-start order-2 md:order-1">
+                <img
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766490360/E-Commerce_img_o84twa.gif"
+                  alt="E-Commerce Website Development"
+                  className="w-full max-w-md rounded-lg shadow-lg"
+                />
+              </div>
+              <div className="space-y-4 order-1 md:order-2">
+                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                  Launching an online store is more than uploading products — it's about creating a smooth, secure, and conversion-focused shopping experience. At Gamotech, we design and develop e-commerce websites that are easy to manage, reliable under traffic, and ready to scale as your business grows.
+                </p>
+                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                  From product discovery to checkout, every element is carefully planned to reduce friction, build trust, and increase sales.
+                </p>
+              </div>
+            </div>
           </div>
 
         {/* Why Your E-Commerce Website Matters */}

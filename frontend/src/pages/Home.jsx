@@ -168,6 +168,8 @@ const Home = () => {
     clients: false,
     whyChoose: false,
   })
+  const [visibleProcessSteps, setVisibleProcessSteps] = useState([false, false, false, false])
+  const hasAnimatedProcessSteps = useRef(false)
   const services = [
     {
       title: 'Website Design & Development',
@@ -309,6 +311,23 @@ const Home = () => {
       })
     }
   }, [])
+
+  // Staggered animation for process steps
+  useEffect(() => {
+    if (visibleSections.process && !hasAnimatedProcessSteps.current) {
+      hasAnimatedProcessSteps.current = true
+      const delays = [0, 200, 400, 600] // Stagger delays in milliseconds
+      delays.forEach((delay, idx) => {
+        setTimeout(() => {
+          setVisibleProcessSteps((prev) => {
+            const next = [...prev]
+            next[idx] = true
+            return next
+          })
+        }, delay)
+      })
+    }
+  }, [visibleSections.process])
 
   return (
     <section className="space-y-16 sm:space-y-20 pt-0 md:pt-0">
@@ -683,7 +702,12 @@ const Home = () => {
                     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&h=200&fit=crop',
                   },
                 ].map((item, idx) => (
-                  <div key={item.title} className="flex flex-col items-center flex-1 min-w-[120px] sm:min-w-[180px] lg:min-w-[220px] z-10 relative">
+                  <div 
+                    key={item.title} 
+                    className={`flex flex-col items-center flex-1 min-w-[120px] sm:min-w-[180px] lg:min-w-[220px] z-10 relative transition-all duration-1000 ${
+                      visibleProcessSteps[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}
+                  >
                     {/* Circular Image - Black border instead of white - Line passes through center */}
                     <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-black shadow-lg mb-4 sm:mb-5 z-10">
                       <img

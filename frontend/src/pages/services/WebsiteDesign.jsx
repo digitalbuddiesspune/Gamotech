@@ -1,53 +1,81 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const WebsiteDesign = () => {
-  return (
-    <div className="min-h-screen bg-black text-white pt-24 pb-16 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 30%, rgba(245, 180, 0, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(245, 180, 0, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 50% 50%, rgba(245, 180, 0, 0.08) 0%, transparent 60%)
-          `,
-        }}
-      />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
-        <nav className="mb-8">
-          <div className="flex items-center space-x-2 text-sm text-amber-200/70">
-            <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
-            <span>/</span>
-            <Link to="/services" className="hover:text-amber-400 transition-colors">Services</Link>
-            <span>/</span>
-            <span className="text-white">Website Design & Development</span>
-          </div>
-        </nav>
+  const [isVisible, setIsVisible] = useState(false)
 
-        {/* Hero Section */}
-        <div className="mb-20 relative">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-0.5 w-16 bg-gradient-to-r from-amber-500 to-amber-600"></div>
-            <p className="text-sm uppercase tracking-wider text-amber-400 font-semibold">OUR SERVICE</p>
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-white via-amber-50 to-white bg-clip-text">
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Hero Section - Full Width */}
+      <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766475622/photo-1460925895917-afdab827c52f_llw1uq.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
+        {/* Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"></div>
+        
+        {/* Content */}
+        <div className={`relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             Website Design & Development Services
           </h1>
-          <p className="text-xl sm:text-2xl text-amber-200/90 leading-relaxed max-w-3xl mb-6 font-semibold">
+          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white leading-relaxed max-w-4xl mx-auto">
             Professional Website Development for Growing Businesses
           </p>
-          <div className="space-y-4 max-w-4xl">
-            <p className="text-lg sm:text-xl text-amber-200/80 leading-relaxed">
-              Your website is more than just an online presence — it is the digital foundation of your business. At Gamotech, we design and develop websites that are visually appealing, technically strong, and strategically built to convert visitors into genuine business enquiries.
-            </p>
-            <p className="text-lg sm:text-xl text-amber-200/80 leading-relaxed">
-              We combine modern design, clean development, and business thinking to deliver websites that help you grow, build trust, and stand out in a competitive market.
-            </p>
-          </div>
         </div>
+
+        {/* White Wavy Shape at Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-16 sm:h-20 lg:h-24"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,80 Q360,20 720,60 T1440,60 L1440,120 L0,120 Z"
+              fill="black"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 bg-black pt-8 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumb */}
+          <nav className="mb-8">
+            <div className="flex items-center space-x-2 text-sm text-amber-200/70">
+              <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
+              <span>/</span>
+              <Link to="/services" className="hover:text-amber-400 transition-colors">Services</Link>
+              <span>/</span>
+              <span className="text-white">Website Design & Development</span>
+            </div>
+          </nav>
+
+          {/* Description Section */}
+          <div className="mb-20 relative">
+            <div className="space-y-4 max-w-4xl">
+              <p className="text-lg sm:text-xl text-amber-200/80 leading-relaxed">
+                Your website is more than just an online presence — it is the digital foundation of your business. At Gamotech, we design and develop websites that are visually appealing, technically strong, and strategically built to convert visitors into genuine business enquiries.
+              </p>
+              <p className="text-lg sm:text-xl text-amber-200/80 leading-relaxed">
+                We combine modern design, clean development, and business thinking to deliver websites that help you grow, build trust, and stand out in a competitive market.
+              </p>
+            </div>
+          </div>
 
         {/* Why a High-Quality Website Matters */}
         <div className="mb-20 relative">
@@ -282,6 +310,7 @@ const WebsiteDesign = () => {
               </svg>
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </div>

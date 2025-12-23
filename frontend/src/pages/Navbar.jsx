@@ -59,23 +59,22 @@ const Navbar = ({ onLinkClick, isMobile = false }) => {
 
   return (
     <nav className={`${isMobile ? 'flex flex-col py-4 px-4 space-y-2' : 'flex items-center gap-2'} text-sm relative`}>
-      {links.map((link) => (
-        <NavLink
-          key={link.to}
-          to={link.to}
-          end={link.to === '/'}
-          onClick={handleLinkClick}
-          className={({ isActive }) =>
-            `${isMobile ? 'w-full px-4 py-3' : 'px-3 py-2'} rounded-md font-medium transition-colors ${
-              isActive
-                ? 'bg-amber-500 !text-white shadow-md shadow-amber-500/30'
-                : '!text-white hover:!text-white hover:bg-amber-500/10'
-            }`
-          }
-        >
-          {link.label}
-        </NavLink>
-      ))}
+      {/* Home Link */}
+      <NavLink
+        key={links[0].to}
+        to={links[0].to}
+        end={links[0].to === '/'}
+        onClick={handleLinkClick}
+        className={({ isActive }) =>
+          `${isMobile ? 'w-full px-4 py-3' : 'px-3 py-2'} rounded-md font-medium transition-colors ${
+            isActive
+              ? 'bg-amber-500 !text-white shadow-md shadow-amber-500/30'
+              : '!text-white hover:!text-white hover:bg-amber-500/10'
+          }`
+        }
+      >
+        {links[0].label}
+      </NavLink>
       
       {/* Services Dropdown */}
       <div className="relative" ref={dropdownRef}>
@@ -133,6 +132,26 @@ const Navbar = ({ onLinkClick, isMobile = false }) => {
           </div>
         )}
       </div>
+      
+      {/* Remaining Links (About Us, Careers, Contact) */}
+      {links.slice(1).map((link) => (
+        <NavLink
+          key={link.to}
+          to={link.to}
+          end={link.to === '/'}
+          onClick={handleLinkClick}
+          className={({ isActive }) =>
+            `${isMobile ? 'w-full px-4 py-3' : 'px-3 py-2'} rounded-md font-medium transition-colors ${
+              isActive
+                ? 'bg-amber-500 !text-white shadow-md shadow-amber-500/30'
+                : '!text-white hover:!text-white hover:bg-amber-500/10'
+            }`
+          }
+        >
+          {link.label}
+        </NavLink>
+      ))}
+      
       <a
         href={whatsappUrl}
         target="_blank"

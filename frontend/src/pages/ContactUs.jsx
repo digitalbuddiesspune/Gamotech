@@ -160,7 +160,7 @@ const ContactUs = () => {
         </div>
         
         {/* Hero Content - Centered */}
-        <div ref={heroRef} className="relative z-10 pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 lg:pb-32">
+        <div ref={heroRef} className="relative z-10 pt-20 sm:pt-24 lg:pt-32 pb-8 sm:pb-12 lg:pb-16">
           <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-8">
             {/* Main Heading */}
             <div className={`space-y-2 sm:space-y-3 transition-all duration-1000 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -177,7 +177,7 @@ const ContactUs = () => {
             
             {/* Description */}
             <p className={`text-white/80 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-200 px-2 sm:px-0 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Transform your business with cutting-edge IT solutions, innovative web development, and strategic digital marketing. We bring your vision to life with expertise, dedication, and results that matter.
+            Transform your business with cutting-edge IT solutions, innovative web development, CRM systems, and custom application software. We bring your vision to life with expertise, dedication, and results that matter.
             </p>
             
             {/* CTA Buttons */}
@@ -206,6 +206,58 @@ const ContactUs = () => {
           </div>
         </div>
         
+        {/* Contact Information Section */}
+        <div ref={contactInfoRef} className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-8 pb-8 sm:pb-12 transition-all duration-1000 ${isVisible.contactInfo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {/* Address Column */}
+            <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-6 sm:p-8 text-center">
+              <div className="flex justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg border-2 border-amber-500/50 flex items-center justify-center bg-amber-500/10">
+                  <svg className="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-amber-200 mb-3">Address</h3>
+              <p className="text-sm sm:text-base text-amber-100/80">
+                618, Gera's Imperum Rise, Wipro Circle, Hinjewadi, Pune – 411057
+              </p>
+            </div>
+
+            {/* Phone Column */}
+            <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-6 sm:p-8 text-center">
+              <div className="flex justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg border-2 border-amber-500/50 flex items-center justify-center bg-amber-500/10">
+                  <svg className="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-amber-200 mb-3">Phone</h3>
+              <div className="space-y-2 text-sm sm:text-base text-amber-100/80">
+                <p>+91 9637319746</p>
+                <p>+91 9766670916</p>
+              </div>
+            </div>
+
+            {/* Email Column */}
+            <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 p-6 sm:p-8 text-center">
+              <div className="flex justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg border-2 border-amber-500/50 flex items-center justify-center bg-amber-500/10">
+                  <svg className="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-amber-200 mb-3">Email</h3>
+              <p className="text-sm sm:text-base text-amber-100/80">
+                info@gamotech.com
+              </p>
+            </div>
+          </div>
+        </div>
+        
         {/* Contact Form Section - Merged */}
         <div id="contact-form" className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8">
           <div className={`space-y-2 sm:space-y-3 text-center transition-all duration-1000 ${isVisible.form ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -218,41 +270,22 @@ const ContactUs = () => {
         </div>
 
       <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-          {/* Contact Information */}
-          <div ref={contactInfoRef} className={`space-y-6 transition-all duration-1000 delay-200 ${isVisible.contactInfo ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-        <div className="space-y-4 text-amber-100/85">
-          <p>
-                Transform your business with cutting-edge IT solutions, innovative web development, and strategic digital marketing. We bring your vision to life with expertise, dedication, and results that matter.
-          </p>
+          {/* Google Map */}
+          <div className={`transition-all duration-1000 delay-200 ${isVisible.form ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl shadow-lg shadow-amber-500/10 overflow-hidden h-full min-h-[400px]">
+              <iframe
+                src="https://www.google.com/maps?q=618+Gera's+Imperum+Rise+Wipro+Circle+Hinjewadi+Pune+411057&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '400px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Gamotech Office Location"
+                className="w-full h-full"
+              ></iframe>
             </div>
-            <div className="space-y-4">
-              <div className="space-y-2">
-            <p className="font-semibold text-amber-200">Contact details</p>
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <p className="text-amber-100/80">Email: info@gamotech.com</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <p className="text-amber-100/80">Address: 
-                    618, Gera's Imperum Rise, Wipro Circle, Hinjewadi, Pune – 411057</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <p className="text-amber-100/80">Office hours: Mon–Fri, 11am–7pm (GMT)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
+          </div>
 
           {/* Contact Form */}
         <form

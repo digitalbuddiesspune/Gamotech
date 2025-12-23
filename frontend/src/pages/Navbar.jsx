@@ -1,17 +1,29 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState, useRef, useEffect } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/services', label: 'Services' },
   { to: '/about-us', label: 'About Us' },
   { to: '/careers', label: 'Careers' },
   { to: '/contact-us', label: 'Contact' },
 ]
 
+const serviceLinks = [
+  { to: '/services/website-design', label: 'Website Design & Development' },
+  { to: '/services/ecommerce', label: 'E-Commerce Website Development' },
+  { to: '/services/crm-software', label: 'CRM & Custom Software Development' },
+  { to: '/services/application-software', label: 'Application Software Development' },
+]
+
 const Navbar = ({ onLinkClick, isMobile = false }) => {
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const dropdownRef = useRef(null)
+  const location = useLocation()
   const whatsappNumber = '919637319746' // +91 9637319746 without + and spaces
   const whatsappUrl = `https://wa.me/${whatsappNumber}`
+
+  // Check if current route is a service page
+  const isServicePage = location.pathname.startsWith('/services/')
 
   const handleLinkClick = () => {
     // Scroll to top when clicking a nav link
@@ -21,13 +33,32 @@ const Navbar = ({ onLinkClick, isMobile = false }) => {
       behavior: 'smooth',
     })
     
+    setIsServicesOpen(false)
+    
     if (onLinkClick) {
       onLinkClick()
     }
   }
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsServicesOpen(false)
+      }
+    }
+
+    if (isServicesOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isServicesOpen])
+
   return (
-    <nav className={`${isMobile ? 'flex flex-col py-4 px-4 space-y-2' : 'flex items-center gap-2'} text-sm`}>
+    <nav className={`${isMobile ? 'flex flex-col py-4 px-4 space-y-2' : 'flex items-center gap-2'} text-sm relative`}>
       {links.map((link) => (
         <NavLink
           key={link.to}
@@ -45,6 +76,63 @@ const Navbar = ({ onLinkClick, isMobile = false }) => {
           {link.label}
         </NavLink>
       ))}
+      
+      {/* Services Dropdown */}
+      <div className="relative" ref={dropdownRef}>
+        <button
+          onClick={() => setIsServicesOpen(!isServicesOpen)}
+          className={`${isMobile ? 'w-full px-4 py-3 justify-between' : 'px-3 py-2'} flex items-center gap-2 rounded-md font-medium transition-colors ${
+            isServicePage
+              ? 'bg-amber-500 !text-white shadow-md shadow-amber-500/30'
+              : '!text-white hover:!text-white hover:bg-amber-500/10'
+          }`}
+        >
+          <span>Services</span>
+          <svg
+            className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        {/* Dropdown Menu */}
+        {isServicesOpen && (
+          <div className={`absolute ${isMobile ? 'relative mt-2 w-full' : 'top-full left-0 mt-2 w-64'} bg-black border border-amber-500/30 rounded-lg shadow-xl z-50 overflow-hidden`}>
+            <NavLink
+              to="/services"
+              onClick={handleLinkClick}
+              className={({ isActive }) =>
+                `block px-4 py-3 text-sm font-medium transition-colors border-b border-amber-500/10 ${
+                  isActive
+                    ? 'bg-amber-500/20 !text-amber-400'
+                    : '!text-white hover:!text-white hover:bg-amber-500/10'
+                }`
+              }
+            >
+              All Services
+            </NavLink>
+            {serviceLinks.map((service) => (
+              <NavLink
+                key={service.to}
+                to={service.to}
+                onClick={handleLinkClick}
+                className={({ isActive }) =>
+                  `block px-4 py-3 text-sm transition-colors border-b border-amber-500/10 last:border-b-0 ${
+                    isActive
+                      ? 'bg-amber-500/20 !text-amber-400'
+                      : '!text-white hover:!text-white hover:bg-amber-500/10'
+                  }`
+                }
+              >
+                {service.label}
+              </NavLink>
+            ))}
+          </div>
+        )}
+      </div>
       <a
         href={whatsappUrl}
         target="_blank"

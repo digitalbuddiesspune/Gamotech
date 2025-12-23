@@ -8,12 +8,20 @@ import Careers from '../pages/Careers'
 import DataPrivacy from '../pages/DataPrivacy'
 import PrivacyPolicy from '../pages/PrivacyPolicy'
 import TermsConditions from '../pages/TermsConditions'
+import WebsiteDesign from '../pages/services/WebsiteDesign'
+import ECommerce from '../pages/services/ECommerce'
+import CRMSoftware from '../pages/services/CRMSoftware'
+import ApplicationSoftware from '../pages/services/ApplicationSoftware'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="services" element={<Services />} />
+      <Route path="services/website-design" element={<WebsiteDesign />} />
+      <Route path="services/ecommerce" element={<ECommerce />} />
+      <Route path="services/crm-software" element={<CRMSoftware />} />
+      <Route path="services/application-software" element={<ApplicationSoftware />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="careers" element={<Careers />} />

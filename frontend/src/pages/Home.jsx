@@ -154,6 +154,20 @@ const Home = () => {
   const [counts, setCounts] = useState(COUNTERS.map(() => 0))
   const countersRef = useRef(null)
   const hasAnimated = useRef(false)
+  const welcomeRef = useRef(null)
+  const servicesRef = useRef(null)
+  const processRef = useRef(null)
+  const technologiesRef = useRef(null)
+  const clientsRef = useRef(null)
+  const whyChooseRef = useRef(null)
+  const [visibleSections, setVisibleSections] = useState({
+    welcome: false,
+    services: false,
+    process: false,
+    technologies: false,
+    clients: false,
+    whyChoose: false,
+  })
   const services = [
     {
       title: 'Website Design & Development',
@@ -260,6 +274,42 @@ const Home = () => {
     }
   }, [])
 
+  // Fade-in effect for sections on scroll
+  useEffect(() => {
+    const sections = [
+      { ref: welcomeRef, key: 'welcome' },
+      { ref: servicesRef, key: 'services' },
+      { ref: processRef, key: 'process' },
+      { ref: technologiesRef, key: 'technologies' },
+      { ref: clientsRef, key: 'clients' },
+      { ref: whyChooseRef, key: 'whyChoose' },
+    ]
+
+    const observers = sections.map(({ ref, key }) => {
+      if (!ref.current) return null
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleSections((prev) => ({ ...prev, [key]: true }))
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+
+      observer.observe(ref.current)
+      return observer
+    })
+
+    return () => {
+      observers.forEach((observer) => {
+        if (observer) observer.disconnect()
+      })
+    }
+  }, [])
+
   return (
     <section className="space-y-16 sm:space-y-20 pt-0 md:pt-0">
       <div className="relative overflow-hidden w-full h-screen bg-black flex items-center justify-center">
@@ -298,7 +348,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+      <div ref={welcomeRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="p-6 sm:p-12 lg:p-16 rounded-xl space-y-4 sm:space-y-6 text-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-50">
           Welcome to Gamotech IT &amp; Web Solutions!
@@ -414,7 +464,7 @@ const Home = () => {
         </div>
 
         {/* Our Services Section */}
-        <div className="relative overflow-hidden bg-black py-12 sm:py-16 lg:py-20">
+        <div ref={servicesRef} className={`relative overflow-hidden bg-black py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.services ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Disk-like background pattern */}
           <div
             className="absolute inset-0 opacity-30"
@@ -549,7 +599,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div
           ref={countersRef}
           className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-4 sm:px-8 lg:px-12 py-12 sm:py-20 lg:py-24 xl:py-32 shadow-2xl shadow-amber-500/10"
@@ -578,7 +628,7 @@ const Home = () => {
       </div>
 
       {/* Technologies We Use Section */}
-      <div className="relative overflow-hidden w-full min-h-screen bg-black flex flex-col justify-center items-center space-y-8 sm:space-y-12 py-12 sm:py-16 lg:py-20">
+      <div ref={technologiesRef} className={`relative overflow-hidden w-full min-h-screen bg-black flex flex-col justify-center items-center space-y-8 sm:space-y-12 py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.technologies ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="relative text-center z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
             Technologies We Use
@@ -651,8 +701,122 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Our Process Section */}
+      <div ref={processRef} className={`bg-black py-5 sm:py-10 lg:py-20 transition-all duration-1000 ${visibleSections.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Heading */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-8 sm:mb-12 lg:mb-16" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+              How we works?
+            </h2>
+            
+            <div className="relative">
+              {/* Background decorative elements - Sun and Clouds (white/light gray) with floating animation */}
+              <div className="absolute -top-4 left-[8%] opacity-30 animate-float-slow">
+                <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="5" />
+                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
+              </div>
+              <div className="absolute -top-2 right-[25%] opacity-25 animate-float-medium">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+              </div>
+              <div className="absolute -top-2 right-[10%] opacity-25 animate-float-slow">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+              </div>
+
+              {/* Process Flow */}
+              <div className="relative flex items-center justify-between flex-wrap gap-4 sm:gap-2 lg:gap-4 py-8 sm:py-12" style={{ minHeight: '200px' }}>
+                {/* Wavy/Curved SVG Path Container - Dashed line passing through center of each circle */}
+                <div className="hidden sm:block absolute inset-0 w-full pointer-events-none z-0" style={{ top: '25%', height: '80px' }}>
+                  <svg className="w-full h-full" viewBox="0 0 1000 80" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
+                    {/* Wavy curved dashed path from start (x=0) through center of all circles to end (x=1000) */}
+                    <path
+                      d="M 0 40 
+                         Q 100 30, 200 40
+                         Q 300 50, 400 40
+                         Q 500 30, 600 40
+                         Q 700 50, 800 40
+                         Q 900 30, 1000 40"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.6)"
+                      strokeWidth="2"
+                      strokeDasharray="8,4"
+                      strokeLinecap="round"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  </svg>
+                </div>
+
+                {/* Start Pin - White - Connected to the start of the line (x=0, y=40) */}
+                <div className="flex-shrink-0 z-20 absolute" style={{ left: '0%', top: 'calc(25% + 40px)', transform: 'translate(-50%, -50%)' }}>
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                </div>
+
+                {/* Process Stages */}
+                {[
+                  {
+                    title: 'Strategy',
+                    description: 'We begin by understanding your business goals, target audience, and market positioning. Our team conducts thorough research and analysis to develop a comprehensive strategy that aligns with your vision and drives measurable results.',
+                    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=200&fit=crop',
+                  },
+                  {
+                    title: 'Planning',
+                    description: 'With a clear strategy in place, we create detailed project plans, wireframes, and technical specifications. Our planning phase ensures every aspect of your project is carefully mapped out before development begins.',
+                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop',
+                  },
+                  {
+                    title: 'Build',
+                    description: 'Our expert developers bring your vision to life using cutting-edge technologies and best practices. We build scalable, secure, and high-performance solutions that exceed industry standards.',
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop',
+                  },
+                  {
+                    title: 'Our Work',
+                    description: 'We deliver fully functional, tested, and optimized solutions ready for deployment. Our work includes responsive designs, cross-platform compatibility, and ongoing support to ensure your success.',
+                    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&h=200&fit=crop',
+                  },
+                ].map((item, idx) => (
+                  <div key={item.title} className="flex flex-col items-center flex-1 min-w-[120px] sm:min-w-[180px] lg:min-w-[220px] z-10 relative">
+                    {/* Circular Image - Black border instead of white - Line passes through center */}
+                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-black shadow-lg mb-4 sm:mb-5 z-10">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.src = `https://via.placeholder.com/200/FFFFFF/000000?text=${item.title.charAt(0)}`
+                        }}
+                      />
+                    </div>
+                    {/* Orange Title with modern font */}
+                    <h3 className="text-amber-500 font-bold text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4 text-center" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif", letterSpacing: '0.5px' }}>
+                      {item.title}
+                    </h3>
+                    {/* Detailed Description */}
+                    <p className="text-white/80 text-xs sm:text-sm lg:text-base leading-relaxed text-center px-2 sm:px-0 max-w-xs">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+
+                {/* End Pin - White - Connected to the end of the line (x=1000, y=40) */}
+                <div className="flex-shrink-0 z-20 absolute" style={{ right: '0%', top: 'calc(25% + 40px)', transform: 'translate(50%, -50%)' }}>
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       {/* Our Clients Section */}
-      <div className="relative overflow-hidden w-full bg-black py-5 sm:py-8 lg:py-10">
+      <div ref={clientsRef} className={`relative overflow-hidden w-full bg-black py-5 sm:py-8 lg:py-10 transition-all duration-1000 ${visibleSections.clients ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
@@ -714,7 +878,7 @@ const Home = () => {
       </div>
 
       {/* Why Choose Us Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <div ref={whyChooseRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.whyChoose ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-12 sm:mb-16">
           Why choose Gamotech?
         </h2>

@@ -170,6 +170,11 @@ const Home = () => {
   })
   const [visibleProcessSteps, setVisibleProcessSteps] = useState([false, false, false, false])
   const hasAnimatedProcessSteps = useRef(false)
+  const heroRef = useRef(null)
+  const [typewriterText, setTypewriterText] = useState('')
+  const [showCursor, setShowCursor] = useState(false)
+  const [cursorVisible, setCursorVisible] = useState(true)
+  const hasStartedTyping = useRef(false)
   const services = [
     {
       title: 'Website Design & Development',
@@ -237,7 +242,7 @@ const Home = () => {
     const node = countersRef.current
     if (!node || hasAnimated.current) return
 
-    const duration = 1200
+    const duration = 3000 // Slower counting animation
     const rafIds = []
 
     const animateIndex = (index, target) => {
@@ -329,8 +334,64 @@ const Home = () => {
     }
   }, [visibleSections.process])
 
+  // Typewriter animation for hero section
+  useEffect(() => {
+    const fullText = "We'll Bring the Execution."
+    const typingSpeed = 45 // ms per character - smooth typing speed
+    
+    if (!heroRef.current || hasStartedTyping.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStartedTyping.current) {
+            hasStartedTyping.current = true
+            
+            // Delay before starting typing (after heading appears)
+            setTimeout(() => {
+              setShowCursor(true) // Show cursor when typing starts
+              let currentIndex = 0
+              
+              const typeInterval = setInterval(() => {
+                if (currentIndex < fullText.length) {
+                  setTypewriterText(fullText.slice(0, currentIndex + 1))
+                  currentIndex++
+                } else {
+                  clearInterval(typeInterval)
+                  // Hide cursor after typing completes
+                  setTimeout(() => {
+                    setShowCursor(false)
+                  }, 1000)
+                }
+              }, typingSpeed)
+            }, 500) // Delay after section appears
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    observer.observe(heroRef.current)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  // Blinking cursor effect
+  useEffect(() => {
+    if (!showCursor) return
+    
+    const cursorInterval = setInterval(() => {
+      setCursorVisible((prev) => !prev)
+    }, 530) // Blink every 530ms
+
+    return () => clearInterval(cursorInterval)
+  }, [showCursor])
+
   return (
     <section className="space-y-16 sm:space-y-20 pt-0 md:pt-0">
+      {/* Hero Section - No background effects */}
       <div className="relative overflow-hidden w-full h-screen bg-black flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
           <video
@@ -344,10 +405,18 @@ const Home = () => {
           />
         </div>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative text-center space-y-6 sm:space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div ref={heroRef} className="relative text-center space-y-6 sm:space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400 uppercase tracking-wide">Cloud-scale delivery</p>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-amber-50 px-2 sm:px-0">
-            Bring Your Ideas. We&apos;ll Bring the Execution.
+            Bring Your Ideas.{' '}
+            <span className="inline-block transition-all duration-300 ease-in-out">
+              {typewriterText && (
+                <span className="shiny-text inline-block">
+                  {typewriterText}
+                </span>
+              )}
+              {showCursor && cursorVisible && <span className="inline-block w-0.5 h-[0.9em] bg-amber-50 ml-1 align-middle transition-opacity duration-300">|</span>}
+            </span>
           </h1>
           <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85 px-2 sm:px-0">
             Whether it&apos;s building platforms, automating workflows, or scaling teams, we make execution feel
@@ -370,14 +439,81 @@ const Home = () => {
         </div>
       </div>
 
-      <div ref={welcomeRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      {/* Floating Background Effects - Applied to all sections after hero */}
+      <div className="relative bg-black">
+        {/* Background Decorative Elements - Floating */}
+        {/* Top Left - Orange dot with lines */}
+        <div className="absolute top-8 left-8 sm:top-12 sm:left-12 z-0 pointer-events-none">
+          <div className="relative animate-float-slow">
+            <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+            <svg className="absolute -top-1 -left-1 w-16 h-16 opacity-30" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="32" y1="32" x2="0" y2="0" stroke="#1a1a1a" strokeWidth="1"/>
+              <line x1="32" y1="32" x2="64" y2="0" stroke="#1a1a1a" strokeWidth="1"/>
+              <line x1="32" y1="32" x2="0" y2="64" stroke="#1a1a1a" strokeWidth="1"/>
+              <line x1="32" y1="32" x2="64" y2="64" stroke="#1a1a1a" strokeWidth="1"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Top Right - Wireframe 3D Cube */}
+        <div className="absolute top-8 right-8 sm:top-12 sm:right-12 z-0 opacity-40 pointer-events-none">
+          <div className="animate-float-medium">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform rotate-12">
+              {/* Front face */}
+              <path d="M30 50 L70 30 L70 70 L30 90 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+              {/* Back face */}
+              <path d="M50 30 L90 10 L90 50 L50 70 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.4"/>
+              {/* Connecting lines */}
+              <line x1="30" y1="50" x2="50" y2="30" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="70" y1="30" x2="90" y2="10" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="70" y1="70" x2="90" y2="50" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="30" y1="90" x2="50" y2="70" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Bottom Left - Smaller wireframe shape */}
+        <div className="absolute bottom-8 left-8 sm:bottom-12 sm:left-12 z-0 opacity-30 pointer-events-none">
+          <div className="animate-float-fast">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform -rotate-6">
+              {/* Front face */}
+              <path d="M20 35 L50 20 L50 50 L20 65 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+              {/* Back face */}
+              <path d="M35 20 L65 5 L65 35 L35 50 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.4"/>
+              {/* Connecting lines */}
+              <line x1="20" y1="35" x2="35" y2="20" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="50" y1="20" x2="65" y2="5" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="50" y1="50" x2="65" y2="35" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="20" y1="65" x2="35" y2="50" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Bottom Right - Additional floating shape */}
+        <div className="absolute bottom-20 right-20 sm:bottom-24 sm:right-24 z-0 opacity-25 pointer-events-none">
+          <div className="animate-float-slow">
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform rotate-45">
+              <path d="M25 40 L60 25 L60 60 L25 75 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.5"/>
+              <path d="M40 25 L75 10 L75 45 L40 60 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.3"/>
+              <line x1="25" y1="40" x2="40" y2="25" stroke="#fbbf24" strokeWidth="1.5" opacity="0.4"/>
+              <line x1="60" y1="25" x2="75" y2="10" stroke="#fbbf24" strokeWidth="1.5" opacity="0.4"/>
+              <line x1="60" y1="60" x2="75" y2="45" stroke="#fbbf24" strokeWidth="1.5" opacity="0.4"/>
+              <line x1="25" y1="75" x2="40" y2="60" stroke="#fbbf24" strokeWidth="1.5" opacity="0.4"/>
+            </svg>
+          </div>
+        </div>
+
+
+        {/* All sections after hero with relative positioning */}
+        <div className="relative z-10">
+          <div ref={welcomeRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="p-6 sm:p-12 lg:p-16 rounded-xl">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-2 lg:gap-4 items-center">
             <div className="space-y-4 sm:space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-50">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-200">
                 Welcome to Gamotech IT &amp; Web Solutions!
               </h2>
-              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85 leading-relaxed">
+              <p className="text-base sm:text-lg text-justify lg:text-xl xl:text-xl text-white leading-relaxed">
                 We&apos;re your one-stop destination for comprehensive digital solutions, offering innovative IT services,
                 captivating web design, and strategic digital marketing expertise. Our mission is to empower businesses with
                 transformative technology and drive growth through targeted digital strategies. Follow us on LinkedIn to stay
@@ -531,11 +667,11 @@ const Home = () => {
         </div>
       </div>
 
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div
-          ref={countersRef}
-          className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-4 sm:px-8 lg:px-12 py-12 sm:py-20 lg:py-24 xl:py-32 shadow-2xl shadow-amber-500/10"
-        >
+          <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div
+              ref={countersRef}
+              className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 shadow-2xl shadow-amber-500/10"
+            >
         <div
           className="absolute inset-0 opacity-50 pointer-events-none"
           style={{
@@ -543,24 +679,24 @@ const Home = () => {
               'radial-gradient(circle at 20% 20%, rgba(245,180,0,0.2) 0, rgba(245,180,0,0) 35%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 32%), radial-gradient(circle at 50% 75%, rgba(245,180,0,0.15) 0, rgba(245,180,0,0) 34%)',
           }}
         />
-        <div className="relative grid gap-8 sm:gap-12 sm:grid-cols-2 lg:grid-cols-3 text-center">
+        <div className="relative grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 text-center">
           {COUNTERS.map((item, idx) => {
             const current = Math.min(item.target, Math.floor(counts[idx] ?? 0))
             return (
-              <div key={item.label} className="space-y-2 sm:space-y-4">
-                <p className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-none">
+              <div key={item.label} className="space-y-1 sm:space-y-2">
+                <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-none">
                   {current}+{/* keep plus visible */}
                 </p>
-                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85">{item.label}</p>
+                <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-amber-200/85">{item.label}</p>
               </div>
             )
           })}
         </div>
-        </div>
-      </div>
+            </div>
+          </div>
 
-      {/* Technologies We Use Section */}
-      <div ref={technologiesRef} className={`relative overflow-hidden w-full min-h-screen bg-black flex flex-col justify-center items-center space-y-8 sm:space-y-12 py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.technologies ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Technologies We Use Section */}
+          <div ref={technologiesRef} className={`relative overflow-hidden w-full min-h-screen bg-black flex flex-col justify-center items-center space-y-8 sm:space-y-12 py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.technologies ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="relative text-center z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
             Technologies We Use
@@ -633,8 +769,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Our Process Section */}
-      <div ref={processRef} className={`bg-black py-5 sm:py-10 lg:py-20 transition-all duration-1000 ${visibleSections.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Our Process Section */}
+          <div ref={processRef} className={`bg-black py-5 sm:py-10 lg:py-20 transition-all duration-1000 ${visibleSections.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Heading */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-8 sm:mb-12 lg:mb-16" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
@@ -642,118 +778,180 @@ const Home = () => {
             </h2>
             
             <div className="relative">
-              {/* Background decorative elements - Sun and Clouds (white/light gray) with floating animation */}
-              <div className="absolute -top-4 left-[8%] opacity-30 animate-float-slow">
+              {/* Background decorative elements - Sun and Clouds (white/light gray) with floating animation - Hidden on mobile */}
+              <div className="hidden sm:block absolute -top-4 left-[8%] opacity-30 animate-float-slow">
                 <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="5" />
                   <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="1.5" fill="none" />
                 </svg>
               </div>
-              <div className="absolute -top-2 right-[25%] opacity-25 animate-float-medium">
+              <div className="hidden sm:block absolute -top-2 right-[25%] opacity-25 animate-float-medium">
                 <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
                 </svg>
               </div>
-              <div className="absolute -top-2 right-[10%] opacity-25 animate-float-slow">
+              <div className="hidden sm:block absolute -top-2 right-[10%] opacity-25 animate-float-slow">
                 <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
                 </svg>
               </div>
 
-              {/* Process Flow */}
-              <div className="relative flex items-center justify-between flex-wrap gap-4 sm:gap-2 lg:gap-4 py-8 sm:py-12" style={{ minHeight: '200px' }}>
-                {/* Wavy/Curved SVG Path Container - Dashed line passing through center of each circle */}
-                <div className="hidden sm:block absolute inset-0 w-full pointer-events-none z-0" style={{ top: '25%', height: '80px' }}>
-                  <svg className="w-full h-full" viewBox="0 0 1000 80" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
-                    {/* Wavy curved dashed path from start (x=0) through center of all circles to end (x=1000) */}
-                    <path
-                      d="M 0 40 
-                         Q 100 30, 200 40
-                         Q 300 50, 400 40
-                         Q 500 30, 600 40
-                         Q 700 50, 800 40
-                         Q 900 30, 1000 40"
-                      fill="none"
-                      stroke="rgba(255,255,255,0.6)"
-                      strokeWidth="2"
-                      strokeDasharray="8,4"
-                      strokeLinecap="round"
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  </svg>
+              {/* Mobile Layout - Vertical with numbers and vertical line */}
+              <div className="sm:hidden space-y-8 py-8">
+                {/* Mobile Header */}
+                <div className="mb-8"> 
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                    Unique.<br />
+                    Strategic.<br />
+                    Timeless.
+                  </h3>
                 </div>
 
-                {/* Start Pin - White - Connected to the start of the line (x=0, y=40) */}
-                <div className="flex-shrink-0 z-20 absolute" style={{ left: '0%', top: 'calc(25% + 40px)', transform: 'translate(-50%, -50%)' }}>
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                  </svg>
-                </div>
-
-                {/* Process Stages */}
-                {[
-                  {
-                    title: 'Strategy',
-                    description: 'We begin by understanding your business goals, target audience, and market positioning. Our team conducts thorough research and analysis to develop a comprehensive strategy that aligns with your vision and drives measurable results.',
-                    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=200&fit=crop',
-                  },
-                  {
-                    title: 'Planning',
-                    description: 'With a clear strategy in place, we create detailed project plans, wireframes, and technical specifications. Our planning phase ensures every aspect of your project is carefully mapped out before development begins.',
-                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop',
-                  },
-                  {
-                    title: 'Build',
-                    description: 'Our expert developers bring your vision to life using cutting-edge technologies and best practices. We build scalable, secure, and high-performance solutions that exceed industry standards.',
-                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop',
-                  },
-                  {
-                    title: 'Our Work',
-                    description: 'We deliver fully functional, tested, and optimized solutions ready for deployment. Our work includes responsive designs, cross-platform compatibility, and ongoing support to ensure your success.',
-                    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&h=200&fit=crop',
-                  },
-                ].map((item, idx) => (
-                  <div 
-                    key={item.title} 
-                    className={`flex flex-col items-center flex-1 min-w-[120px] sm:min-w-[180px] lg:min-w-[220px] z-10 relative transition-all duration-1000 ${
-                      visibleProcessSteps[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
-                  >
-                    {/* Circular Image - Black border instead of white - Line passes through center */}
-                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-black shadow-lg mb-4 sm:mb-5 z-10">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.src = `https://via.placeholder.com/200/FFFFFF/000000?text=${item.title.charAt(0)}`
-                        }}
-                      />
+                {/* Mobile Process Steps with vertical line */}
+                <div className="relative pl-12">
+                  {/* Vertical Line */}
+                  <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-white/30"></div>
+                  
+                  {[
+                    {
+                      title: 'STRATEGY',
+                      description: 'We begin by understanding your business goals, target audience, and market positioning. Our team conducts thorough research and analysis to develop a comprehensive strategy that aligns with your vision and drives measurable results.',
+                    },
+                    {
+                      title: 'PLANNING',
+                      description: 'With a clear strategy in place, we create detailed project plans, wireframes, and technical specifications. Our planning phase ensures every aspect of your project is carefully mapped out before development begins.',
+                    },
+                    {
+                      title: 'BUILD',
+                      description: 'Our expert developers bring your vision to life using cutting-edge technologies and best practices. We build scalable, secure, and high-performance solutions that exceed industry standards.',
+                    },
+                    {
+                      title: 'OUR WORK',
+                      description: 'We deliver fully functional, tested, and optimized solutions ready for deployment. Our work includes responsive designs, cross-platform compatibility, and ongoing support to ensure your success.',
+                    },
+                  ].map((item, idx) => (
+                    <div 
+                      key={item.title}
+                      className={`relative mb-12 last:mb-0 transition-all duration-1000 ${
+                        visibleProcessSteps[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                      }`}
+                    >
+                      {/* Number Circle */}
+                      <div className="absolute -left-12 top-0 w-12 h-12 flex items-center justify-center">
+                        <span className="text-2xl font-bold text-white/60">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                      
+                      {/* Content */}
+                      <div>
+                        <h3 className="text-xl font-bold text-white uppercase mb-3 tracking-wide">
+                          {item.title}
+                        </h3>
+                        <p className="text-white/70 text-sm leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                    {/* Orange Title with modern font */}
-                    <h3 className="text-amber-500 font-bold text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4 text-center" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif", letterSpacing: '0.5px' }}>
-                      {item.title}
-                    </h3>
-                    {/* Detailed Description */}
-                    <p className="text-white/80 text-xs sm:text-sm lg:text-base leading-relaxed text-center px-2 sm:px-0 max-w-xs">
-                      {item.description}
-                    </p>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
 
-                {/* End Pin - White - Connected to the end of the line (x=1000, y=40) */}
-                <div className="flex-shrink-0 z-20 absolute" style={{ right: '0%', top: 'calc(25% + 40px)', transform: 'translate(50%, -50%)' }}>
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                  </svg>
+              {/* Desktop/Tablet Layout - Original horizontal flow */}
+              <div className="hidden sm:block relative">
+                {/* Process Flow */}
+                <div className="relative flex items-center justify-between flex-wrap gap-4 sm:gap-2 lg:gap-4 py-8 sm:py-12" style={{ minHeight: '200px' }}>
+                  {/* Wavy/Curved SVG Path Container - Dashed line passing through center of each circle */}
+                  <div className="hidden sm:block absolute inset-0 w-full pointer-events-none z-0" style={{ top: '25%', height: '80px' }}>
+                    <svg className="w-full h-full" viewBox="0 0 1000 80" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
+                      {/* Wavy curved dashed path from start (x=0) through center of all circles to end (x=1000) */}
+                      <path
+                        d="M 0 40 
+                           Q 100 30, 200 40
+                           Q 300 50, 400 40
+                           Q 500 30, 600 40
+                           Q 700 50, 800 40
+                           Q 900 30, 1000 40"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.6)"
+                        strokeWidth="2"
+                        strokeDasharray="8,4"
+                        strokeLinecap="round"
+                        vectorEffect="non-scaling-stroke"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Start Pin - White - Connected to the start of the line (x=0, y=40) */}
+                  <div className="flex-shrink-0 z-20 absolute" style={{ left: '0%', top: 'calc(25% + 40px)', transform: 'translate(-50%, -50%)' }}>
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                  </div>
+
+                  {/* Process Stages */}
+                  {[
+                    {
+                      title: 'Strategy',
+                      description: 'We begin by understanding your business goals, target audience, and market positioning. Our team conducts thorough research and analysis to develop a comprehensive strategy that aligns with your vision and drives measurable results.',
+                      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=200&fit=crop',
+                    },
+                    {
+                      title: 'Planning',
+                      description: 'With a clear strategy in place, we create detailed project plans, wireframes, and technical specifications. Our planning phase ensures every aspect of your project is carefully mapped out before development begins.',
+                      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop',
+                    },
+                    {
+                      title: 'Build',
+                      description: 'Our expert developers bring your vision to life using cutting-edge technologies and best practices. We build scalable, secure, and high-performance solutions that exceed industry standards.',
+                      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop',
+                    },
+                    {
+                      title: 'Our Work',
+                      description: 'We deliver fully functional, tested, and optimized solutions ready for deployment. Our work includes responsive designs, cross-platform compatibility, and ongoing support to ensure your success.',
+                      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&h=200&fit=crop',
+                    },
+                  ].map((item, idx) => (
+                    <div 
+                      key={item.title} 
+                      className={`flex flex-col items-center flex-1 min-w-[120px] sm:min-w-[180px] lg:min-w-[220px] z-10 relative transition-all duration-1000 ${
+                        visibleProcessSteps[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                      }`}
+                    >
+                      {/* Circular Image - Black border instead of white - Line passes through center */}
+                      <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-black shadow-lg mb-4 sm:mb-5 z-10">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.src = `https://via.placeholder.com/200/FFFFFF/000000?text=${item.title.charAt(0)}`
+                          }}
+                        />
+                      </div>
+                      {/* Orange Title with modern font */}
+                      <h3 className="text-amber-500 font-bold text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4 text-center" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif", letterSpacing: '0.5px' }}>
+                        {item.title}
+                      </h3>
+                      {/* Detailed Description */}
+                      <p className="text-white/80 text-xs sm:text-sm lg:text-base leading-relaxed text-center px-2 sm:px-0 max-w-xs">
+                        {item.description}
+                      </p>
+                    </div>
+                  ))}
+
+                  {/* End Pin - White - Connected to the end of the line (x=1000, y=40) */}
+                  <div className="flex-shrink-0 z-20 absolute" style={{ right: '0%', top: 'calc(25% + 40px)', transform: 'translate(50%, -50%)' }}>
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-      {/* Our Clients Section */}
-      <div ref={clientsRef} className={`relative overflow-hidden w-full bg-black py-5 sm:py-8 lg:py-10 transition-all duration-1000 ${visibleSections.clients ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Our Clients Section */}
+          <div ref={clientsRef} className={`relative overflow-hidden w-full bg-black py-5 sm:py-8 lg:py-10 transition-all duration-1000 ${visibleSections.clients ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
@@ -814,8 +1012,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Why Choose Us Section */}
-      <div ref={whyChooseRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.whyChoose ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Why Choose Us Section */}
+          <div ref={whyChooseRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.whyChoose ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-12 sm:mb-16">
           Why choose Gamotech?
         </h2>
@@ -880,6 +1078,8 @@ const Home = () => {
               </p>
             </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
     </section>

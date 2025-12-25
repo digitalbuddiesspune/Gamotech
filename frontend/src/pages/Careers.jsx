@@ -336,10 +336,10 @@ const Careers = () => {
               }`}
               style={{ transitionDelay: '0.2s' }}
             >
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white leading-tight whitespace-nowrap sm:whitespace-normal">
                 We Are
-                <br />
-                <span className="text-white">Gamotech</span>
+                <br className="hidden sm:block" />
+                <span className="text-white"> Gamotech</span>
               </h2>
             </div>
             

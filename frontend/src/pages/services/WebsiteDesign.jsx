@@ -75,7 +75,7 @@ const WebsiteDesign = () => {
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             {/* Hero Section - Full Width */}
-            <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden mt-16 sm:mt-20">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <img
@@ -484,9 +484,9 @@ const WebsiteDesign = () => {
                             </p>
                             <Link
                                 to="/contact-us"
-                                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold px-8 py-4 rounded-lg hover:from-amber-400 hover:to-amber-500 transition-all duration-300 text-lg shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 hover:scale-105 relative z-10"
+                                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 !text-white font-semibold px-8 py-4 rounded-lg hover:from-amber-400 hover:to-amber-500 transition-all duration-300 text-lg shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 hover:scale-105 relative z-10"
                             >
-                                <span>👉 Contact Gamotech today to get started</span>
+                                <span>👉 Get started</span>
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>

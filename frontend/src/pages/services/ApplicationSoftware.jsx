@@ -11,7 +11,7 @@ const ApplicationSoftware = () => {
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             {/* Hero Section - Full Width */}
-            <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden mt-16 sm:mt-20">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <img
@@ -277,9 +277,9 @@ const ApplicationSoftware = () => {
                         </p>
                         <Link
                             to="/contact-us"
-                            className="inline-flex items-center gap-2 bg-amber-500 text-white font-semibold px-8 py-4 rounded-lg hover:bg-amber-400 transition-colors text-lg"
+                            className="inline-flex items-center gap-2 bg-amber-500 !text-white font-semibold px-8 py-4 rounded-lg hover:bg-amber-400 transition-colors text-lg"
                         >
-                            <span>👉 Contact Gamotech to discuss your requirements and get started</span>
+                            <span>👉 Get started</span>
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>

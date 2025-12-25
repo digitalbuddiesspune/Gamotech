@@ -172,8 +172,6 @@ const Home = () => {
   const hasAnimatedProcessSteps = useRef(false)
   const heroRef = useRef(null)
   const [typewriterText, setTypewriterText] = useState('')
-  const [showCursor, setShowCursor] = useState(false)
-  const [cursorVisible, setCursorVisible] = useState(true)
   const hasStartedTyping = useRef(false)
   const services = [
     {
@@ -349,7 +347,6 @@ const Home = () => {
             
             // Delay before starting typing (after heading appears)
             setTimeout(() => {
-              setShowCursor(true) // Show cursor when typing starts
               let currentIndex = 0
               
               const typeInterval = setInterval(() => {
@@ -358,10 +355,7 @@ const Home = () => {
                   currentIndex++
                 } else {
                   clearInterval(typeInterval)
-                  // Hide cursor after typing completes
-                  setTimeout(() => {
-                    setShowCursor(false)
-                  }, 1000)
+                  setTypingDone(true) // 👈 STOP cursor blinking
                 }
               }, typingSpeed)
             }, 500) // Delay after section appears
@@ -378,19 +372,8 @@ const Home = () => {
     }
   }, [])
 
-  // Blinking cursor effect
-  useEffect(() => {
-    if (!showCursor) return
-    
-    const cursorInterval = setInterval(() => {
-      setCursorVisible((prev) => !prev)
-    }, 530) // Blink every 530ms
-
-    return () => clearInterval(cursorInterval)
-  }, [showCursor])
-
   return (
-    <section className="space-y-16 sm:space-y-20 pt-0 md:pt-0">
+    <section className="space-y-20 sm:space-y-24 lg:space-y-32 pt-0 md:pt-0">
       {/* Hero Section - No background effects */}
       <div className="relative overflow-hidden w-full h-screen bg-black flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
@@ -415,7 +398,6 @@ const Home = () => {
                   {typewriterText}
                 </span>
               )}
-              {showCursor && cursorVisible && <span className="inline-block w-0.5 h-[0.9em] bg-amber-50 ml-1 align-middle transition-opacity duration-300">|</span>}
             </span>
           </h1>
           <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-amber-200/85 px-2 sm:px-0">
@@ -506,7 +488,7 @@ const Home = () => {
 
         {/* All sections after hero with relative positioning */}
         <div className="relative z-10">
-          <div ref={welcomeRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div ref={welcomeRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="p-6 sm:p-12 lg:p-16 rounded-xl">
           <div className="grid md:grid-cols-2 gap-2 lg:gap-4 items-center">
             <div className="space-y-4 sm:space-y-6">
@@ -667,7 +649,7 @@ const Home = () => {
         </div>
       </div>
 
-          <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div
               ref={countersRef}
               className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-black px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 shadow-2xl shadow-amber-500/10"
@@ -707,7 +689,7 @@ const Home = () => {
         </div>
 
         {/* Logo Carousel */}
-        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-4 sm:py-6 lg:py-8">
+        <div className="relative overflow-hidden w-full max-w-7xl mx-auto py-5 sm:py-6 lg:py-8">
           <div className="flex animate-scroll-left">
             {/* Duplicate items for seamless loop */}
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
@@ -770,32 +752,14 @@ const Home = () => {
       </div>
 
           {/* Our Process Section */}
-          <div ref={processRef} className={`bg-black py-5 sm:py-10 lg:py-20 transition-all duration-1000 ${visibleSections.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div ref={processRef} className={`bg-black py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Heading */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-8 sm:mb-12 lg:mb-16" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-              How we works?
+              How we work?
             </h2>
             
             <div className="relative">
-              {/* Background decorative elements - Sun and Clouds (white/light gray) with floating animation - Hidden on mobile */}
-              <div className="hidden sm:block absolute -top-4 left-[8%] opacity-30 animate-float-slow">
-                <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="5" />
-                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                </svg>
-              </div>
-              <div className="hidden sm:block absolute -top-2 right-[25%] opacity-25 animate-float-medium">
-                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                </svg>
-              </div>
-              <div className="hidden sm:block absolute -top-2 right-[10%] opacity-25 animate-float-slow">
-                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                </svg>
-              </div>
-
               {/* Mobile Layout - Vertical with numbers and vertical line */}
               <div className="sm:hidden space-y-8 py-8">
                 {/* Mobile Header */}
@@ -855,94 +819,98 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Desktop/Tablet Layout - Original horizontal flow */}
+              {/* Desktop/Tablet Layout - Two Column with Icons */}
               <div className="hidden sm:block relative">
-                {/* Process Flow */}
-                <div className="relative flex items-center justify-between flex-wrap gap-4 sm:gap-2 lg:gap-4 py-8 sm:py-12" style={{ minHeight: '200px' }}>
-                  {/* Wavy/Curved SVG Path Container - Dashed line passing through center of each circle */}
-                  <div className="hidden sm:block absolute inset-0 w-full pointer-events-none z-0" style={{ top: '25%', height: '80px' }}>
-                    <svg className="w-full h-full" viewBox="0 0 1000 80" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
-                      {/* Wavy curved dashed path from start (x=0) through center of all circles to end (x=1000) */}
-                      <path
-                        d="M 0 40 
-                           Q 100 30, 200 40
-                           Q 300 50, 400 40
-                           Q 500 30, 600 40
-                           Q 700 50, 800 40
-                           Q 900 30, 1000 40"
-                        fill="none"
-                        stroke="rgba(255,255,255,0.6)"
-                        strokeWidth="2"
-                        strokeDasharray="8,4"
-                        strokeLinecap="round"
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Start Pin - White - Connected to the start of the line (x=0, y=40) */}
-                  <div className="flex-shrink-0 z-20 absolute" style={{ left: '0%', top: 'calc(25% + 40px)', transform: 'translate(-50%, -50%)' }}>
-                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                  </div>
-
-                  {/* Process Stages */}
-                  {[
-                    {
-                      title: 'Strategy',
-                      description: 'We begin by understanding your business goals, target audience, and market positioning. Our team conducts thorough research and analysis to develop a comprehensive strategy that aligns with your vision and drives measurable results.',
-                      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=200&fit=crop',
-                    },
-                    {
-                      title: 'Planning',
-                      description: 'With a clear strategy in place, we create detailed project plans, wireframes, and technical specifications. Our planning phase ensures every aspect of your project is carefully mapped out before development begins.',
-                      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop',
-                    },
-                    {
-                      title: 'Build',
-                      description: 'Our expert developers bring your vision to life using cutting-edge technologies and best practices. We build scalable, secure, and high-performance solutions that exceed industry standards.',
-                      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop',
-                    },
-                    {
-                      title: 'Our Work',
-                      description: 'We deliver fully functional, tested, and optimized solutions ready for deployment. Our work includes responsive designs, cross-platform compatibility, and ongoing support to ensure your success.',
-                      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&h=200&fit=crop',
-                    },
-                  ].map((item, idx) => (
-                    <div 
-                      key={item.title} 
-                      className={`flex flex-col items-center flex-1 min-w-[120px] sm:min-w-[180px] lg:min-w-[220px] z-10 relative transition-all duration-1000 ${
-                        visibleProcessSteps[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                      }`}
-                    >
-                      {/* Circular Image - Black border instead of white - Line passes through center */}
-                      <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-black shadow-lg mb-4 sm:mb-5 z-10">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            e.target.src = `https://via.placeholder.com/200/FFFFFF/000000?text=${item.title.charAt(0)}`
-                          }}
-                        />
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center py-6 sm:py-8">
+                  {/* Left Side - Visual Element */}
+                  <div className="flex items-center justify-center">
+                    <div className="relative w-full max-w-md">
+                      <div className="aspect-square rounded-2xl bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 flex items-center justify-center p-12">
+                        <div className="text-center space-y-4">
+                          <div className="w-24 h-24 mx-auto bg-amber-500/20 rounded-full flex items-center justify-center">
+                            <svg className="w-12 h-12 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          </div>
+                          <p className="text-amber-500/60 text-sm font-medium">Our Process</p>
+                        </div>
                       </div>
-                      {/* Orange Title with modern font */}
-                      <h3 className="text-amber-500 font-bold text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4 text-center" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif", letterSpacing: '0.5px' }}>
-                        {item.title}
-                      </h3>
-                      {/* Detailed Description */}
-                      <p className="text-white/80 text-xs sm:text-sm lg:text-base leading-relaxed text-center px-2 sm:px-0 max-w-xs">
-                        {item.description}
-                      </p>
                     </div>
-                  ))}
+                  </div>
 
-                  {/* End Pin - White - Connected to the end of the line (x=1000, y=40) */}
-                  <div className="flex-shrink-0 z-20 absolute" style={{ right: '0%', top: 'calc(25% + 40px)', transform: 'translate(50%, -50%)' }}>
-                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
+                  {/* Right Side - Process Items Grid */}
+                  <div className="space-y-6">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-8">
+                      Explore our comprehensive service offerings
+                    </h3>
+                    
+                    <div className="grid grid-cols-2 gap-6">
+                      {[
+                        {
+                          title: 'Strategy',
+                          description: 'We begin by understanding your business goals, target audience, and market positioning. Our team conducts thorough research and analysis to develop a comprehensive strategy that aligns with your vision and drives measurable results.',
+                          icon: (
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                          ),
+                        },
+                        {
+                          title: 'Planning',
+                          description: 'With a clear strategy in place, we create detailed project plans, wireframes, and technical specifications. Our planning phase ensures every aspect of your project is carefully mapped out before development begins.',
+                          icon: (
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                          ),
+                        },
+                        {
+                          title: 'Build',
+                          description: 'Our expert developers bring your vision to life using cutting-edge technologies and best practices. We build scalable, secure, and high-performance solutions that exceed industry standards.',
+                          icon: (
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                          ),
+                        },
+                        {
+                          title: 'Our Work',
+                          description: 'We deliver fully functional, tested, and optimized solutions ready for deployment. Our work includes responsive designs, cross-platform compatibility, and ongoing support to ensure your success.',
+                          icon: (
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                          ),
+                        },
+                      ].map((item, idx) => (
+                        <div 
+                          key={item.title}
+                          className={`transition-all duration-1000 ${
+                            visibleProcessSteps[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                          }`}
+                          style={{ transitionDelay: `${idx * 100}ms` }}
+                        >
+                          <div className="flex items-start space-x-4">
+                            {/* Amber/Yellow Circular Icon */}
+                            <div className="flex-shrink-0 w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white">
+                              {item.icon}
+                            </div>
+                            
+                            {/* Content */}
+                            <div className="flex-1">
+                              <h4 className="text-lg font-bold text-white mb-2">
+                                {item.title}
+                              </h4>
+                              <p className="text-sm text-white/70 leading-relaxed">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -951,7 +919,7 @@ const Home = () => {
         </div>
 
           {/* Our Clients Section */}
-          <div ref={clientsRef} className={`relative overflow-hidden w-full bg-black py-5 sm:py-8 lg:py-10 transition-all duration-1000 ${visibleSections.clients ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div ref={clientsRef} className={`relative overflow-hidden w-full bg-black py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.clients ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
@@ -1080,6 +1048,120 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+          {/* Digital Marketing Section */}
+          <div className={`relative overflow-hidden py-12 sm:py-16 lg:py-20 transition-all duration-1000 bg-black`}>
+            
+            {/* Decorative Dashed Lines */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
+                <path
+                  d="M 0 100 Q 200 200, 400 150 Q 600 100, 800 200 Q 1000 300, 1200 250"
+                  fill="none"
+                  stroke="rgba(245, 180, 0, 0.56)"
+                  strokeWidth="2"
+                  strokeDasharray="8, 4"
+                  className="opacity-50"
+                />
+                <path
+                  d="M 200 0 Q 400 100, 600 50 Q 800 0, 1000 100 Q 1100 150, 1200 100"
+                  fill="none"
+                  stroke="rgba(245, 180, 0, 0.56)"
+                  strokeWidth="2"
+                  strokeDasharray="8, 4"
+                  className="opacity-50"
+                />
+              </svg>
+            </div>
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Small Decorative Elements */}
+              <div className="absolute top-4 left-4 sm:top-8 sm:left-8 opacity-60">
+                <div className="flex gap-1">
+                  <div className="w-1 h-1 bg-amber-800"></div>
+                  <div className="w-1 h-1 bg-amber-800"></div>
+                  <div className="w-1 h-1 bg-amber-800"></div>
+                </div>
+              </div>
+              <div className="absolute top-4 right-4 sm:top-8 sm:right-8">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+
+              <div className="text-center space-y-6 sm:space-y-8">
+                {/* Main Title */}
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+                  <span className="bg-amber-500 px-3 sm:px-4 py-1 sm:py-2 rounded">Digital</span>{' '}
+                  <span className="text-white">marketing agency</span>
+                </h2>
+
+                {/* Tagline */}
+                <p className="text-lg sm:text-xl lg:text-2xl text-white/80">
+                  Improve your business in digital.
+                </p>
+
+                {/* Get Started Button */}
+                <div className="flex justify-center">
+                  <a
+                    href="https://www.digitalbuddiess.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-amber-500 hover:bg-amber-600 !text-white font-semibold px-8 sm:px-12 py-3 sm:py-4 rounded-lg transition-colors duration-200 shadow-lg shadow-amber-500/25"
+                  >
+                    Get started
+                  </a>
+                </div>
+
+                {/* Three Portrait Images */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
+                  {/* Left Image - Amber Background */}
+                  <div className="relative">
+                    <div className="aspect-square rounded-2xl bg-amber-500/20 border border-amber-500/30 overflow-hidden flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-amber-500/30 to-amber-600/20 flex items-center justify-center">
+                        <svg className="w-32 h-32 sm:w-40 sm:h-40 text-amber-500 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Middle Image - Purple/Amber Background */}
+                  <div className="relative">
+                    <div className="aspect-square rounded-2xl bg-purple-500/20 border border-purple-500/30 overflow-hidden flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-purple-500/30 to-purple-600/20 flex items-center justify-center">
+                        <svg className="w-32 h-32 sm:w-40 sm:h-40 text-purple-400 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Image - Blue/Amber Background */}
+                  <div className="relative">
+                    <div className="aspect-square rounded-2xl bg-blue-500/20 border border-blue-500/30 overflow-hidden flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-blue-500/30 to-blue-600/20 flex items-center justify-center">
+                        <svg className="w-32 h-32 sm:w-40 sm:h-40 text-blue-400 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Digital Buddies Logo at Bottom */}
+                <div className="flex justify-center mt-12 sm:mt-16">
+                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+                    <img
+                      src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766584384/digital_buddiess_logo2_ns62aj.png"
+                      alt="Digital Buddies Logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

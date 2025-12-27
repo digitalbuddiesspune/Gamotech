@@ -8,13 +8,11 @@ const WebsiteDesign = () => {
         whatWeOffer: false,
         developmentApproach: false,
         whyChoose: false,
-        whoIsFor: false,
     })
     const whyMattersRef = useRef(null)
     const whatWeOfferRef = useRef(null)
     const developmentApproachRef = useRef(null)
     const whyChooseRef = useRef(null)
-    const whoIsForRef = useRef(null)
 
     useEffect(() => {
         setIsVisible(true)
@@ -27,7 +25,6 @@ const WebsiteDesign = () => {
             { ref: whatWeOfferRef, key: 'whatWeOffer' },
             { ref: developmentApproachRef, key: 'developmentApproach' },
             { ref: whyChooseRef, key: 'whyChoose' },
-            { ref: whoIsForRef, key: 'whoIsFor' },
         ]
 
         const observers = []
@@ -131,18 +128,18 @@ const WebsiteDesign = () => {
 
                     {/* Description Section */}
                     <div className="mb-20 relative">
-                        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                        <div className="grid md:grid-cols-2 gap-4 lg:gap-6 items-center">
                             <div className="space-y-4">
-                                <p className="text-lg sm:text-xl text-amber-200/80 leading-relaxed">
+                                <p className="text-lg text-justify sm:text-xl text-amber-200/80 leading-relaxed">
                                     Your website is more than just an online presence — it is the digital foundation of your business. At Gamotech, we design and develop websites that are visually appealing, technically strong, and strategically built to convert visitors into genuine business enquiries.
                                 </p>
-                                <p className="text-lg sm:text-xl text-amber-200/80 leading-relaxed">
+                                <p className="text-lg text-justify sm:text-xl text-amber-200/80 leading-relaxed">
                                     We combine modern design, clean development, and business thinking to deliver websites that help you grow, build trust, and stand out in a competitive market.
                                 </p>
                             </div>
                             <div className="flex justify-center md:justify-end">
                                 <img
-                                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766489610/b1.3_sd7o8s.gif"
+                                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766817385/SEO-Friendly-Website-Design_iyxt3s.png"
                                     alt="Website Design & Development"
                                     className="w-full max-w-md rounded-lg shadow-lg"
                                 />
@@ -165,7 +162,7 @@ const WebsiteDesign = () => {
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                                    <p className="text-amber-200/95 text-lg font-medium">First impressions are formed in seconds</p>
+                                    <p className="text-white text-lg font-medium">First impressions are formed in seconds</p>
                                 </div>
                             </div>
                             <div
@@ -175,7 +172,7 @@ const WebsiteDesign = () => {
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                                    <p className="text-amber-200/95 text-lg font-medium">Customers judge credibility based on website quality</p>
+                                    <p className="text-white text-lg font-medium">Customers judge credibility based on website quality</p>
                                 </div>
                             </div>
                             <div
@@ -185,7 +182,7 @@ const WebsiteDesign = () => {
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                                    <p className="text-amber-200/95 text-lg font-medium">Speed and mobile experience directly impact conversions</p>
+                                    <p className="text-white text-lg font-medium">Speed and mobile experience directly impact conversions</p>
                                 </div>
                             </div>
                             <div
@@ -195,7 +192,7 @@ const WebsiteDesign = () => {
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                                    <p className="text-amber-200/95 text-lg font-medium">SEO-friendly structure improves long-term visibility</p>
+                                    <p className="text-white text-lg font-medium">SEO-friendly structure improves long-term visibility</p>
                                 </div>
                             </div>
                         </div>
@@ -216,166 +213,119 @@ const WebsiteDesign = () => {
                             <div className="absolute -bottom-2 left-0 h-1 w-24 bg-gradient-to-r from-amber-500 to-transparent"></div>
                         </h2>
                         <div className="space-y-6">
-                            <div className="group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 sm:p-8 hover:border-amber-500/60 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1">
-                                <div className="flex items-start gap-6">
-                                    <div
-                                        className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 border border-amber-500/30 flex items-center justify-center text-3xl group-hover:scale-110 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-                                            }`}
-                                        style={{ transitionDelay: '0ms' }}
+                            <h3 className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-8 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                                }`}>
+                                Explore our comprehensive service offerings
+                            </h3>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {[
+                                    {
+                                        title: 'Business & Corporate Websites',
+                                        description: 'Professional websites tailored to your brand identity, business goals, and target audience. Perfect for startups, SMEs, and established companies.',
+                                        icon: '🌐',
+                                    },
+                                    {
+                                        title: 'Website Redesign & Performance Optimization',
+                                        description: 'Already have a website? We modernize outdated designs, improve speed, enhance usability, and optimize performance without losing your existing content or SEO value.',
+                                        icon: '🔄',
+                                    },
+                                    {
+                                        title: 'SEO-Friendly Website Structure',
+                                        description: 'From clean URLs to proper heading hierarchy and fast-loading pages, we build websites that search engines love — right from day one.',
+                                        icon: '🔍',
+                                    },
+                                    {
+                                        title: 'Mobile-Responsive UI',
+                                        description: 'Your website will work seamlessly across mobiles, tablets, and desktops, ensuring a consistent experience on all screen sizes.',
+                                        icon: '📱',
+                                    },
+                                    {
+                                        title: 'Secure & Scalable Development',
+                                        description: 'We use best practices for security and scalability, ensuring your website grows smoothly as your business expands.',
+                                        icon: '🔐',
+                                    },
+                                ].map((item, idx) => (
+                                    <div 
+                                        key={item.title}
+                                        className={`transition-all duration-1000 ${
+                                            visibleSections.whatWeOffer ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                        }`}
+                                        style={{ transitionDelay: `${idx * 100}ms` }}
                                     >
-                                        🌐
+                                        <div className="flex items-start space-x-4">
+                                            {/* Amber/Yellow Circular Icon */}
+                                            <div className="flex-shrink-0 w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white text-xl">
+                                                {item.icon}
+                                            </div>
+                                            
+                                            {/* Content */}
+                                            <div className="flex-1">
+                                                <h4 className="text-lg font-bold text-white mb-2">
+                                                    {item.title}
+                                                </h4>
+                                                <p className="text-sm text-white/70 leading-relaxed">
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div
-                                        className={`flex-1 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                            }`}
-                                        style={{ transitionDelay: '150ms' }}
-                                    >
-                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">Business & Corporate Websites</h3>
-                                        <p className="text-amber-200/85 leading-relaxed">
-                                            Professional websites tailored to your brand identity, business goals, and target audience. Perfect for startups, SMEs, and established companies.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 sm:p-8 hover:border-amber-500/60 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1">
-                                <div className="flex items-start gap-6">
-                                    <div
-                                        className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 border border-amber-500/30 flex items-center justify-center text-3xl group-hover:scale-110 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-                                            }`}
-                                        style={{ transitionDelay: '100ms' }}
-                                    >
-                                        🔄
-                                    </div>
-                                    <div
-                                        className={`flex-1 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                            }`}
-                                        style={{ transitionDelay: '250ms' }}
-                                    >
-                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">Website Redesign & Performance Optimization</h3>
-                                        <p className="text-amber-200/85 leading-relaxed">
-                                            Already have a website? We modernize outdated designs, improve speed, enhance usability, and optimize performance without losing your existing content or SEO value.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 sm:p-8 hover:border-amber-500/60 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1">
-                                <div className="flex items-start gap-6">
-                                    <div
-                                        className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 border border-amber-500/30 flex items-center justify-center text-3xl group-hover:scale-110 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-                                            }`}
-                                        style={{ transitionDelay: '200ms' }}
-                                    >
-                                        🔍
-                                    </div>
-                                    <div
-                                        className={`flex-1 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                            }`}
-                                        style={{ transitionDelay: '350ms' }}
-                                    >
-                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">SEO-Friendly Website Structure</h3>
-                                        <p className="text-amber-200/85 leading-relaxed">
-                                            From clean URLs to proper heading hierarchy and fast-loading pages, we build websites that search engines love — right from day one.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 sm:p-8 hover:border-amber-500/60 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1">
-                                <div className="flex items-start gap-6">
-                                    <div
-                                        className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 border border-amber-500/30 flex items-center justify-center text-3xl group-hover:scale-110 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-                                            }`}
-                                        style={{ transitionDelay: '300ms' }}
-                                    >
-                                        📱
-                                    </div>
-                                    <div
-                                        className={`flex-1 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                            }`}
-                                        style={{ transitionDelay: '450ms' }}
-                                    >
-                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">Mobile-Responsive UI</h3>
-                                        <p className="text-amber-200/85 leading-relaxed">
-                                            Your website will work seamlessly across mobiles, tablets, and desktops, ensuring a consistent experience on all screen sizes.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 sm:p-8 hover:border-amber-500/60 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1">
-                                <div className="flex items-start gap-6">
-                                    <div
-                                        className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 border border-amber-500/30 flex items-center justify-center text-3xl group-hover:scale-110 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-                                            }`}
-                                        style={{ transitionDelay: '400ms' }}
-                                    >
-                                        🔐
-                                    </div>
-                                    <div
-                                        className={`flex-1 transition-all duration-700 ease-out ${visibleSections.whatWeOffer ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                            }`}
-                                        style={{ transitionDelay: '550ms' }}
-                                    >
-                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">Secure & Scalable Development</h3>
-                                        <p className="text-amber-200/85 leading-relaxed">
-                                            We use best practices for security and scalability, ensuring your website grows smoothly as your business expands.
-                                        </p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
 
                     {/* Our Development Approach */}
                     <div ref={developmentApproachRef} className="mb-20 relative">
-                        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-10 relative transition-all duration-700 ease-out ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-10 text-center transition-all duration-700 ease-out ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                             }`}>
-                            <span className="relative z-10">Our Development Approach</span>
-                            <div className="absolute -bottom-2 left-0 h-1 w-24 bg-gradient-to-r from-amber-500 to-transparent"></div>
+                            Our Development Approach
                         </h2>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '150ms' }}
-                            >
-                                <h3 className="text-lg font-semibold text-amber-400 mb-2 group-hover:text-amber-300 transition-colors">Understanding Your Business</h3>
-                                <p className="text-amber-200/85">– goals, audience, competitors</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '200ms' }}
-                            >
-                                <h3 className="text-lg font-semibold text-amber-400 mb-2 group-hover:text-amber-300 transition-colors">Strategic UI/UX Planning</h3>
-                                <p className="text-amber-200/85">– clarity, navigation, and conversion flow</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '250ms' }}
-                            >
-                                <h3 className="text-lg font-semibold text-amber-400 mb-2 group-hover:text-amber-300 transition-colors">Clean Development</h3>
-                                <p className="text-amber-200/85">– fast, optimized, maintainable code</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '300ms' }}
-                            >
-                                <h3 className="text-lg font-semibold text-amber-400 mb-2 group-hover:text-amber-300 transition-colors">Testing Across Devices</h3>
-                                <p className="text-amber-200/85">– performance and responsiveness</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '350ms' }}
-                            >
-                                <h3 className="text-lg font-semibold text-amber-400 mb-2 group-hover:text-amber-300 transition-colors">Launch & Support</h3>
-                                <p className="text-amber-200/85">– smooth deployment with ongoing assistance</p>
-                            </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                            {[
+                                {
+                                    number: '01',
+                                    title: 'Understanding Your Business',
+                                    description: 'Goals, audience, competitors',
+                                },
+                                {
+                                    number: '02',
+                                    title: 'Strategic UI/UX Planning',
+                                    description: 'Clarity, navigation, and conversion flow',
+                                },
+                                {
+                                    number: '03',
+                                    title: 'Clean Development',
+                                    description: 'Fast, optimized, maintainable code',
+                                },
+                                {
+                                    number: '04',
+                                    title: 'Testing Across Devices',
+                                    description: 'Performance and responsiveness',
+                                },
+                                {
+                                    number: '05',
+                                    title: 'Launch & Support',
+                                    description: 'Smooth deployment with ongoing assistance',
+                                },
+                            ].map((item, idx) => (
+                                <div
+                                    key={item.number}
+                                    className={`bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.developmentApproach ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                                        }`}
+                                    style={{ transitionDelay: `${idx * 150}ms` }}
+                                >
+                                    <div className="text-amber-500 text-2xl sm:text-3xl font-bold mb-3">
+                                        {item.number}
+                                    </div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
@@ -420,52 +370,6 @@ const WebsiteDesign = () => {
                             <p className="text-xl text-white font-semibold mt-8 text-center">
                                 We don't just build websites — we build digital assets that support your business goals.
                             </p>
-                        </div>
-                    </div>
-
-                    {/* Who Is This Service For */}
-                    <div ref={whoIsForRef} className="mb-20 relative">
-                        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-10 relative transition-all duration-700 ease-out ${visibleSections.whoIsFor ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                            }`}>
-                            <span className="relative z-10">Who Is This Service For?</span>
-                            <div className="absolute -bottom-2 left-0 h-1 w-24 bg-gradient-to-r from-amber-500 to-transparent"></div>
-                        </h2>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 text-center hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.whoIsFor ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '150ms' }}
-                            >
-                                <p className="text-amber-200/95 text-lg font-medium">Small & medium businesses</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 text-center hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.whoIsFor ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '200ms' }}
-                            >
-                                <p className="text-amber-200/95 text-lg font-medium">Startups & entrepreneurs</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 text-center hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.whoIsFor ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '250ms' }}
-                            >
-                                <p className="text-amber-200/95 text-lg font-medium">Local service providers</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 text-center hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.whoIsFor ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '300ms' }}
-                            >
-                                <p className="text-amber-200/95 text-lg font-medium">Corporate firms</p>
-                            </div>
-                            <div
-                                className={`group bg-gradient-to-br from-black/60 to-black/40 border border-amber-500/40 rounded-xl p-6 text-center md:col-span-2 lg:col-span-1 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-700 ease-out hover:-translate-y-1 ${visibleSections.whoIsFor ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                                    }`}
-                                style={{ transitionDelay: '350ms' }}
-                            >
-                                <p className="text-amber-200/95 text-lg font-medium">Businesses looking to upgrade or redesign their website</p>
-                            </div>
                         </div>
                     </div>
 

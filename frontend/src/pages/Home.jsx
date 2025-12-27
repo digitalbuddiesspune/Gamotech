@@ -159,14 +159,12 @@ const Home = () => {
   const processRef = useRef(null)
   const technologiesRef = useRef(null)
   const clientsRef = useRef(null)
-  const whyChooseRef = useRef(null)
   const [visibleSections, setVisibleSections] = useState({
     welcome: false,
     services: false,
     process: false,
     technologies: false,
     clients: false,
-    whyChoose: false,
   })
   const [visibleProcessSteps, setVisibleProcessSteps] = useState([false, false, false, false])
   const hasAnimatedProcessSteps = useRef(false)
@@ -287,7 +285,6 @@ const Home = () => {
       { ref: processRef, key: 'process' },
       { ref: technologiesRef, key: 'technologies' },
       { ref: clientsRef, key: 'clients' },
-      { ref: whyChooseRef, key: 'whyChoose' },
     ]
 
     const observers = sections.map(({ ref, key }) => {
@@ -389,12 +386,12 @@ const Home = () => {
         </div>
         <div className="absolute inset-0 bg-black/40"></div>
         <div ref={heroRef} className="relative text-center space-y-6 sm:space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400 uppercase tracking-wide">Cloud-scale delivery</p>
+          <p className="text-sm sm:text-base lg:text-lg font-semibold text-amber-400 uppercase tracking-wide">We provide innovative solutions</p>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-amber-50 px-2 sm:px-0">
             Bring Your Ideas.{' '}
             <span className="inline-block transition-all duration-300 ease-in-out">
               {typewriterText && (
-                <span className="shiny-text inline-block">
+                <span className="text-amber-400 inline-block">
                   {typewriterText}
                 </span>
               )}
@@ -412,7 +409,7 @@ const Home = () => {
               Let&apos;s grow together
             </Link>
             <Link
-              to="/services"
+              to="/services/website-design"
               className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base lg:text-lg rounded-md border border-amber-500/60 !text-white font-semibold hover:border-amber-400 hover:text-amber-200 transition-colors"
             >
               Explore services
@@ -422,7 +419,7 @@ const Home = () => {
       </div>
 
       {/* Floating Background Effects - Applied to all sections after hero */}
-      <div className="relative bg-black">
+      <div className="relative bg-black -mt-2">
         {/* Background Decorative Elements - Floating */}
         {/* Top Left - Orange dot with lines */}
         <div className="absolute top-8 left-8 sm:top-12 sm:left-12 z-0 pointer-events-none">
@@ -485,14 +482,86 @@ const Home = () => {
           </div>
         </div>
 
+        {/* Top Center - Hexagon */}
+        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-0 opacity-30 pointer-events-none">
+          <div className="animate-float-medium">
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M45 10 L75 25 L75 55 L45 70 L15 55 L15 25 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+              <path d="M45 20 L67 32 L67 52 L45 64 L23 52 L23 32 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.4"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Middle Left - Triangle */}
+        <div className="absolute top-1/2 left-16 sm:left-20 transform -translate-y-1/2 z-0 opacity-25 pointer-events-none">
+          <div className="animate-float-fast">
+            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform rotate-30">
+              <path d="M35 10 L60 55 L10 55 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+              <path d="M35 20 L52 50 L18 50 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.4"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Middle Right - Circle with inner shape */}
+        <div className="absolute top-1/2 right-16 sm:right-20 transform -translate-y-1/2 z-0 opacity-30 pointer-events-none">
+          <div className="animate-float-slow">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="30" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+              <circle cx="40" cy="40" r="20" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.4"/>
+              <circle cx="40" cy="40" r="10" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Center Left - Diamond */}
+        <div className="absolute top-1/3 left-32 sm:left-40 z-0 opacity-20 pointer-events-none">
+          <div className="animate-float-medium">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform rotate-45">
+              <path d="M30 5 L55 30 L30 55 L5 30 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Center Right - Octagon */}
+        <div className="absolute top-2/3 right-32 sm:right-40 z-0 opacity-25 pointer-events-none">
+          <div className="animate-float-slow">
+            <svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M37.5 5 L55 15 L60 32.5 L52.5 50 L37.5 60 L22.5 50 L15 32.5 L20 15 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Bottom Center - Star */}
+        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-0 opacity-20 pointer-events-none">
+          <div className="animate-float-fast">
+            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M35 5 L40 25 L60 25 L43 38 L48 58 L35 45 L22 58 L27 38 L10 25 L30 25 Z" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Additional Wireframe Cube - Top Left Area */}
+        <div className="absolute top-32 left-48 sm:left-56 z-0 opacity-35 pointer-events-none">
+          <div className="animate-float-medium">
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform rotate-20">
+              <rect x="20" y="30" width="30" height="30" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.6"/>
+              <rect x="30" y="20" width="30" height="30" stroke="#fbbf24" strokeWidth="1.5" fill="none" opacity="0.4"/>
+              <line x1="20" y1="30" x2="30" y2="20" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="50" y1="30" x2="60" y2="20" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="50" y1="60" x2="60" y2="50" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+              <line x1="20" y1="60" x2="30" y2="50" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+
 
         {/* All sections after hero with relative positioning */}
         <div className="relative z-10">
-          <div ref={welcomeRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div ref={welcomeRef} className={`max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 lg:pb-16 pt-4 sm:pt-6 transition-all duration-1000 ${visibleSections.welcome ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="p-6 sm:p-12 lg:p-16 rounded-xl">
-          <div className="grid md:grid-cols-2 gap-2 lg:gap-4 items-center">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-4 items-center">
             <div className="space-y-4 sm:space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-200">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-400">
                 Welcome to Gamotech IT &amp; Web Solutions!
               </h2>
               <p className="text-base sm:text-lg text-justify lg:text-xl xl:text-xl text-white leading-relaxed">
@@ -505,9 +574,9 @@ const Home = () => {
             </div>
             <div className="flex justify-center md:justify-end">
               <img
-                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766495040/output-onlinegiftools_2_amemnv.gif"
+                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766757592/Deuglo-UI-UX-Design-FAQS_njvkrq.png"
                 alt="Gamotech IT & Web Solutions"
-                className="w-full max-w-md rounded-lg shadow-lg"
+                className="w-full max-w-xl rounded-lg shadow-lg"
               />
             </div>
           </div>
@@ -569,7 +638,7 @@ const Home = () => {
                 WE WILL PROVIDE YOU THE BEST SERVICE
               </h2>
               <Link
-                to="/services"
+                to="/services/website-design"
                 className="inline-flex items-center gap-2 bg-amber-500 !text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-colors duration-200"
               >
                 <span>OUR SERVICES</span>
@@ -701,7 +770,7 @@ const Home = () => {
                 <img
                   src={tech.logo}
                   alt={tech.name}
-                  className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-500"
                   onError={(e) => {
                     console.error(`Failed to load logo for ${tech.name}:`, tech.logo)
                     e.target.style.display = 'none'
@@ -719,8 +788,7 @@ const Home = () => {
             {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, idx) => (
               <div
                 key={`card-${idx}`}
-                className="flex-shrink-0 mx-2 sm:mx-3 lg:mx-4 xl:mx-6"
-                style={{ width: '280px', minWidth: '280px' }}
+                className="flex-shrink-0 mx-2 sm:mx-3 lg:mx-4 xl:mx-6 w-[calc((100vw-2rem)/2-0.5rem)] sm:w-[280px] min-w-[calc((100vw-2rem)/2-0.5rem)] sm:min-w-[280px]"
               >
                 <div className="bg-[#0d0d0f] border border-amber-500/30 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg shadow-amber-500/10 h-full hover:border-amber-500/50 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
@@ -738,10 +806,10 @@ const Home = () => {
                       {tech.category}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-amber-50 mb-3">
+                  <h3 className="text-xl sm:text-2xl font-bold text-amber-50 mb-3 duration-500">
                     {tech.name}
                   </h3>
-                  <p className="text-amber-200/70 text-sm sm:text-base leading-relaxed">
+                  <p className="text-amber-200/70 text-sm sm:text-base leading-relaxed duration-500">
                     {tech.description}
                   </p>
                 </div>
@@ -825,16 +893,11 @@ const Home = () => {
                   {/* Left Side - Visual Element */}
                   <div className="flex items-center justify-center">
                     <div className="relative w-full max-w-md">
-                      <div className="aspect-square rounded-2xl bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 flex items-center justify-center p-12">
-                        <div className="text-center space-y-4">
-                          <div className="w-24 h-24 mx-auto bg-amber-500/20 rounded-full flex items-center justify-center">
-                            <svg className="w-12 h-12 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                          </div>
-                          <p className="text-amber-500/60 text-sm font-medium">Our Process</p>
-                        </div>
-                      </div>
+                      <img
+                        src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766647291/68d1b4b9fefaa925ef4ded92_ebvyum.png"
+                        alt="How we work"
+                        className="w-full h-auto rounded-2xl object-cover"
+                      />
                     </div>
                   </div>
 
@@ -980,75 +1043,6 @@ const Home = () => {
         </div>
       </div>
 
-          {/* Why Choose Us Section */}
-          <div ref={whyChooseRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 transition-all duration-1000 ${visibleSections.whyChoose ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-center mb-12 sm:mb-16">
-          Why choose Gamotech?
-        </h2>
-        
-        <div className="grid sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
-          {/* Safe */}
-          <div className="flex items-start gap-6 sm:gap-8">
-            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-teal-500 flex items-center justify-center">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Safe</h3>
-              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
-                The concept of marketing support product range, regardless of the cost market trends.
-              </p>
-            </div>
-          </div>
-
-          {/* Fast */}
-          <div className="flex items-start gap-6 sm:gap-8">
-            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-green-500 flex items-center justify-center">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Fast</h3>
-              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
-                Business plan elegantly transforms sublimated pool of loyal editions, optimizing budgets.
-              </p>
-            </div>
-          </div>
-
-          {/* Low fee */}
-          <div className="flex items-start gap-6 sm:gap-8">
-            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-yellow-500 flex items-center justify-center">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Low fee</h3>
-              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
-                Sponsorship, summing these examples, it is doable. SWOT-analysis, according to Kotler, competitive.
-              </p>
-            </div>
-          </div>
-
-          {/* Quick Support */}
-          <div className="flex items-start gap-6 sm:gap-8">
-            <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-orange-500 flex items-center justify-center">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-              </svg>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Quick Support</h3>
-              <p className="text-base sm:text-lg lg:text-xl text-amber-200/80 leading-relaxed">
-                The fact that the advertising platform changes the method of studying the market.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
           {/* Digital Marketing Section */}
           <div className={`relative overflow-hidden py-12 sm:py-16 lg:py-20 transition-all duration-1000 bg-black`}>
             
@@ -1089,73 +1083,54 @@ const Home = () => {
                 </svg>
               </div>
 
-              <div className="text-center space-y-6 sm:space-y-8">
-                {/* Main Title */}
+              {/* Main Title - Centered */}
+              <div className="text-center mb-6 sm:mb-8">
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
                   <span className="bg-amber-500 px-3 sm:px-4 py-1 sm:py-2 rounded">Digital</span>{' '}
                   <span className="text-white">marketing agency</span>
                 </h2>
+              </div>
 
-                {/* Tagline */}
-                <p className="text-lg sm:text-xl lg:text-2xl text-white/80">
-                  Improve your business in digital.
-                </p>
-
-                {/* Get Started Button */}
-                <div className="flex justify-center">
-                  <a
-                    href="https://www.digitalbuddiess.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-amber-500 hover:bg-amber-600 !text-white font-semibold px-8 sm:px-12 py-3 sm:py-4 rounded-lg transition-colors duration-200 shadow-lg shadow-amber-500/25"
-                  >
-                    Get started
-                  </a>
-                </div>
-
-                {/* Three Portrait Images */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
-                  {/* Left Image - Amber Background */}
-                  <div className="relative">
-                    <div className="aspect-square rounded-2xl bg-amber-500/20 border border-amber-500/30 overflow-hidden flex items-center justify-center">
-                      <div className="w-full h-full bg-gradient-to-br from-amber-500/30 to-amber-600/20 flex items-center justify-center">
-                        <svg className="w-32 h-32 sm:w-40 sm:h-40 text-amber-500 opacity-60" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                      </div>
+              <div className="grid md:grid-cols-2 gap-0 lg:gap-2 items-center justify-center">
+                {/* Left Side - Content */}
+                <div className="text-center md:text-left space-y-4 sm:space-y-6">
+                  {/* Digital Buddies Logo */}
+                  <div className="flex justify-center md:justify-middle">
+                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48">
+                      <img
+                        src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766584384/digital_buddiess_logo2_ns62aj.png"
+                        alt="Digital Buddies Logo"
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                   </div>
+                  
+                  {/* Tagline */}
+                  <p className="text-lg sm:text-xl lg:text-2xl text-white/80 text-center md:justify-middle">
+                  Scale your business with smart digital marketing solutions.
+                  We create targeted campaigns that boost visibility, engagement, and conversions.
+                  </p>
 
-                  {/* Middle Image - Purple/Amber Background */}
-                  <div className="relative">
-                    <div className="aspect-square rounded-2xl bg-purple-500/20 border border-purple-500/30 overflow-hidden flex items-center justify-center">
-                      <div className="w-full h-full bg-gradient-to-br from-purple-500/30 to-purple-600/20 flex items-center justify-center">
-                        <svg className="w-32 h-32 sm:w-40 sm:h-40 text-purple-400 opacity-60" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right Image - Blue/Amber Background */}
-                  <div className="relative">
-                    <div className="aspect-square rounded-2xl bg-blue-500/20 border border-blue-500/30 overflow-hidden flex items-center justify-center">
-                      <div className="w-full h-full bg-gradient-to-br from-blue-500/30 to-blue-600/20 flex items-center justify-center">
-                        <svg className="w-32 h-32 sm:w-40 sm:h-40 text-blue-400 opacity-60" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                      </div>
-                    </div>
+                  {/* Get Started Button */}
+                  <div className="flex justify-center md:justify-middle">
+                    <a
+                      href="https://www.digitalbuddiess.in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-amber-500 hover:bg-amber-600 !text-white font-semibold px-8 sm:px-12 py-3 sm:py-4 rounded-lg transition-colors duration-200 shadow-lg shadow-amber-500/25"
+                    >
+                      👉 Get started
+                    </a>
                   </div>
                 </div>
 
-                {/* Digital Buddies Logo at Bottom */}
-                <div className="flex justify-center mt-12 sm:mt-16">
-                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+                {/* Right Side - SVG Image */}
+                <div className="flex justify-center md:justify-end items-center">
+                  <div className="relative w-full max-w-md lg:max-w-lg">
                     <img
-                      src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766584384/digital_buddiess_logo2_ns62aj.png"
-                      alt="Digital Buddies Logo"
-                      className="w-full h-full object-contain"
+                      src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766755991/social-media_lrnv6c.svg"
+                      alt="Social Media"
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                 </div>

@@ -15,7 +15,7 @@ const CRMSoftware = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop"
+            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766475892/photo-1551288049-bebda4e38f71_x0kdx7.jpg"
             alt=""
             className="w-full h-full object-cover"
             aria-hidden="true"
@@ -67,18 +67,18 @@ const CRMSoftware = () => {
 
           {/* Description Section */}
           <div className="mb-16">
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-4 lg:gap-6 items-center">
               <div className="space-y-4">
-                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                <p className="text-lg text-justify sm:text-xl text-amber-200/75 leading-relaxed">
                   Most businesses don't need off-the-shelf software packed with features they'll never use. They need systems designed around how they actually work.
                 </p>
-                <p className="text-lg sm:text-xl text-amber-200/75 leading-relaxed">
+                <p className="text-lg text-justify sm:text-xl text-amber-200/75 leading-relaxed">
                   At Gamotech, we design and develop custom CRM and internal software solutions that streamline operations, improve visibility, and help teams work more efficiently. Every solution is tailored to your workflow, team structure, and business goals.
                 </p>
               </div>
               <div className="flex justify-center md:justify-end">
                 <img
-                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766493213/software-development1_ofsv4r.gif"
+                  src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766817064/crm-top-banner_fjmvbr.png"
                   alt="CRM & Custom Software Development"
                   className="w-full max-w-md rounded-lg shadow-lg"
                 />
@@ -100,16 +100,16 @@ const CRMSoftware = () => {
           <p className="text-lg sm:text-xl text-amber-200/85 mb-6">With custom-built systems, you get:</p>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Faster adoption by your team</p>
+              <p className="text-white text-lg mb-2">Faster adoption by your team</p>
             </div>
             <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Higher productivity and fewer errors</p>
+              <p className="text-white text-lg mb-2">Higher productivity and fewer errors</p>
             </div>
             <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Better long-term scalability</p>
+              <p className="text-white text-lg mb-2">Better long-term scalability</p>
             </div>
             <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <p className="text-amber-200/90 text-lg mb-2">Complete ownership and control</p>
+              <p className="text-white text-lg mb-2">Complete ownership and control</p>
             </div>
           </div>
           <p className="text-lg text-amber-200/75 leading-relaxed mt-6 max-w-4xl">
@@ -117,99 +117,143 @@ const CRMSoftware = () => {
           </p>
         </div>
 
-        {/* Custom Software Solutions We Build */}
+        {/* What We Offer */}
         <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Custom Software Solutions We Build</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-10 relative">
+            <span className="relative z-10">What We Offer</span>
+            <div className="absolute -bottom-2 left-0 h-1 w-24 bg-gradient-to-r from-amber-500 to-transparent"></div>
+          </h2>
           <div className="space-y-6">
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">🧩</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">CRM Systems</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Custom CRM platforms to manage leads, customers, follow-ups, pipelines, and communication — built exactly for how your sales and support teams operate.
-                  </p>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-8">
+              Explore our comprehensive service offerings
+            </h3>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                {
+                  title: 'CRM Systems',
+                  description: 'Custom CRM platforms to manage leads, customers, follow-ups, pipelines, and communication — built exactly for how your sales and support teams operate.',
+                  icon: '🧩',
+                },
+                {
+                  title: 'Lead & Sales Management Tools',
+                  description: 'Track leads from first contact to conversion with clear stages, automation, and performance insights.',
+                  icon: '📈',
+                },
+                {
+                  title: 'Admin Panels & Dashboards',
+                  description: 'Centralized dashboards that give you real-time control over users, data, operations, and performance metrics.',
+                  icon: '🖥️',
+                },
+                {
+                  title: 'Workflow Automation Systems',
+                  description: 'Automate repetitive tasks, approvals, notifications, and internal processes to save time and reduce manual effort.',
+                  icon: '🔄',
+                },
+                {
+                  title: 'Reporting & Analytics Tools',
+                  description: 'Custom reports and analytics dashboards that show the data you actually need, not generic charts.',
+                  icon: '📊',
+                },
+              ].map((item, idx) => (
+                <div 
+                  key={item.title}
+                  className="transition-all duration-1000 opacity-100 translate-y-0"
+                  style={{ transitionDelay: `${idx * 100}ms` }}
+                >
+                  <div className="flex items-start space-x-4">
+                    {/* Amber/Yellow Circular Icon */}
+                    <div className="flex-shrink-0 w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white text-xl">
+                      {item.icon}
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h4 className="text-lg font-bold text-white mb-2">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-white/70 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">📈</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Lead & Sales Management Tools</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Track leads from first contact to conversion with clear stages, automation, and performance insights.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">🖥️</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Admin Panels & Dashboards</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Centralized dashboards that give you real-time control over users, data, operations, and performance metrics.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">🔄</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Workflow Automation Systems</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Automate repetitive tasks, approvals, notifications, and internal processes to save time and reduce manual effort.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="text-3xl">📊</span>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Reporting & Analytics Tools</h3>
-                  <p className="text-amber-200/85 leading-relaxed">
-                    Custom reports and analytics dashboards that show the data you actually need, not generic charts.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Our Custom Software Development Approach */}
         <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Our Custom Software Development Approach</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Process Understanding</h3>
-              <p className="text-amber-200/85">– deep dive into your workflow and pain points</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-10 text-center">
+            Our Custom Software Development Approach
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+            <div className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="text-amber-500 text-2xl sm:text-3xl font-bold mb-3">
+                01
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
+                Process Understanding
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                Deep dive into your workflow and pain points
+              </p>
             </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Solution Planning</h3>
-              <p className="text-amber-200/85">– feature mapping based on real business needs</p>
+            <div className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="text-amber-500 text-2xl sm:text-3xl font-bold mb-3">
+                02
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
+                Solution Planning
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                Feature mapping based on real business needs
+              </p>
             </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">UI/UX Design</h3>
-              <p className="text-amber-200/85">– simple, role-based interfaces</p>
+            <div className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="text-amber-500 text-2xl sm:text-3xl font-bold mb-3">
+                03
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
+                UI/UX Design
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                Simple, role-based interfaces
+              </p>
             </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Scalable Development</h3>
-              <p className="text-amber-200/85">– secure, maintainable, and future-ready</p>
+            <div className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="text-amber-500 text-2xl sm:text-3xl font-bold mb-3">
+                04
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
+                Scalable Development
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                Secure, maintainable, and future-ready
+              </p>
             </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Testing & Deployment</h3>
-              <p className="text-amber-200/85">– stable rollout with minimal disruption</p>
+            <div className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="text-amber-500 text-2xl sm:text-3xl font-bold mb-3">
+                05
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
+                Testing & Deployment
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                Stable rollout with minimal disruption
+              </p>
             </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-amber-400 mb-2">Ongoing Support</h3>
-              <p className="text-amber-200/85">– updates, enhancements, and scaling</p>
+            <div className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="text-amber-500 text-2xl sm:text-3xl font-bold mb-3">
+                06
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-black mb-3">
+                Ongoing Support
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                Updates, enhancements, and scaling
+              </p>
             </div>
           </div>
         </div>
@@ -272,28 +316,6 @@ const CRMSoftware = () => {
             <p className="text-xl text-white font-semibold mt-8 text-center">
               We don't just build software — we solve operational problems with technology.
             </p>
-          </div>
-        </div>
-
-        {/* Who Is This Service Ideal For */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Who Is This Service Ideal For?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Growing businesses with unique workflows</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Sales-driven organizations</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Service-based companies</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center">
-              <p className="text-amber-200/90 text-lg">Startups building internal tools</p>
-            </div>
-            <div className="bg-black/50 border border-amber-500/30 rounded-xl p-6 text-center md:col-span-2 lg:col-span-1">
-              <p className="text-amber-200/90 text-lg">Businesses replacing inefficient manual processes</p>
-            </div>
           </div>
         </div>
 

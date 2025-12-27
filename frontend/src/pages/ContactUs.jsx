@@ -197,7 +197,7 @@ const ContactUs = () => {
                 Get Started
               </Link>
               <Link
-                to="/services"
+                to="/services/website-design"
                 className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-lg bg-transparent border-2 border-amber-500 text-white font-semibold hover:bg-amber-500/10 hover:border-amber-400 transition-colors"
               >
                 Learn more

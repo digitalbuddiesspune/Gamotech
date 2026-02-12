@@ -185,6 +185,82 @@ const AboutUs = () => {
         </div>
       </section>
 
+      {/* Founder & Co-Founder Section */}
+      <section className="relative py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 xl:px-20 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12 sm:space-y-16"
+          >
+            {/* Section Header */}
+            <div className="flex items-center gap-4">
+              <h2 className="text-sm sm:text-base font-semibold uppercase tracking-wider text-white">
+                Leadership
+              </h2>
+              <div className="flex-1 h-px bg-white/20"></div>
+              <div className="w-2 h-2 bg-amber-500"></div>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              Meet the <span className="text-amber-500">Founders</span>
+            </h3>
+
+            {/* Founder Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+              {/* Founder - Vinay Mathure */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="group relative p-8 sm:p-10 bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300"
+              >
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-amber-500/20 border-2 border-amber-500/40 flex items-center justify-center mb-6">
+                    <span className="text-2xl sm:text-3xl font-bold text-amber-500">
+                      VM
+                    </span>
+                  </div>
+                  <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
+                    Vinay Mathure
+                  </h4>
+                  <p className="text-amber-500 font-semibold uppercase tracking-wider text-sm">
+                    Founder
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Co-Founder - Shubhangi Pardhi */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="group relative p-8 sm:p-10 bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300"
+              >
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-amber-500/20 border-2 border-amber-500/40 flex items-center justify-center mb-6">
+                    <span className="text-2xl sm:text-3xl font-bold text-amber-500">
+                      SP
+                    </span>
+                  </div>
+                  <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 uppercase tracking-wide">
+                    Shubhangi Pardhi
+                  </h4>
+                  <p className="text-amber-500 font-semibold uppercase tracking-wider text-sm">
+                    Co-Founder
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Vision & Mission Section - Diagonal Split Design */}
       <section className="relative py-20 sm:py-24 lg:py-32 xl:py-40 px-4 sm:px-6 lg:px-12 xl:px-20 bg-[#0a0a0a] overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">

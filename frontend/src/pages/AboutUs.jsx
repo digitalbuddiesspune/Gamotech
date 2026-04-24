@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Target, CheckCircle2, Globe, ShoppingCart, Code, Database, Layers, Wrench, Briefcase, Zap, MessageSquare, Shield, Headphones, Eye, Flag } from 'lucide-react';
+import founderImage from '../assets/founder.png';
+import coFounderImage from '../assets/co-founder.jpeg';
 
 const AboutUs = () => {
+  const MotionDiv = motion.div;
+
   return (
     <div className="bg-[#0a0a0a] text-white min-h-screen pt-20 md:pt-0">
       {/* Main Content Area */}
@@ -13,7 +17,7 @@ const AboutUs = () => {
             {/* Left Column - Story Section */}
             <div className="lg:col-span-7 space-y-8 sm:space-y-12">
               {/* OUR STORY Heading */}
-              <motion.div
+              <MotionDiv
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -24,7 +28,7 @@ const AboutUs = () => {
                 </h2>
                 <div className="flex-1 h-px bg-white/20"></div>
                 <div className="w-2 h-2 bg-amber-500"></div>
-              </motion.div>
+              </MotionDiv>
 
               {/* Main Text Block with Accent Bar */}
               <motion.div
@@ -208,28 +212,40 @@ const AboutUs = () => {
             </h3>
 
             {/* Founder Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+            <div className="space-y-8">
               {/* Founder - Vinay Mathure */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="group relative p-8 sm:p-10 bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300"
+                className="group relative bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-amber-500/20 border-2 border-amber-500/40 flex items-center justify-center mb-6">
-                    <span className="text-2xl sm:text-3xl font-bold text-amber-500">
-                      VM
-                    </span>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+                <div className="flex flex-col md:flex-row">
+                  <div className="w-full md:w-[320px] lg:w-[360px] h-[280px] md:h-auto md:min-h-[320px] bg-black/30">
+                    <img
+                      src={founderImage}
+                      alt="Founder"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
-                    Vinay Mathure
-                  </h4>
-                  <p className="text-amber-500 font-semibold uppercase tracking-wider text-sm">
-                    Founder
-                  </p>
+                  <div className="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-center text-left">
+                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
+                      Vinay Mathure
+                    </h4>
+                    <p className="text-amber-500 font-semibold text-sm sm:text-base mb-4">
+                      Founder &amp; CEO
+                    </p>
+                    <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
+                      The Founder &amp; CEO of Gamotech IT &amp; Web Solutions and a
+                      results-driven digital strategist with extensive expertise in
+                      performance marketing, conversion optimization, and data-backed
+                      growth strategies. He leads the company&apos;s vision to deliver
+                      technology solutions that simplify business operations and drive
+                      measurable results for clients across India.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -239,21 +255,38 @@ const AboutUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="group relative p-8 sm:p-10 bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300"
+                className="group relative bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-amber-500/20 border-2 border-amber-500/40 flex items-center justify-center mb-6">
-                    <span className="text-2xl sm:text-3xl font-bold text-amber-500">
-                      SP
-                    </span>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+                <div className="flex flex-col md:flex-row-reverse">
+                  <div className="w-full md:w-[320px] lg:w-[360px] h-[280px] md:h-auto md:min-h-[320px] bg-black/30">
+                    <img
+                      src={coFounderImage}
+                      alt="Co-Founder"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 uppercase tracking-wide">
-                    Shubhangi Pardhi
-                  </h4>
-                  <p className="text-amber-500 font-semibold uppercase tracking-wider text-sm">
-                    Co-Founder
-                  </p>
+                  <div className="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-center text-left">
+                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
+                      Shubhangi Pardhi
+                    </h4>
+                    <p className="text-amber-500 font-semibold text-sm sm:text-base mb-4">
+                      Co-Founder
+                    </p>
+                    <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
+                      The Co-Founder is a dedicated SEO Executive and Digital
+                      Marketing specialist with strong expertise in search engine
+                      optimization, social media marketing, and performance-driven
+                      digital strategies. With a keen understanding of keyword
+                      research, content optimization, and audience targeting, she
+                      focuses on improving search rankings, increasing online
+                      visibility, and building strong brand engagement across digital
+                      platforms. Her strategic approach to social media campaigns and
+                      data-backed marketing initiatives helps businesses connect with
+                      the right audience, strengthen their online presence, and drive
+                      consistent growth in an ever-evolving digital landscape.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </div>

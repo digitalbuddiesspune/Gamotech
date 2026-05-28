@@ -252,7 +252,7 @@ const ContactUs = () => {
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-amber-200 mb-3">Email</h3>
               <p className="text-sm sm:text-base text-amber-100/80">
-                info@gamotech.com
+                hr@gamotech.co and info@gamotech.co
               </p>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Target, CheckCircle2, Globe, ShoppingCart, Code, Database, Layers, Wrench, Briefcase, Zap, MessageSquare, Shield, Headphones, Eye, Flag } from 'lucide-react';
 import founderImage from '../assets/founder.png';
 import coFounderImage from '../assets/co-founder.jpeg';
+import directorImage from '../assets/Director.png';
 
 const AboutUs = () => {
   const MotionDiv = motion.div;
@@ -41,12 +42,12 @@ const AboutUs = () => {
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500"></div>
                 <div className="pl-6 sm:pl-8 space-y-4 sm:space-y-6">
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                    About <span className="text-amber-500">Gamotech</span>
+                    About <span className="text-amber-500">Gamotech Solutions Private Limited</span>
                   </h1>
                   
                   <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl text-neutral-300 leading-relaxed">
                     <p>
-                      Gamotech was founded with one clear belief:{' '}
+                      Gamotech Solutions Private Limited was founded with one clear belief:{' '}
                       <span className="text-amber-500 font-semibold">
                         technology should simplify business — not complicate it.
                       </span>
@@ -68,7 +69,7 @@ const AboutUs = () => {
                 className="space-y-4 sm:space-y-6"
               >
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">
-                  At Gamotech, we don&apos;t follow templates.
+                  At Gamotech Solutions Private Limited, we don&apos;t follow templates.
                 </h3>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">
                   We don&apos;t push unnecessary features.
@@ -104,7 +105,7 @@ const AboutUs = () => {
                 className="bg-gradient-to-r from-amber-500/10 to-amber-500/5 border-l-4 border-amber-500 rounded-lg p-6 sm:p-8"
               >
                 <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-amber-100 mb-3">
-                  Gamotech is not a one-time vendor.
+                  Gamotech Solutions Private Limited is not a one-time vendor.
                 </p>
                 <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-amber-100">
                   We aim to be your long-term technology partner, supporting your growth at every stage.
@@ -171,7 +172,7 @@ const AboutUs = () => {
               >
                 <img
                   src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80"
-                  alt="Gamotech team"
+                  alt="Gamotech Solutions Private Limited team"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
@@ -238,7 +239,7 @@ const AboutUs = () => {
                       Founder &amp; CEO
                     </p>
                     <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
-                      The Founder &amp; CEO of Gamotech IT &amp; Web Solutions and a
+                      The Founder &amp; CEO of Gamotech Solutions Private Limited and a
                       results-driven digital strategist with extensive expertise in
                       performance marketing, conversion optimization, and data-backed
                       growth strategies. He leads the company&apos;s vision to deliver
@@ -289,6 +290,44 @@ const AboutUs = () => {
                   </div>
                 </div>
               </motion.div>
+
+              {/* Director - Nikhil Mathure */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+                className="group relative bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+                <div className="flex flex-col md:flex-row">
+                  <div className="w-full md:w-[320px] lg:w-[360px] h-[280px] md:h-auto md:min-h-[320px] bg-black/30">
+                    <img
+                      src={directorImage}
+                      alt="Director"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-center text-left">
+                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
+                      Nikhil Mathure
+                    </h4>
+                    <p className="text-amber-500 font-semibold text-sm sm:text-base mb-4">
+                      Director
+                    </p>
+                    <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
+                      The Director at Gamotech Solutions Private Limited plays a key
+                      role in driving strategic execution and operational excellence
+                      across projects. With a strong focus on quality delivery, team
+                      alignment, and client success, he ensures that every digital
+                      solution is built to solve practical business challenges.
+                      Through a balanced approach of innovation, process discipline,
+                      and performance-focused leadership, he contributes to the
+                      company&apos;s sustained growth and long-term value creation.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -331,7 +370,7 @@ const AboutUs = () => {
                   Our mission and vision statement
                 </h2>
                 <p className="text-sm sm:text-base text-black/80 max-w-2xl">
-                  This section shows the mission and vision statement of Gamotech which describes the desired future position of the company by defining purpose, goals, expertise, expectations, etc.
+                  This section shows the mission and vision statement of Gamotech Solutions Private Limited which describes the desired future position of the company by defining purpose, goals, expertise, expectations, etc.
                 </p>
                 {/* Decorative Pattern */}
                 <div className="absolute top-4 right-4 w-16 h-16 opacity-20">
@@ -374,7 +413,7 @@ const AboutUs = () => {
                       Vision
                     </h3>
                     <p className="text-sm sm:text-base text-neutral-300 leading-relaxed mt-4">
-                      Our vision is to become a trusted technology partner for businesses across India by building solutions that are simple, scalable, and reliable. We aim to help businesses grow by delivering technology that adapts with change, supports long-term goals, and removes operational complexity. At Gamotech, we envision a future where businesses use technology confidently — not as a burden, but as a powerful enabler of growth, clarity, and efficiency.
+                      Our vision is to become a trusted technology partner for businesses across India by building solutions that are simple, scalable, and reliable. We aim to help businesses grow by delivering technology that adapts with change, supports long-term goals, and removes operational complexity. At Gamotech Solutions Private Limited, we envision a future where businesses use technology confidently — not as a burden, but as a powerful enabler of growth, clarity, and efficiency.
                     </p>
                   </motion.div>
 
@@ -452,7 +491,7 @@ const AboutUs = () => {
                 transition={{ delay: 0.1 }}
                 className="text-lg sm:text-xl lg:text-2xl text-neutral-300 leading-relaxed max-w-4xl mx-auto font-light"
               >
-                At Gamotech, we design and develop technology solutions that solve real business problems. Our services are focused on clarity, performance, and long-term usability.
+                At Gamotech Solutions Private Limited, we design and develop technology solutions that solve real business problems. Our services are focused on clarity, performance, and long-term usability.
               </motion.p>
       </div>
 

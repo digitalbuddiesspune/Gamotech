@@ -67,7 +67,7 @@ const DataPrivacy = () => {
               If you have any questions about this Data Privacy Policy, please contact us at:
             </p>
             <p className="mb-2">
-              <strong>Email:</strong> info@gamotech.com
+              <strong>Email:</strong> hr@gamotech.co and info@gamotech.co
             </p>
             <p className="mb-2">
               <strong>Phone:</strong> +91 9637319746

@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1765977541/Asset_7_kium0j.png"
+                src="https://cdn.dmcrms.in/gamotechSolution/profiles/1790316681929-GAMOTECH-LOGO.png"
                 alt="Gamotech Logo"
                 className="h-12 w-auto"
               />

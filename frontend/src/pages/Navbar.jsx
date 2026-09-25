@@ -13,6 +13,8 @@ const serviceLinks = [
   { to: '/services/ecommerce', label: 'E-Commerce Website Development' },
   { to: '/services/crm-software', label: 'CRM & Custom Software Development' },
   { to: '/services/application-software', label: 'Application Software Development' },
+  { to: '/services/saas-application', label: 'SaaS Application Development' },
+  { to: '/services/ai-integrations', label: 'AI Integrations' },
 ]
 
 const Navbar = ({ onLinkClick, isMobile = false }) => {

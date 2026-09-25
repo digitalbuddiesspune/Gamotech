@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 const WebsiteDesign = () => {
-    const [isVisible, setIsVisible] = useState(false)
     const [visibleSections, setVisibleSections] = useState({
         whyMatters: false,
         whatWeOffer: false,
@@ -13,10 +12,6 @@ const WebsiteDesign = () => {
     const whatWeOfferRef = useRef(null)
     const developmentApproachRef = useRef(null)
     const whyChooseRef = useRef(null)
-
-    useEffect(() => {
-        setIsVisible(true)
-    }, [])
 
     // IntersectionObserver for section animations
     useEffect(() => {
@@ -70,81 +65,33 @@ const WebsiteDesign = () => {
     }, [])
 
     return (
-        <div className="min-h-screen bg-black text-white relative overflow-hidden">
-            {/* Hero Section - Full Width */}
-            <div className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[90vh] flex items-center justify-center overflow-hidden mt-16 sm:mt-20">
-                {/* Background Image */}
-                <div className="absolute inset-0">
-                    <img
-                        src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766475622/photo-1460925895917-afdab827c52f_llw1uq.jpg"
-                        alt=""
-                        className="w-full h-full object-cover"
-                        aria-hidden="true"
-                    />
-                </div>
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"></div>
-
-                {/* Content */}
-                <div className={`relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                        Website Design & Development Services
-                    </h1>
-                    <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white leading-relaxed max-w-4xl mx-auto">
-                        Professional Website Development for Growing Businesses
-                    </p>
-                </div>
-
-                {/* White Wavy Shape at Bottom */}
-                <div className="absolute bottom-0 left-0 right-0 z-10">
-                    <svg
-                        viewBox="0 0 1440 120"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-full h-16 sm:h-20 lg:h-24"
-                        preserveAspectRatio="none"
-                    >
-                        <path
-                            d="M0,80 Q360,20 720,60 T1440,60 L1440,120 L0,120 Z"
-                            fill="black"
-                        />
-                    </svg>
-                </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="relative z-10 bg-black pt-8 pb-16">
+        <div className="min-h-screen bg-black text-white">
+            <div className="bg-black pb-16 pt-28 sm:pt-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Breadcrumb */}
-                    <nav className="mb-8">
+                    <nav className="mb-8" aria-label="Breadcrumb">
                         <div className="flex items-center space-x-2 text-sm text-amber-200/70">
                             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
                             <span>/</span>
-                            <Link to="/services" className="hover:text-amber-400 transition-colors">Services</Link>
+                            <Link to="/services/website-design" className="hover:text-amber-400 transition-colors">Services</Link>
                             <span>/</span>
                             <span className="text-white">Website Design & Development</span>
                         </div>
                     </nav>
 
-                    {/* Description Section */}
-                    <div className="mb-20 relative">
-                        <div className="grid md:grid-cols-2 gap-4 lg:gap-6 items-center">
-                            <div className="space-y-4">
-                                <p className="text-lg text-justify sm:text-xl text-amber-200/80 leading-relaxed">
-                                    Your website is more than just an online presence — it is the digital foundation of your business. At Gamotech, we design and develop websites that are visually appealing, technically strong, and strategically built to convert visitors into genuine business enquiries.
-                                </p>
-                                <p className="text-lg text-justify sm:text-xl text-amber-200/80 leading-relaxed">
-                                    We combine modern design, clean development, and business thinking to deliver websites that help you grow, build trust, and stand out in a competitive market.
-                                </p>
-                            </div>
-                            <div className="flex justify-center md:justify-end">
-                                <img
-                                    src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1766817385/SEO-Friendly-Website-Design_iyxt3s.png"
-                                    alt="Website Design & Development"
-                                    className="w-full max-w-md rounded-lg shadow-lg"
-                                />
-                            </div>
-                        </div>
+                    <h1 className="max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                        Website Design & Development Services
+                    </h1>
+                    <p className="mt-4 text-lg text-amber-200/80 sm:text-xl">
+                        Professional Website Development for Growing Businesses
+                    </p>
+
+                    <div className="mb-20 mt-10 max-w-3xl space-y-4">
+                        <p className="text-lg leading-relaxed text-amber-200/80 sm:text-xl">
+                            Your website is more than just an online presence — it is the digital foundation of your business. At Gamotech, we design and develop websites that are visually appealing, technically strong, and strategically built to convert visitors into genuine business enquiries.
+                        </p>
+                        <p className="text-lg leading-relaxed text-amber-200/80 sm:text-xl">
+                            We combine modern design, clean development, and business thinking to deliver websites that help you grow, build trust, and stand out in a competitive market.
+                        </p>
                     </div>
 
                     {/* Why a High-Quality Website Matters */}

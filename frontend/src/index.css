@@ -273,3 +273,37 @@ a {
   transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
   will-change: background-position;
 }
+
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-caret {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-left,
+  .animate-scroll-left-slow,
+  .animate-scroll-right-to-left,
+  .animate-scroll-left-to-right,
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast,
+  .hero-caret,
+  .shiny-text {
+    animation: none !important;
+  }
+}

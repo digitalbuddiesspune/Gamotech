@@ -11,6 +11,8 @@ import WebsiteDesign from '../pages/services/WebsiteDesign'
 import ECommerce from '../pages/services/ECommerce'
 import CRMSoftware from '../pages/services/CRMSoftware'
 import ApplicationSoftware from '../pages/services/ApplicationSoftware'
+import SaasApplication from '../pages/services/SaasApplication'
+import AiIntegrations from '../pages/services/AiIntegrations'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +22,8 @@ const router = createBrowserRouter(
       <Route path="services/ecommerce" element={<ECommerce />} />
       <Route path="services/crm-software" element={<CRMSoftware />} />
       <Route path="services/application-software" element={<ApplicationSoftware />} />
+      <Route path="services/saas-application" element={<SaasApplication />} />
+      <Route path="services/ai-integrations" element={<AiIntegrations />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="careers" element={<Careers />} />

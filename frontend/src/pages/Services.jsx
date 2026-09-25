@@ -1,11 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Globe, ShoppingCart, Database, Code, CheckCircle2, ArrowRight } from 'lucide-react'
+import { ShoppingCart, CheckCircle2, ArrowRight } from 'lucide-react'
+import webDevIcon from '../assets/WebDevIcon.webp'
+import databaseIcon from '../assets/Database.webp'
+import mobileAppIcon from '../assets/MobileAppIcon.webp'
+import serverInfraIcon from '../assets/ServerInfraIcon (1).webp'
+import brainIcon from '../assets/BrainIcon.webp'
 
 const services = [
   {
-    icon: Globe,
+    icon: webDevIcon,
     title: 'Website Design & Development',
     subtitle: 'Professional Website Development for Growing Businesses',
     description: 'Your website is often the first interaction people have with your brand. At Gamotech, we build websites that are fast, responsive, and designed to convert visitors into real enquiries. We focus on clarity, performance, and usability — so your website works smoothly across devices and loads quickly for Indian audiences.',
@@ -40,7 +45,7 @@ const services = [
     cta: 'Planning to launch or upgrade your e-commerce store?'
   },
   {
-    icon: Database,
+    icon: databaseIcon,
     title: 'CRM & Custom Software Development in Pune',
     subtitle: 'Software Built Around Your Business Process',
     description: 'Most businesses don\'t need generic software — they need systems built around how they actually work. At Gamotech, we develop custom CRM and internal software solutions that help you manage leads, customers, operations, and data efficiently.',
@@ -60,7 +65,7 @@ const services = [
     cta: 'Custom CRM & software development services in Pune, India.'
   },
   {
-    icon: Code,
+    icon: mobileAppIcon,
     title: 'Application Software Development',
     subtitle: 'Reliable Application Development for Businesses',
     description: 'We develop application software focused on performance, security, and scalability. Whether it\'s a web-based application or a backend system supporting your operations, our development process ensures stability and future readiness.',
@@ -73,6 +78,34 @@ const services = [
     ],
     whyChoose: null,
     cta: 'We build applications that are easy to manage today and ready for tomorrow.'
+  },
+  {
+    icon: serverInfraIcon,
+    title: 'SaaS Application Development',
+    subtitle: 'Scalable products built around your business',
+    description: 'End-to-end development of scalable, secure, and user-friendly SaaS applications tailored to your business needs.',
+    offers: [
+      'End-to-end product development',
+      'Scalable architecture',
+      'Secure application design',
+      'User-friendly experience'
+    ],
+    whyChoose: null,
+    cta: 'Planning a SaaS product? Let’s talk.'
+  },
+  {
+    icon: brainIcon,
+    title: 'AI Integrations',
+    subtitle: 'Smarter systems built around your goals',
+    description: 'We help businesses integrate AI into their systems to streamline operations, enhance customer experiences, and unlock smarter decision-making. From automation to analytics, our solutions are built to fit your goals.',
+    offers: [
+      'Streamline operations',
+      'Enhance customer experiences',
+      'Smarter decision-making',
+      'Automation and analytics'
+    ],
+    whyChoose: null,
+    cta: 'Ready to bring AI into your business?'
   }
 ]
 
@@ -91,8 +124,12 @@ const ServiceCard = ({ service, index }) => {
         {/* Header */}
         <div className="space-y-3 sm:space-y-4">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 flex-shrink-0">
-              <Icon size={24} className="sm:w-7 sm:h-7" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/5 flex items-center justify-center text-amber-500 flex-shrink-0">
+              {typeof Icon === 'string' ? (
+                <img src={Icon} alt="" className="h-7 w-7 object-contain" />
+              ) : (
+                <Icon size={24} className="sm:w-7 sm:h-7" />
+              )}
             </div>
             <div className="flex-1">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
@@ -115,7 +152,9 @@ const ServiceCard = ({ service, index }) => {
           <h3 className="text-base sm:text-lg lg:text-xl font-bold text-amber-100">
             {service.title.includes('E-Commerce') ? 'Our E-Commerce Solutions Include:' : 
              service.title.includes('Custom Software') ? 'Custom Software We Build:' :
-             service.title.includes('Application') ? 'Our Application Development Services:' :
+             service.title.startsWith('SaaS') ? 'What this includes:' :
+             service.title.startsWith('AI') ? 'What this includes:' :
+             service.title.includes('Application Software') ? 'Our Application Development Services:' :
              'What We Offer:'}
           </h3>
           <ul className="space-y-2 sm:space-y-3">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 
@@ -6,6 +6,16 @@ const Header = () => {
   const location = useLocation()
   const isHomePage = location.pathname === '/'
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    if (!isHomePage) return undefined
+
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [isHomePage])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -19,14 +29,16 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isHomePage
-          ? 'bg-transparent border-b border-transparent shadow-none'
+          ? scrolled
+            ? 'bg-black/80 backdrop-blur-md border-b border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.35)]'
+            : 'bg-transparent border-b border-transparent shadow-none'
           : 'bg-black border-b border-amber-500/50 shadow-[0_6px_16px_rgba(245,180,0,0.12)]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 sm:gap-3" onClick={closeMobileMenu}>
           <img
-            src="https://res.cloudinary.com/dvkxgrcbv/image/upload/v1765977541/Asset_7_kium0j.png"
+            src="https://cdn.dmcrms.in/gamotechSolution/profiles/1790316681929-GAMOTECH-LOGO.png"
             alt="Gamotech Logo"
             className="h-8 sm:h-10 lg:h-12 w-auto"
           />

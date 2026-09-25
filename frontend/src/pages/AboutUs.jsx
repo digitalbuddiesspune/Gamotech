@@ -1,691 +1,436 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { MapPin, Target, CheckCircle2, Globe, ShoppingCart, Code, Database, Layers, Wrench, Briefcase, Zap, MessageSquare, Shield, Headphones, Eye, Flag } from 'lucide-react';
-import founderImage from '../assets/founder.png';
-import coFounderImage from '../assets/co-founder.jpeg';
-import directorImage from '../assets/Director.png';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { motion, useReducedMotion } from 'framer-motion'
+
+const Motion = motion
+import {
+  ArrowRight,
+  Briefcase,
+  Code,
+  Eye,
+  Headphones,
+  MapPin,
+  MessageSquare,
+  Shield,
+  ShoppingCart,
+  Target,
+  Wrench,
+  Zap,
+} from 'lucide-react'
+import webDevIcon from '../assets/WebDevIcon.webp'
+import databaseIcon from '../assets/Database.webp'
+import mobileAppIcon from '../assets/MobileAppIcon.webp'
+import serverInfraIcon from '../assets/ServerInfraIcon (1).webp'
+import brainIcon from '../assets/BrainIcon.webp'
+import founderImage from '../assets/founder.png'
+import coFounderImage from '../assets/cofounder.png'
+import directorImage from '../assets/Director.png'
+
+const PRINCIPLES = [
+  "At Gamotech Solutions Private Limited, we don't follow templates.",
+  "We don't push unnecessary features.",
+  'And we never treat clients like "projects."',
+]
+
+const LEADERS = [
+  {
+    name: 'Vinay Mathure',
+    role: 'Founder & CEO',
+    image: founderImage,
+    bio: 'The Founder & CEO of Gamotech Solutions Private Limited and a results-driven digital strategist with extensive expertise in performance marketing, conversion optimization, and data-backed growth strategies. He leads the company\'s vision to deliver technology solutions that simplify business operations and drive measurable results for clients across India.',
+  },
+  {
+    name: 'Shubhangi Pardhi',
+    role: 'Co-Founder',
+    image: coFounderImage,
+    bio: 'The Co-Founder is a dedicated SEO Executive and Digital Marketing specialist with strong expertise in search engine optimization, social media marketing, and performance-driven digital strategies. With a keen understanding of keyword research, content optimization, and audience targeting, she focuses on improving search rankings, increasing online visibility, and building strong brand engagement across digital platforms. Her strategic approach to social media campaigns and data-backed marketing initiatives helps businesses connect with the right audience, strengthen their online presence, and drive consistent growth in an ever-evolving digital landscape.',
+  },
+  {
+    name: 'Nikhil Mathure',
+    role: 'Director',
+    image: directorImage,
+    bio: 'The Director at Gamotech Solutions Private Limited plays a key role in driving strategic execution and operational excellence across projects. With a strong focus on quality delivery, team alignment, and client success, he ensures that every digital solution is built to solve practical business challenges. Through a balanced approach of innovation, process discipline, and performance-focused leadership, he contributes to the company\'s sustained growth and long-term value creation.',
+  },
+]
+
+const SERVICES = [
+  {
+    icon: webDevIcon,
+    title: 'Website Development',
+    description: 'We build fast, responsive, and modern websites that represent your brand clearly and convert visitors into customers.',
+    to: '/services/website-design',
+  },
+  {
+    icon: ShoppingCart,
+    title: 'E-Commerce Solutions',
+    description: 'From product catalogs to secure payments and order management, we create scalable e-commerce platforms that help you sell confidently online.',
+    to: '/services/ecommerce',
+  },
+  {
+    icon: Code,
+    title: 'Custom Software Development',
+    description: 'We develop tailor-made software solutions that streamline operations, automate workflows, and improve efficiency across your business.',
+    to: '/services/application-software',
+  },
+  {
+    icon: databaseIcon,
+    title: 'CRM & Internal Systems',
+    description: 'We build customized CRM systems and internal tools that help manage customers, data, and operations in one centralized place.',
+    to: '/services/crm-software',
+  },
+  {
+    icon: mobileAppIcon,
+    title: 'Web & Application Development',
+    description: 'User-friendly web applications designed for performance, security, and scalability across devices.',
+    to: '/services/application-software',
+  },
+  {
+    icon: serverInfraIcon,
+    title: 'SaaS Application Development',
+    description: 'End-to-end development of scalable, secure, and user-friendly SaaS applications tailored to your business needs.',
+    to: '/services/saas-application',
+  },
+  {
+    icon: brainIcon,
+    title: 'AI Integrations',
+    description:
+      'We help businesses integrate AI into their systems to streamline operations, enhance customer experiences, and unlock smarter decision-making. From automation to analytics, our solutions are built to fit your goals.',
+    to: '/services/ai-integrations',
+  },
+  {
+    icon: Wrench,
+    title: 'Maintenance & Ongoing Support',
+    description: 'Technology needs care. We provide updates, improvements, and long-term support to keep your systems running smoothly.',
+    to: '/contact-us',
+  },
+]
+
+const REASONS = [
+  {
+    icon: Briefcase,
+    title: 'Business-Focused Solutions',
+    description: 'We understand your goals first and build technology that supports real-world business operations.',
+  },
+  {
+    icon: Code,
+    title: '100% Custom Development',
+    description: 'No templates. No shortcuts. Every solution is designed specifically for your requirements.',
+  },
+  {
+    icon: Zap,
+    title: 'Scalable & Future-Ready',
+    description: 'Our systems are built to grow with your business, saving you from costly rebuilds later.',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Clear Communication',
+    description: 'Transparent timelines, regular updates, and honest discussions throughout the project lifecycle.',
+  },
+  {
+    icon: Shield,
+    title: 'Reliable & Secure',
+    description: 'We follow best practices to deliver stable, secure, and performance-optimized solutions.',
+  },
+  {
+    icon: Headphones,
+    title: 'Long-Term Support',
+    description: 'We stay with you after launch, providing continuous improvements and technical support as your business evolves.',
+  },
+]
+
+const MISSION_POINTS = [
+  'Build solutions that are simple to use and easy to scale',
+  'Help businesses save time, reduce manual effort, and improve productivity',
+  'Deliver technology that adds real value, not unnecessary complexity',
+  'Create long-term partnerships based on trust, transparency, and results',
+]
+
+function SectionLabel({ children, center = false }) {
+  return (
+    <div className={`flex items-center gap-3 ${center ? 'justify-center' : ''}`}>
+      <span className="h-px w-10 bg-amber-500" aria-hidden="true" />
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-400">{children}</p>
+    </div>
+  )
+}
 
 const AboutUs = () => {
-  const MotionDiv = motion.div;
+  const reduceMotion = useReducedMotion()
+
+  const fade = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 16 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.25 },
+          transition: { duration: 0.4, delay, ease: 'easeOut' },
+        }
 
   return (
-    <div className="bg-[#0a0a0a] text-white min-h-screen pt-20 md:pt-0">
-      {/* Main Content Area */}
-      <section className="bg-[#0d0d0d] pt-24 sm:pt-32 lg:pt-40 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-12 xl:px-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
-            
-            {/* Left Column - Story Section */}
-            <div className="lg:col-span-7 space-y-8 sm:space-y-12">
-              {/* OUR STORY Heading */}
-              <MotionDiv
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-4"
-              >
-                <h2 className="text-sm sm:text-base font-semibold uppercase tracking-wider text-white">
-                  OUR STORY
-                </h2>
-                <div className="flex-1 h-px bg-white/20"></div>
-                <div className="w-2 h-2 bg-amber-500"></div>
-              </MotionDiv>
+    <div className="relative overflow-hidden bg-black text-white">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 12% 8%, rgba(245,180,0,0.14), transparent 28%), radial-gradient(circle at 88% 30%, rgba(245,180,0,0.08), transparent 24%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.16]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(245,180,0,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(245,180,0,0.18) 1px, transparent 1px)',
+          backgroundSize: '72px 72px',
+          maskImage: 'linear-gradient(to bottom, transparent, black 6%, black 94%, transparent)',
+        }}
+      />
 
-              {/* Main Text Block with Accent Bar */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="relative"
+      <div className="relative z-10">
+        <section className="mx-auto max-w-7xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pt-36">
+          <Motion.div {...fade()} className="max-w-3xl">
+            <SectionLabel>Our story</SectionLabel>
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              About <span className="text-amber-400">Gamotech Solutions Private Limited</span>
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-amber-50/80 sm:text-xl">
+              Gamotech Solutions Private Limited was founded with one clear belief:{' '}
+              <span className="font-medium text-amber-300">technology should simplify business — not complicate it.</span>
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-amber-50/75 sm:text-lg">
+              We are a Pune-based IT solutions company working with startups, growing brands, and established businesses
+              across India to design and develop websites, e-commerce platforms, CRM systems, and custom software
+              solutions that solve real business problems.
+            </p>
+            <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-100">
+              <MapPin className="h-4 w-4 text-amber-400" aria-hidden="true" />
+              Based in Pune | Working with clients across India
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact-us"
+                className="inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full bg-amber-500 px-7 py-3 text-sm font-semibold !text-white transition-colors duration-200 hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-200"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500"></div>
-                <div className="pl-6 sm:pl-8 space-y-4 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                    About <span className="text-amber-500">Gamotech Solutions Private Limited</span>
-                  </h1>
-                  
-                  <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl text-neutral-300 leading-relaxed">
-                    <p>
-                      Gamotech Solutions Private Limited was founded with one clear belief:{' '}
-                      <span className="text-amber-500 font-semibold">
-                        technology should simplify business — not complicate it.
-                      </span>
-                    </p>
-                    
-                    <p>
-                      We are a Pune-based IT solutions company working with startups, growing brands, and established businesses across India to design and develop websites, e-commerce platforms, CRM systems, and custom software solutions that solve real business problems.
-        </p>
-      </div>
-                </div>
-              </motion.div>
-
-              {/* Three Key Points */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="space-y-4 sm:space-y-6"
+                Work with us
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link
+                to="/services/website-design"
+                className="inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-sm font-semibold !text-white transition-colors duration-200 hover:border-amber-400/70 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-200"
               >
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">
-                  At Gamotech Solutions Private Limited, we don&apos;t follow templates.
-                </h3>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">
-                  We don&apos;t push unnecessary features.
-                </h3>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-500">
-                  And we never treat clients like &quot;projects.&quot;
-                </h3>
-              </motion.div>
-
-              {/* Additional Content */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-                className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl text-neutral-300 leading-relaxed pt-6 border-t border-white/10"
-              >
-                <p>
-                  Every solution we build starts by understanding how your business actually works — where time is being wasted, where processes slow down, and how the right technology can improve speed, clarity, efficiency, and growth.
-                </p>
-                
-                <p>
-                  Whether it&apos;s a simple business website or a complex internal system, our focus remains the same: clean execution, scalable architecture, and long-term reliability.
-                </p>
-              </motion.div>
-
-              {/* Partnership Statement */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8 }}
-                className="bg-gradient-to-r from-amber-500/10 to-amber-500/5 border-l-4 border-amber-500 rounded-lg p-6 sm:p-8"
-              >
-                <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-amber-100 mb-3">
-                  Gamotech Solutions Private Limited is not a one-time vendor.
-                </p>
-                <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-amber-100">
-                  We aim to be your long-term technology partner, supporting your growth at every stage.
-                </p>
-              </motion.div>
+                Explore services
+              </Link>
             </div>
+          </Motion.div>
+        </section>
 
-            {/* Right Column - Image Cards Section */}
-            <div className="lg:col-span-5 space-y-6 sm:space-y-8">
-              {/* First Image Card */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative group overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/3] bg-neutral-900 border border-white/10"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                  alt="Team collaboration"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 flex gap-2 z-10">
-                  <span className="px-3 py-1 rounded-full bg-black/80 text-white text-xs font-medium backdrop-blur-sm">
-                    Tech Blog
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-black/80 text-white text-xs font-medium backdrop-blur-sm flex items-center gap-1">
-                    Trends
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Second Image Card */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="relative group overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/3] bg-neutral-900 border border-white/10"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-                  alt="Business meeting"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4 flex gap-2 z-10">
-                  <span className="px-3 py-1 rounded-full bg-black/80 text-white text-xs font-medium backdrop-blur-sm">
-                    Tech Blog
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-black/80 text-white text-xs font-medium backdrop-blur-sm flex items-center gap-1">
-                    Trends
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Large Team Image */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="relative group overflow-hidden rounded-xl sm:rounded-2xl aspect-[16/9] bg-neutral-900 border border-white/10"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80"
-                  alt="Gamotech Solutions Private Limited team"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 z-10">
-                  <div className="flex items-center gap-3 text-white">
-                    <MapPin className="w-5 h-5 text-amber-500 flex-shrink-0" />
-                    <p className="text-sm sm:text-base font-medium">
-                      Based in Pune | Working with clients across India
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+        <section className="mx-auto grid max-w-7xl gap-10 px-4 pb-20 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
+          <Motion.div {...fade(0.05)} className="space-y-5 text-base leading-relaxed text-amber-50/75 sm:text-lg">
+            <p>
+              Every solution we build starts by understanding how your business actually works — where time is being
+              wasted, where processes slow down, and how the right technology can improve speed, clarity, efficiency,
+              and growth.
+            </p>
+            <p>
+              Whether it&apos;s a simple business website or a complex internal system, our focus remains the same: clean
+              execution, scalable architecture, and long-term reliability.
+            </p>
+            <div className="rounded-3xl border border-amber-500/25 bg-amber-500/10 p-6 sm:p-8">
+              <p className="text-xl font-semibold text-amber-50 sm:text-2xl">
+                Gamotech Solutions Private Limited is not a one-time vendor.
+              </p>
+              <p className="mt-3 text-lg font-medium text-amber-100/90 sm:text-xl">
+                We aim to be your long-term technology partner, supporting your growth at every stage.
+              </p>
             </div>
-        </div>
-        </div>
-      </section>
+          </Motion.div>
 
-      {/* Founder & Co-Founder Section */}
-      <section className="relative py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 xl:px-20 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12 sm:space-y-16"
-          >
-            {/* Section Header */}
-            <div className="flex items-center gap-4">
-              <h2 className="text-sm sm:text-base font-semibold uppercase tracking-wider text-white">
-                Leadership
-              </h2>
-              <div className="flex-1 h-px bg-white/20"></div>
-              <div className="w-2 h-2 bg-amber-500"></div>
-            </div>
-
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
-              Meet the <span className="text-amber-500">Founders</span>
-            </h3>
-
-            {/* Founder Cards */}
-            <div className="space-y-8">
-              {/* Founder - Vinay Mathure */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="group relative bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300 overflow-hidden"
+          <div className="space-y-3">
+            {PRINCIPLES.map((line, index) => (
+              <Motion.p
+                key={line}
+                {...fade(index * 0.06)}
+                className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-5 text-lg font-medium leading-snug text-white sm:text-xl"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-                <div className="flex flex-col md:flex-row">
-                  <div className="w-full md:w-[320px] lg:w-[360px] h-[280px] md:h-auto md:min-h-[320px] bg-black/30">
-                    <img
-                      src={founderImage}
-                      alt="Founder"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-center text-left">
-                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
-                      Vinay Mathure
-                    </h4>
-                    <p className="text-amber-500 font-semibold text-sm sm:text-base mb-4">
-                      Founder &amp; CEO
-                    </p>
-                    <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
-                      The Founder &amp; CEO of Gamotech Solutions Private Limited and a
-                      results-driven digital strategist with extensive expertise in
-                      performance marketing, conversion optimization, and data-backed
-                      growth strategies. He leads the company&apos;s vision to deliver
-                      technology solutions that simplify business operations and drive
-                      measurable results for clients across India.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Co-Founder - Shubhangi Pardhi */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="group relative bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300 overflow-hidden"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-                <div className="flex flex-col md:flex-row-reverse">
-                  <div className="w-full md:w-[320px] lg:w-[360px] h-[280px] md:h-auto md:min-h-[320px] bg-black/30">
-                    <img
-                      src={coFounderImage}
-                      alt="Co-Founder"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-center text-left">
-                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
-                      Shubhangi Pardhi
-                    </h4>
-                    <p className="text-amber-500 font-semibold text-sm sm:text-base mb-4">
-                      Co-Founder
-                    </p>
-                    <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
-                      The Co-Founder is a dedicated SEO Executive and Digital
-                      Marketing specialist with strong expertise in search engine
-                      optimization, social media marketing, and performance-driven
-                      digital strategies. With a keen understanding of keyword
-                      research, content optimization, and audience targeting, she
-                      focuses on improving search rankings, increasing online
-                      visibility, and building strong brand engagement across digital
-                      platforms. Her strategic approach to social media campaigns and
-                      data-backed marketing initiatives helps businesses connect with
-                      the right audience, strengthen their online presence, and drive
-                      consistent growth in an ever-evolving digital landscape.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Director - Nikhil Mathure */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-                className="group relative bg-[#0d0d0d] border border-white/10 rounded-xl hover:border-amber-500/30 transition-all duration-300 overflow-hidden"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-                <div className="flex flex-col md:flex-row">
-                  <div className="w-full md:w-[320px] lg:w-[360px] h-[280px] md:h-auto md:min-h-[320px] bg-black/30">
-                    <img
-                      src={directorImage}
-                      alt="Director"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-center text-left">
-                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
-                      Nikhil Mathure
-                    </h4>
-                    <p className="text-amber-500 font-semibold text-sm sm:text-base mb-4">
-                      Director
-                    </p>
-                    <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-4xl">
-                      The Director at Gamotech Solutions Private Limited plays a key
-                      role in driving strategic execution and operational excellence
-                      across projects. With a strong focus on quality delivery, team
-                      alignment, and client success, he ensures that every digital
-                      solution is built to solve practical business challenges.
-                      Through a balanced approach of innovation, process discipline,
-                      and performance-focused leadership, he contributes to the
-                      company&apos;s sustained growth and long-term value creation.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Vision & Mission Section - Diagonal Split Design */}
-      <section className="relative py-20 sm:py-24 lg:py-32 xl:py-40 px-4 sm:px-6 lg:px-12 xl:px-20 bg-[#0a0a0a] overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl min-h-[600px] sm:min-h-[700px] lg:min-h-[800px]">
-            {/* Left Section - Photo Background */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="absolute inset-0 lg:w-1/3"
-            >
-              <div className="relative w-full h-full">
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                  alt="Team working"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-              </div>
-            </motion.div>
-
-            {/* Right Section - Content Area */}
-            <div className="relative lg:ml-[33.333%] bg-[#0d0d0d] min-h-[600px] sm:min-h-[700px] lg:min-h-[800px]">
-              {/* Yellow Diagonal Header */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative bg-amber-500 p-6 sm:p-8 lg:p-10"
-                style={{
-                  clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
-                }}
-              >
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-3">
-                  Our mission and vision statement
-                </h2>
-                <p className="text-sm sm:text-base text-black/80 max-w-2xl">
-                  This section shows the mission and vision statement of Gamotech Solutions Private Limited which describes the desired future position of the company by defining purpose, goals, expertise, expectations, etc.
-                </p>
-                {/* Decorative Pattern */}
-                <div className="absolute top-4 right-4 w-16 h-16 opacity-20">
-                  <div className="grid grid-cols-4 gap-1">
-                    {[...Array(16)].map((_, i) => (
-                      <div key={i} className="w-2 h-2 bg-black rounded-sm"></div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Cream Diagonal Separator */}
-              <div 
-                className="h-2 bg-amber-100/20"
-                style={{
-                  clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)'
-                }}
-              ></div>
-
-              {/* Main Content Block - Dark Background */}
-              <div className="bg-[#0a0a0a] p-6 sm:p-8 lg:p-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-                  {/* Vision Column */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="text-center lg:text-left"
-                  >
-                    {/* Circular Icon */}
-                    <div className="flex justify-center lg:justify-start mb-4">
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-500 flex items-center justify-center">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0a0a0a] flex items-center justify-center">
-                          <Eye className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500" />
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 pb-2 border-b-2 border-white">
-                      Vision
-                    </h3>
-                    <p className="text-sm sm:text-base text-neutral-300 leading-relaxed mt-4">
-                      Our vision is to become a trusted technology partner for businesses across India by building solutions that are simple, scalable, and reliable. We aim to help businesses grow by delivering technology that adapts with change, supports long-term goals, and removes operational complexity. At Gamotech Solutions Private Limited, we envision a future where businesses use technology confidently — not as a burden, but as a powerful enabler of growth, clarity, and efficiency.
-                    </p>
-                  </motion.div>
-
-                  {/* Mission Column */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="text-center lg:text-left border-l-0 lg:border-l border-white/20 pl-0 lg:pl-8"
-                  >
-                    {/* Circular Icon */}
-                    <div className="flex justify-center lg:justify-start mb-4">
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-500 flex items-center justify-center">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0a0a0a] flex items-center justify-center">
-                          <Target className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500" />
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 pb-2 border-b-2 border-white">
-                      Mission
-                    </h3>
-                    <p className="text-sm sm:text-base text-neutral-300 leading-relaxed mt-4 mb-4">
-                      Our mission is to empower businesses through smart, reliable, and purpose-driven technology.
-                    </p>
-                    <div className="space-y-2 mt-4">
-                      {[
-                        'Build solutions that are simple to use and easy to scale',
-                        'Help businesses save time, reduce manual effort, and improve productivity',
-                        'Deliver technology that adds real value, not unnecessary complexity',
-                        'Create long-term partnerships based on trust, transparency, and results'
-                      ].map((item, index) => (
-                        <div key={index} className="flex items-start gap-2 text-left">
-                          <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
-                          <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                            {item}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
+                <span className="mb-2 block text-xs font-semibold tracking-[0.18em] text-amber-400">
+                  0{index + 1}
+                </span>
+                {line}
+              </Motion.p>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* What We Do Section */}
-      <section className="relative py-20 sm:py-24 lg:py-32 xl:py-40 px-4 sm:px-6 lg:px-12 xl:px-20 bg-[#0a0a0a] overflow-hidden">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/5 to-transparent pointer-events-none"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-16 sm:space-y-20 lg:space-y-24"
-          >
-            {/* Header */}
-            <div className="text-center space-y-6 sm:space-y-8">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-amber-100 to-white bg-clip-text text-transparent"
+        <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+          <Motion.div {...fade()} className="max-w-2xl">
+            <SectionLabel>Leadership</SectionLabel>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Meet the <span className="text-amber-400">founders</span>
+            </h2>
+          </Motion.div>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {LEADERS.map((person, index) => (
+              <Motion.article
+                key={person.name}
+                {...fade(index * 0.06)}
+                className="flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03]"
               >
-                What We Do
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-lg sm:text-xl lg:text-2xl text-neutral-300 leading-relaxed max-w-4xl mx-auto font-light"
-              >
-                At Gamotech Solutions Private Limited, we design and develop technology solutions that solve real business problems. Our services are focused on clarity, performance, and long-term usability.
-              </motion.p>
-      </div>
+                <div className="aspect-[4/5] bg-neutral-900">
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="h-full w-full object-cover object-[center_18%]"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-2xl font-semibold text-white">{person.name}</h3>
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-amber-400">{person.role}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-amber-50/75">{person.bio}</p>
+                </div>
+              </Motion.article>
+            ))}
+          </div>
+        </section>
 
-            {/* Our Core Services */}
-            <div className="space-y-8 sm:space-y-12">
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center"
-              >
-                Our Core Services
-              </motion.h3>
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <Motion.div {...fade()} className="max-w-2xl">
+            <SectionLabel>Direction</SectionLabel>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Our mission and vision
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-amber-50/75 sm:text-lg">
+              This describes the desired future position of the company by defining purpose, goals, expertise, and
+              expectations.
+            </p>
+          </Motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {[
-                  {
-                    icon: Globe,
-                    title: 'Website Development',
-                    description: 'We build fast, responsive, and modern websites that represent your brand clearly and convert visitors into customers.'
-                  },
-                  {
-                    icon: ShoppingCart,
-                    title: 'E-Commerce Solutions',
-                    description: 'From product catalogs to secure payments and order management, we create scalable e-commerce platforms that help you sell confidently online.'
-                  },
-                  {
-                    icon: Code,
-                    title: 'Custom Software Development',
-                    description: 'We develop tailor-made software solutions that streamline operations, automate workflows, and improve efficiency across your business.'
-                  },
-                  {
-                    icon: Database,
-                    title: 'CRM & Internal Systems',
-                    description: 'We build customized CRM systems and internal tools that help manage customers, data, and operations in one centralized place.'
-                  },
-                  {
-                    icon: Layers,
-                    title: 'Web & Application Development',
-                    description: 'User-friendly web applications designed for performance, security, and scalability across devices.'
-                  },
-                  {
-                    icon: Wrench,
-                    title: 'Maintenance & Ongoing Support',
-                    description: 'Technology needs care. We provide updates, improvements, and long-term support to keep your systems running smoothly.'
-                  }
-                ].map((service, index) => {
-                  const Icon = service.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="group relative p-5 sm:p-6 bg-[#0d0d0f] border border-white/5 rounded-lg hover:border-amber-500/30 transition-all duration-300"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
-                          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500" />
-                        </div>
-                        <div className="flex-1 space-y-2">
-                          <h4 className="text-lg sm:text-xl font-semibold text-white group-hover:text-amber-400 transition-colors">
-                            {service.title}
-                          </h4>
-                          <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
-                            {service.description}
-        </p>
-      </div>
-                      </div>
-                    </motion.div>
-                  )
-                })}
-              </div>
-            </div>
+          <div className="mt-10 grid gap-4 lg:grid-cols-2">
+            <Motion.article {...fade(0.05)} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/15 text-amber-400">
+                <Eye className="h-6 w-6" aria-hidden="true" strokeWidth={1.75} />
+              </span>
+              <h3 className="mt-6 text-2xl font-semibold text-white">Vision</h3>
+              <p className="mt-3 text-sm leading-relaxed text-amber-50/75 sm:text-base">
+                Our vision is to become a trusted technology partner for businesses across India by building solutions
+                that are simple, scalable, and reliable. We aim to help businesses grow by delivering technology that
+                adapts with change, supports long-term goals, and removes operational complexity. At Gamotech Solutions
+                Private Limited, we envision a future where businesses use technology confidently — not as a burden, but
+                as a powerful enabler of growth, clarity, and efficiency.
+              </p>
+            </Motion.article>
 
-            {/* Why Choose Us */}
-            <div className="pt-12 sm:pt-16 border-t border-white/10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden rounded-2xl">
-                {/* Left Section - Light Background with Question */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="lg:col-span-4 bg-gradient-to-br from-amber-500/10 to-amber-500/5 p-8 sm:p-12 lg:p-16 flex items-center justify-center relative"
-                >
-                  {/* Bracket Shape */}
-                  <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-neutral-400/30"></div>
-                  <div className="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-neutral-400/30"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-2 mb-2">
-                      <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                        WHY
-                      </h3>
-                      <span className="text-amber-500 text-2xl sm:text-3xl lg:text-4xl font-bold mt-1">+</span>
+            <Motion.article {...fade(0.1)} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/15 text-amber-400">
+                <Target className="h-6 w-6" aria-hidden="true" strokeWidth={1.75} />
+              </span>
+              <h3 className="mt-6 text-2xl font-semibold text-white">Mission</h3>
+              <p className="mt-3 text-sm leading-relaxed text-amber-50/75 sm:text-base">
+                Our mission is to empower businesses through smart, reliable, and purpose-driven technology.
+              </p>
+              <ul className="mt-5 space-y-3">
+                {MISSION_POINTS.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-amber-50/80 sm:text-base">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Motion.article>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <Motion.div {...fade()} className="max-w-3xl">
+            <SectionLabel>What we do</SectionLabel>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Our core services
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-amber-50/75 sm:text-lg">
+              At Gamotech Solutions Private Limited, we design and develop technology solutions that solve real business
+              problems. Our services are focused on clarity, performance, and long-term usability.
+            </p>
+          </Motion.div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((service, index) => {
+              const Icon = service.icon
+              return (
+                <Motion.div key={service.title} {...fade(index * 0.05)}>
+                  <Link
+                    to={service.to}
+                    className="group flex h-full cursor-pointer flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-200 hover:border-amber-500/40 hover:bg-white/[0.05] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/5 text-amber-400">
+                        {typeof Icon === 'string' ? (
+                          <img src={Icon} alt="" className="h-7 w-7 object-contain" />
+                        ) : (
+                          <Icon className="h-6 w-6" aria-hidden="true" strokeWidth={1.75} />
+                        )}
+                      </span>
+                      <h3 className="min-w-0 flex-1 text-xl font-semibold text-white">{service.title}</h3>
                     </div>
-                    <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                      CHOOSE
-                    </h3>
-                    <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                      US ?
-                    </h3>
-                  </div>
-                </motion.div>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-amber-50/70">{service.description}</p>
+                    <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-amber-400">
+                      Learn more
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+                    </span>
+                  </Link>
+                </Motion.div>
+              )
+            })}
+          </div>
+        </section>
 
-                {/* Right Section - Dark Background with Curved Edge */}
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="lg:col-span-8 bg-[#0d0d0d] p-8 sm:p-12 lg:p-16 relative"
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <Motion.div {...fade()} className="max-w-2xl">
+            <SectionLabel>Why Gamotech</SectionLabel>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Why choose us
+            </h2>
+          </Motion.div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {REASONS.map((reason, index) => {
+              const Icon = reason.icon
+              return (
+                <Motion.article
+                  key={reason.title}
+                  {...fade(index * 0.05)}
+                  className="rounded-3xl border border-white/10 bg-white/[0.03] p-6"
                 >
-                  {/* Curved Edge Effect */}
-                  <div className="absolute left-0 top-0 bottom-0 w-8 bg-[#0d0d0d] -translate-x-4">
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 32 100" preserveAspectRatio="none">
-                      <path d="M0,0 Q16,50 0,100 L32,100 L32,0 Z" fill="#0d0d0d" />
-                    </svg>
-                  </div>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-500/15 text-amber-400">
+                    <Icon className="h-5 w-5" aria-hidden="true" strokeWidth={1.75} />
+                  </span>
+                  <h3 className="mt-5 text-lg font-semibold text-white">{reason.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-amber-50/75">{reason.description}</p>
+                </Motion.article>
+              )
+            })}
+          </div>
+        </section>
 
-                  <div className="space-y-6 sm:space-y-8">
-                    {[
-                      {
-                        icon: Briefcase,
-                        title: 'Business-Focused Solutions',
-                        description: 'We understand your goals first and build technology that supports real-world business operations.'
-                      },
-                      {
-                        icon: Code,
-                        title: '100% Custom Development',
-                        description: 'No templates. No shortcuts. Every solution is designed specifically for your requirements.'
-                      },
-                      {
-                        icon: Zap,
-                        title: 'Scalable & Future-Ready',
-                        description: 'Our systems are built to grow with your business, saving you from costly rebuilds later.'
-                      },
-                      {
-                        icon: MessageSquare,
-                        title: 'Clear Communication',
-                        description: 'Transparent timelines, regular updates, and honest discussions throughout the project lifecycle.'
-                      },
-                      {
-                        icon: Shield,
-                        title: 'Reliable & Secure',
-                        description: 'We follow best practices to deliver stable, secure, and performance-optimized solutions.'
-                      },
-                      {
-                        icon: Headphones,
-                        title: 'Long-Term Support',
-                        description: 'We stay with you after launch, providing continuous improvements and technical support as your business evolves.'
-                      }
-                    ].map((benefit, index) => {
-                      const Icon = benefit.icon
-                      return (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: 30 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 }}
-                          className="flex items-start gap-4 sm:gap-6"
-                        >
-                          {/* Circular Icon with Layered Effect */}
-                          <div className="flex-shrink-0 relative">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-500/20 border-2 border-amber-500/30 flex items-center justify-center">
-                              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center">
-                                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
-                              </div>
-                            </div>
-                          </div>
-                          
-                          {/* Content */}
-                          <div className="flex-1 space-y-2">
-                            <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
-                              {benefit.title}
-                            </h4>
-                            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed">
-                              {benefit.description}
-                            </p>
-                          </div>
-                        </motion.div>
-                      )
-                    })}
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] px-6 py-14 text-center sm:px-12">
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Let&apos;s be your technology partner
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base text-amber-50/75 sm:text-lg">
+              Bring the idea. We&apos;ll stay with you from the first plan through launch and the growth that follows.
+            </p>
+            <Link
+              to="/contact-us"
+              className="mt-8 inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full bg-amber-500 px-7 py-3 text-sm font-semibold !text-white transition-colors duration-200 hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-200"
+            >
+              Talk to Gamotech
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutUs;
+export default AboutUs

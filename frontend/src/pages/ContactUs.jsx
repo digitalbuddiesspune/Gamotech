@@ -17,9 +17,7 @@ const DETAILS = [
         <a href="tel:+919637319746" className="block !text-amber-50/80 hover:!text-amber-300">
           +91 9637319746
         </a>
-        <a href="tel:+919766670916" className="block !text-amber-50/80 hover:!text-amber-300">
-          +91 9766670916
-        </a>
+     
       </div>
     ),
   },
@@ -28,12 +26,10 @@ const DETAILS = [
     icon: Mail,
     content: (
       <div className="space-y-1">
-        <a href="mailto:info@gamotech.co" className="block !text-amber-50/80 hover:!text-amber-300">
-          info@gamotech.co
+        <a href="mailto:info@gamotechsolutions.com" className="block !text-amber-50/80 hover:!text-amber-300">
+          info@gamotechsolutions.com
         </a>
-        <a href="mailto:hr@gamotech.co" className="block !text-amber-50/80 hover:!text-amber-300">
-          hr@gamotech.co
-        </a>
+       
       </div>
     ),
   },

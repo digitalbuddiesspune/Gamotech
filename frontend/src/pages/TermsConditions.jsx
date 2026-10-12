@@ -2,7 +2,7 @@ import React from 'react'
 
 const TermsConditions = () => {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
+    <section className="max-w-4xl mx-auto px-4 py-12 mt-12 sm:mt-20 ">
       <div className="space-y-6">
         <h1 className="text-4xl font-bold text-white mb-2">Terms & Conditions</h1>
         <div className="h-1 w-20 bg-amber-500 mb-8"></div>
@@ -11,7 +11,7 @@ const TermsConditions = () => {
           <div>
             <h2 className="text-2xl font-semibold text-amber-200 mb-3">1. Acceptance of Terms</h2>
             <p className="mb-4">
-              By accessing and using the Gamotech IT & Web Solutions website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our services.
+              By accessing and using the Gamotech Solutions Private Limited website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our services.
             </p>
           </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 const DataPrivacy = () => {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
+    <section className="max-w-4xl mx-auto px-4 py-12 mt-12 sm:mt-20 ">
       <div className="space-y-6">
         <h1 className="text-4xl font-bold text-white mb-2">Data Privacy</h1>
         <div className="h-1 w-20 bg-amber-500 mb-8"></div>
@@ -11,7 +11,7 @@ const DataPrivacy = () => {
           <div>
             <h2 className="text-2xl font-semibold text-amber-200 mb-3">1. Introduction</h2>
             <p className="mb-4">
-              At Gamotech IT & Web Solutions, we are committed to protecting your privacy and ensuring the security of your personal data. This Data Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+              At Gamotech Solutions Private Limited, we are committed to protecting your privacy and ensuring the security of your personal data. This Data Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
             </p>
           </div>
 

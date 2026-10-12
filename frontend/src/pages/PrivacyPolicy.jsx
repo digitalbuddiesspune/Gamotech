@@ -2,7 +2,7 @@ import React from 'react'
 
 const PrivacyPolicy = () => {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
+    <section className="max-w-4xl mx-auto px-4 py-12 mt-12 sm:mt-20 ">
       <div className="space-y-6">
         <h1 className="text-4xl font-bold text-white mb-2">Privacy Policy</h1>
         <div className="h-1 w-20 bg-amber-500 mb-8"></div>
@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
           <div>
             <h2 className="text-2xl font-semibold text-amber-200 mb-3">Overview</h2>
             <p className="mb-4">
-              Gamotech IT & Web Solutions (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting your personal information. This Privacy Policy describes how we collect, use, and share information about you when you use our website and services.
+              Gamotech Solutions Private Limited (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting your personal information. This Privacy Policy describes how we collect, use, and share information about you when you use our website and services.
             </p>
           </div>
 
